@@ -1,4 +1,5 @@
-package View;/*
+package View;
+/*
  * Filename: View.java
  * Short description:
  * IST 242 Assignment:

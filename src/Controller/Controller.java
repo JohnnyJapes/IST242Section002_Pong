@@ -1,4 +1,4 @@
-package Controller;
+
 /*
  * Filename: Controller.java
  * Short description:
@@ -6,9 +6,9 @@ package Controller;
  * @author Luke Hanrahan & Brandon Orlando
  * @version 1.0 3/2/23
  */
-
-import Model.Model;
+package Controller;
 import View.View;
+import Model.Model;
 /**
  * @author Luke Hanrahan & Brandon Orlando
  * @version 1.0 1/26/23
