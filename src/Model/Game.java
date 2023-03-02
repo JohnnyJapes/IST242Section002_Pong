@@ -1,5 +1,5 @@
 package Model;/*
- * Filename: Model.java
+ * Filename: Game.java
  * Short description:
  * IST 242 Assignment:
  * @author Luke Hanrahan & Brandon Orlando
@@ -11,17 +11,17 @@ package Model;/*
  * @author Luke Hanrahan & Brandon Orlando
  * @version 1.0 3/2/23
  */
-public class Model {
+public class Game {
     // Instance Variables -- define your private data
 
 
     // Constructors
-    public Model() //no-arg constructor
+    public Game() //no-arg constructor
     {
         // initialize default values
     }
 
-    public Model(int data) // pass in data to initialize variables
+    public Game(int data) // pass in data to initialize variables
     {
     }
 
