@@ -1,10 +1,7 @@
-package Model;
-
-/*
- * File name: Entity.java
- * Short description: Entity class, abstract super class
- * IST 242 Assignment: GUI Project
- *
+package View;/*
+ * Filename: MainFrame.java
+ * Short description:
+ * IST 242 Assignment:
  * @author Luke Hanrahan & Brandon Orlando
  * @version 1.0 3/2/23
  */
@@ -14,17 +11,22 @@ package Model;
  * @author Luke Hanrahan & Brandon Orlando
  * @version 1.0 3/2/23
  */
-public class Entity {
+public class MainFrame {
     // Instance Variables -- define your private data
 
-    private int[] coordinates;
+
+    // Constructors
+    public MainFrame() //no-arg constructor
+    {
+        // initialize default values
+    }
+
+    public MainFrame(int data) // pass in data to initialize variables
+    {
+    }
 
     // Set methods - one set method for each instance variable defined above
     //             - purpose is to pass in a value stored in the private variable
-
-    public int[] getCoordinates() {
-        return coordinates;
-    }
 
     // Get methods - one get method for each instance variable defined above
     //             - purpose is to return the value stored in the private variable
