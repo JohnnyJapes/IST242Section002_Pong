@@ -11,17 +11,17 @@ package Model;/*
  * @author Luke Hanrahan & Brandon Orlando
  * @version 1.0 1/26/23
  */
-public class Model {
+public class Paddle {
     // Instance Variables -- define your private data
 
 
     // Constructors
-    public Model() //no-arg constructor
+    public Paddle() //no-arg constructor
     {
         // initialize default values
     }
 
-    public Model(int data) // pass in data to initialize variables
+    public Paddle(int data) // pass in data to initialize variables
     {
     }
 
