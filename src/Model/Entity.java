@@ -17,19 +17,14 @@ package Model;
 public class Entity {
     // Instance Variables -- define your private data
 
-
-    // Constructors
-    public Entity() //no-arg constructor
-    {
-        // initialize default values
-    }
-
-    public Entity(int data) // pass in data to initialize variables
-    {
-    }
+    private int[] coordinates;
 
     // Set methods - one set method for each instance variable defined above
     //             - purpose is to pass in a value stored in the private variable
+
+    public int[] getCoordinates() {
+        return coordinates;
+    }
 
     // Get methods - one get method for each instance variable defined above
     //             - purpose is to return the value stored in the private variable
