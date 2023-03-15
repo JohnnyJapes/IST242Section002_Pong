@@ -1,2 +1,3 @@
-# IST242Section002_Pong
-Basic Pong game
+# Pong
+A pong game created by Luke Hanrahan & Brandon Orlando.
+IST 242 - Nannette D'Imperio
