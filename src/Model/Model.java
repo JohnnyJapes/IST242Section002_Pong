@@ -12,17 +12,51 @@ package Model;/*
  * @version 1.0 3/2/23
  */
 public class Model {
+
+    // Ball x & Y
+    int ballX, ballY;
+
+    // Ball X & Y Velocity
+    float ballXVelocity, ballYVelocity;
+
+    // Height, Width, and fixed Speed of both players paddles
+
+    int paddlesWidth, paddlesHeight, paddlesSpeed;
+
+    // X & Y of each player's paddles
+
+    int lpPaddleX, lpPaddleY, rpPaddleX, rpPaddleY;
+
+    // Score of each player as well as the score needed to win the game with "highScore" being the overall highest score any has achieved
+
+    int lpScore, rpScore, winScore, highestScore;
+
+
     // Instance Variables -- define your private data
 
 
     // Constructors
-    public Model() //no-arg constructor
-    {
+    //no-arg constructor
+    public Model()  {
         // initialize default values
+        ballX = 0;
+        ballY = 0;
+        ballXVelocity = 0;
+        ballYVelocity = 0;
+        paddlesWidth = 0;
+        paddlesHeight = 0;
+        paddlesSpeed = 0;
+        lpPaddleX = 0;
+        lpPaddleY = 0;
+        rpPaddleX = 0;
+        rpPaddleY = 0;
+        lpScore = 0;
+        rpScore = 0;
+        winScore = 0;
+        highestScore = 0;
     }
-
-    public Model(int data) // pass in data to initialize variables
-    {
+    // pass in data to initialize variables
+    public Model(int data) {
     }
 
     // Set methods - one set method for each instance variable defined above
