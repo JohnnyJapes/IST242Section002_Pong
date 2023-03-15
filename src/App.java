@@ -10,6 +10,7 @@
 import Controller.Controller;
 import Model.Model;
 import View.View;
+import View.MainFrame;
 
 /**
  * @author Luke Hanrahan & Brandon Orlando
@@ -18,13 +19,14 @@ import View.View;
 
 public class App{
 //Main method of application
-public static void main(String[]args)
-        {
+public static void main(String[] args) {
         //Program Description
 
         //code for this assignment
-        Model model=new Model();
-        View view=new View();
-        Controller controller=new Controller(model,view);
+        Model model = new Model();
+        View view = new View();
+        Controller controller = new Controller(model,view);
+        MainFrame mFrame = new MainFrame();
+
         }
 }

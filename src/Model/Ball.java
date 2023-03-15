@@ -1,4 +1,5 @@
-Model.javapackage Model;/*
+package Model;
+/*
  * Filename: Model.java
  * Short description:
  * IST 242 Assignment:
