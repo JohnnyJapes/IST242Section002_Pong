@@ -13,31 +13,32 @@ package Model;/*
  */
 public class Game {
     // Instance Variables -- define your private data
+    // Ball
+    private Ball ball;
+
+    private Paddle leftPaddle, rightPaddle;
+
+
+    // Score of each player as well as the score needed to win the game with "highScore" being the overall highest score any has achieved
+
+    int p1Score, p2Score, highestScore, winScore;
+
+
+    // Instance Variables -- define your private data
 
 
     // Constructors
-    public Game() //no-arg constructor
-    {
+    //no-arg constructor
+    public Game() {
         // initialize default values
+        ball = new Ball();
+        leftPaddle = new Paddle();
+        rightPaddle = new Paddle();
+        p1Score = 0;
+        p2Score = 0;
+        winScore = 0;
+        highestScore = 0;
     }
 
-    public Game(int data) // pass in data to initialize variables
-    {
-    }
-
-    // Set methods - one set method for each instance variable defined above
-    //             - purpose is to pass in a value stored in the private variable
-
-    // Get methods - one get method for each instance variable defined above
-    //             - purpose is to return the value stored in the private variable
-
-    // Additional methods -- such as for calculation, display
-
-    public String toString() {
-        // return data as a String
-        return "";
-    }
 
 }
-
-

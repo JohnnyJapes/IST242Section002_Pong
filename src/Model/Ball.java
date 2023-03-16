@@ -19,6 +19,7 @@ public class Ball extends Entity{
     // Constructors
     public Ball() //no-arg constructor
     {
+        super(new int[]{0, 50}, 10);
         height = 10;
         width = 10;
     }

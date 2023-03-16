@@ -13,12 +13,14 @@ package Model;/*
  */
 public class Paddle extends Entity{
     // Instance Variables -- define your private data
-
+    int height, width;
 
     // Constructors
     public Paddle() //no-arg constructor
     {
-        // initialize default values
+        super(new int[]{0, 50}, 10);
+        height = 40;
+        width = 10;
     }
 
     public Paddle(int data) // pass in data to initialize variables

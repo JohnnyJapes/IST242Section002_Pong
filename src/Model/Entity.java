@@ -10,6 +10,8 @@ package Model;
  */
 
 
+import java.sql.Array;
+
 /**
  * @author Luke Hanrahan & Brandon Orlando
  * @version 1.0 3/2/23
@@ -17,6 +19,18 @@ package Model;
 public abstract class Entity {
     // Instance Variables -- define your private data
     private int[] coordinates;
+    private float velocity;
+
+    public Entity(){
+        coordinates = new int[]{50, 50};
+        velocity = 5;
+
+    }
+
+    public Entity(int[] coordinates, float velocity){
+        this.coordinates = coordinates;
+        this.velocity = velocity;
+    }
 
     // Set methods - one set method for each instance variable defined above
     //             - purpose is to pass in a value stored in the private variable
