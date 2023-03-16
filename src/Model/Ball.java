@@ -12,14 +12,15 @@ package Model;
  * @author Luke Hanrahan & Brandon Orlando
  * @version 1.0 1/26/23
  */
-public class Ball {
+public class Ball extends Entity{
     // Instance Variables -- define your private data
-
+    int height, width;
 
     // Constructors
     public Ball() //no-arg constructor
     {
-        // initialize default values
+        height = 10;
+        width = 10;
     }
 
     public Ball(int data) // pass in data to initialize variables

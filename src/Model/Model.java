@@ -13,11 +13,8 @@ package Model;/*
  */
 public class Model {
 
-    // Ball x & Y
-    int ballX, ballY;
-
-    // Ball X & Y Velocity
-    float ballXVelocity, ballYVelocity;
+    // Ball
+    private Ball ball;
 
     // Height, Width, and fixed Speed of both players paddles
 
@@ -39,10 +36,7 @@ public class Model {
     //no-arg constructor
     public Model()  {
         // initialize default values
-        ballX = 0;
-        ballY = 0;
-        ballXVelocity = 0;
-        ballYVelocity = 0;
+        ball = new Ball();
         paddlesWidth = 0;
         paddlesHeight = 0;
         paddlesSpeed = 0;

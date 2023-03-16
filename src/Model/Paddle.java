@@ -11,7 +11,7 @@ package Model;/*
  * @author Luke Hanrahan & Brandon Orlando
  * @version 1.0 1/26/23
  */
-public class Paddle {
+public class Paddle extends Entity{
     // Instance Variables -- define your private data
 
 

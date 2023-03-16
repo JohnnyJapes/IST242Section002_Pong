@@ -14,9 +14,8 @@ package Model;
  * @author Luke Hanrahan & Brandon Orlando
  * @version 1.0 3/2/23
  */
-public class Entity {
+public abstract class Entity {
     // Instance Variables -- define your private data
-
     private int[] coordinates;
 
     // Set methods - one set method for each instance variable defined above
