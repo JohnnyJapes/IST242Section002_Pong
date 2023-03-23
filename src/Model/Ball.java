@@ -14,15 +14,13 @@ package Model;
  */
 public class Ball extends Entity{
     // Instance Variables -- define your private data
-    int height, width;
     int[] lastKnownCoordinates;
 
     // Constructors
     public Ball() //no-arg constructor
     {
         super(new int[]{0, 50}, 10, 10);
-        height = 10;
-        width = 10;
+
     }
 
     public Ball(int data) // pass in data to initialize variables
