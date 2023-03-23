@@ -15,6 +15,7 @@ package Model;
 public class Ball extends Entity{
     // Instance Variables -- define your private data
     int height, width;
+    int[] lastKnownCoordinates;
 
     // Constructors
     public Ball() //no-arg constructor
@@ -31,6 +32,13 @@ public class Ball extends Entity{
     // Set methods - one set method for each instance variable defined above
     //             - purpose is to pass in a value stored in the private variable
 
+    @Override
+    public void setCoordinates(int[] coordinates) {
+        lastKnownCoordinates = getCoordinates();
+        super.setCoordinates(coordinates);
+    }
+
+
     // Get methods - one get method for each instance variable defined above
     //             - purpose is to return the value stored in the private variable
 
@@ -40,6 +48,8 @@ public class Ball extends Entity{
     public void bounce(int[] field){
 
     }
+
+
 
     public String toString() {
         // return data as a String
