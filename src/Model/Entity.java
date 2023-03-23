@@ -20,9 +20,11 @@ public abstract class Entity {
     // Instance Variables -- define your private data
     private int[] coordinates;
     private float velocityX, velocityY;
+    private int[] size;
 
     public Entity(){
         coordinates = new int[]{50, 50};
+        size = new int[]{2,2};
         velocityX = 5;
         velocityY = 5;
 
