@@ -18,7 +18,7 @@ public class Paddle extends Entity{
     // Constructors
     public Paddle() //no-arg constructor
     {
-        super(new int[]{0, 50}, 10);
+        super(new int[]{0, 50}, 10, 10);
         height = 40;
         width = 10;
     }

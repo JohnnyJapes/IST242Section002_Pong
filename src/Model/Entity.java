@@ -19,17 +19,19 @@ import java.sql.Array;
 public abstract class Entity {
     // Instance Variables -- define your private data
     private int[] coordinates;
-    private float velocity;
+    private float velocityX, velocityY;
 
     public Entity(){
         coordinates = new int[]{50, 50};
-        velocity = 5;
+        velocityX = 5;
+        velocityY = 5;
 
     }
 
-    public Entity(int[] coordinates, float velocity){
+    public Entity(int[] coordinates, float velocityX, float velocityY){
         this.coordinates = coordinates;
-        this.velocity = velocity;
+        this.velocityX = velocityX;
+        this.velocityY = velocityY;
     }
 
     // Set methods - one set method for each instance variable defined above
@@ -51,9 +53,19 @@ public abstract class Entity {
      *
      * @param velocity float - velocity
      */
-    public void setVelocity(float velocity) {
-        this.velocity = velocity;
+    public void setVelocityX(float velocity) {
+        this.velocityX = velocity;
     }
+
+    /**
+     * Method to set velocityY.
+     *
+     * @param velocityY float - velocityY
+     */
+    public void setVelocityY(float velocityY) {
+        this.velocityY = velocityY;
+    }
+
     // Get methods - one get method for each instance variable defined above
     //             - purpose is to return the value stored in the private variable
 
@@ -71,10 +83,18 @@ public abstract class Entity {
      *
      * @return float, value of velocity
      */
-    public float getVelocity() {
-        return velocity;
+    public float getVelocityX() {
+        return velocityX;
     }
 
+    /**
+     * Gets velocityY.
+     *
+     * @return float, value of velocityY
+     */
+    public float getVelocityY() {
+        return velocityY;
+    }
 
     // Additional methods -- such as for calculation, display
 

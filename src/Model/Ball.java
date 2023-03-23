@@ -19,7 +19,7 @@ public class Ball extends Entity{
     // Constructors
     public Ball() //no-arg constructor
     {
-        super(new int[]{0, 50}, 10);
+        super(new int[]{0, 50}, 10, 10);
         height = 10;
         width = 10;
     }
@@ -35,6 +35,11 @@ public class Ball extends Entity{
     //             - purpose is to return the value stored in the private variable
 
     // Additional methods -- such as for calculation, display
+
+    //bounce/rebound logic placeholder, should set next location
+    public void bounce(int[] field){
+
+    }
 
     public String toString() {
         // return data as a String
