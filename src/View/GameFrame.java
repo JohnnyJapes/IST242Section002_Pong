@@ -13,6 +13,7 @@ public class GameFrame extends JFrame {
         setSize (1200, 800);
         setResizable(false);
         setVisible(true);
+
     }
 //-------------------------------------------------------------------
 }

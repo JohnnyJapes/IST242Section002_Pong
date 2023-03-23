@@ -16,10 +16,20 @@ public class View {
     // Instance Variables -- define your private data
 
 
+    private MainFrame mf;
+    private GamePanel gp;
     // Constructors
-    public View() //no-arg constructor
-    {
+    public View() {
         // initialize default values
+        mf = new MainFrame();
+    }
+
+    public MainFrame getMf() {
+        return mf;
+    }
+
+    public GamePanel getGp() {
+        return gp;
     }
 
     public View(int data) // pass in data to initialize variables
