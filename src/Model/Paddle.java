@@ -1,16 +1,13 @@
-package Model;/*
- * Filename: Model.java
- * Short description:
- * IST 242 Assignment:
- * @author Luke Hanrahan & Brandon Orlando
- * @version 1.0 3/2/23
- */
-
+package Model;
 
 /**
+ * File name: Paddle.java
+ * Short description: Class to create paddle object
+ * IST 242 Assignment: GUI Project
  * @author Luke Hanrahan & Brandon Orlando
- * @version 1.0 1/26/23
+ * @version 1.0 3/27/23
  */
+
 public class Paddle extends Entity{
     // Instance Variables -- define your private data
 
@@ -23,7 +20,8 @@ public class Paddle extends Entity{
 
     }
 
-    public Paddle(int data) // pass in data to initialize variables
+    // pass in data to initialize variables
+    public Paddle(int data)
     {
     }
 

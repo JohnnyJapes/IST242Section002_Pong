@@ -1,17 +1,13 @@
 package Model;
-/*
- * Filename: Model.java
- * Short description:
- * IST 242 Assignment:
- * @author Luke Hanrahan & Brandon Orlando
- * @version 1.0 3/2/23
- */
-
 
 /**
+ * File name: Ball.java
+ * Short description: Class to create ball object
+ * IST 242 Assignment: GUI Project
  * @author Luke Hanrahan & Brandon Orlando
- * @version 1.0 1/26/23
+ * @version 1.0 3/27/23
  */
+
 public class Ball extends Entity{
     // Instance Variables -- define your private data
     int[] lastKnownCoordinates;

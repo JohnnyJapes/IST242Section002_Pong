@@ -1,21 +1,13 @@
 package Model;
 
-/*
- * File name: Entity.java
- * Short description: Entity class, abstract super class
- * IST 242 Assignment: GUI Project
- *
- * @author Luke Hanrahan & Brandon Orlando
- * @version 1.0 3/2/23
- */
-
-
-import java.sql.Array;
-
 /**
+ * File name: Entity.java
+ * Short description: Abstract class to manage entities (position, speed, etc.)
+ * IST 242 Assignment: GUI Project
  * @author Luke Hanrahan & Brandon Orlando
- * @version 1.0 3/2/23
+ * @version 1.0 3/27/23
  */
+
 public abstract class Entity {
     // Instance Variables -- define your private data
     private int[] coordinates;

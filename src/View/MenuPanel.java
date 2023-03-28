@@ -1,9 +1,15 @@
 package View;
-
 import javax.swing.*;
 import java.awt.event.ActionListener;
-import java.awt.*;
 import java.awt.event.*;
+
+/**
+ * File name: MenuPanel.java
+ * Short description: Panel for the initial menu of the GUI
+ * IST 242 Assignment: GUI Project
+ * @author Luke Hanrahan & Brandon Orlando
+ * @version 1.0 3/27/23
+ */
 
 public class MenuPanel extends JPanel implements ActionListener {
         JButton startButton, quitButton;
@@ -23,8 +29,6 @@ public class MenuPanel extends JPanel implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-
-
         }
     }
 

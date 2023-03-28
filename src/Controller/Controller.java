@@ -1,19 +1,14 @@
-
-/*
- * Filename: Controller.java
- * Short description:
- * IST 242 Assignment:
- * @author Luke Hanrahan & Brandon Orlando
- * @version 1.0 3/2/23
- */
 package Controller;
 import View.View;
 import Model.Model;
-/**
- * @author Luke Hanrahan & Brandon Orlando
- * @version 1.0 1/26/23
- */
 
+/**
+ * File name: Controller.java
+ * Short description: Class to pass data throughout the game/app
+ * IST 242 Assignment: GUI Project
+ * @author Luke Hanrahan & Brandon Orlando
+ * @version 1.0 3/27/23
+ */
 
 public class Controller {
     // Instance Variables -- define your private data
@@ -29,7 +24,6 @@ public class Controller {
         // return data as a String
         return "";
     }
-
 }
 
 

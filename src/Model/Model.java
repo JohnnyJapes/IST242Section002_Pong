@@ -1,21 +1,17 @@
-package Model;/*
- * Filename: Model.java
- * Short description:
- * IST 242 Assignment:
- * @author Luke Hanrahan & Brandon Orlando
- * @version 1.0 3/2/23
- */
-
+package Model;
 
 /**
+ * File name: Model.java
+ * Short description: Class to track player scores and write to XML, etc.
+ * IST 242 Assignment: GUI Project
  * @author Luke Hanrahan & Brandon Orlando
- * @version 1.0 3/2/23
+ * @version 1.0 3/27/23
  */
 public class Model {
 
 
     // pass in data to initialize variables
-    public Model(int data) {
+    public Model() {
     }
 
     // Set methods - one set method for each instance variable defined above
@@ -30,7 +26,6 @@ public class Model {
         // return data as a String
         return "";
     }
-
 }
 
 

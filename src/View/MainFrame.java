@@ -1,16 +1,14 @@
 package View;
 import java.awt.*;
 import javax.swing.*;
-import java.awt.event.*;
 
-/*
- * Filename: MainFrame.java
- * Short description:
- * IST 242 Assignment:
+/**
+ * File name: MainFrame.java
+ * Short description: Frame to contain MenuPanel
+ * IST 242 Assignment: GUI Project
  * @author Luke Hanrahan & Brandon Orlando
- * @version 1.0 3/2/23
+ * @version 1.0 3/27/23
  */
-
 
 public class MainFrame extends JFrame {
     MenuPanel initialPanel;

@@ -1,21 +1,15 @@
 package View;
-/*
- * Filename: View.java
- * Short description:
- * IST 242 Assignment:
- * @author Luke Hanrahan & Brandon Orlando
- * @version 1.0 3/2/23
- */
-
 
 /**
+ * File name: View.java
+ * Short description: View to contain frames & panels
+ * IST 242 Assignment: GUI Project
  * @author Luke Hanrahan & Brandon Orlando
- * @version 1.0 1/26/23
+ * @version 1.0 3/27/23
  */
+
 public class View {
     // Instance Variables -- define your private data
-
-
     private MainFrame mf;
     private GamePanel gp;
     // Constructors
@@ -32,8 +26,8 @@ public class View {
         return gp;
     }
 
-    public View(int data) // pass in data to initialize variables
-    {
+    // pass in data to initialize variables
+    public View(int data) {
     }
 
     // Set methods - one set method for each instance variable defined above
@@ -48,7 +42,6 @@ public class View {
         // return data as a String
         return "";
     }
-
 }
 
 
