@@ -22,10 +22,11 @@ public abstract class Entity {
 
     }
 
-    public Entity(int[] coordinates, float velocityX, float velocityY){
+    public Entity(int[] coordinates, float velocityX, float velocityY, int[] size){
         this.coordinates = coordinates;
         this.velocityX = velocityX;
         this.velocityY = velocityY;
+        this.size = size;
     }
 
     // Set methods - one set method for each instance variable defined above

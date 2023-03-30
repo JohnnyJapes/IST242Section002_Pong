@@ -15,7 +15,7 @@ public class Ball extends Entity{
     // Constructors
     public Ball() //no-arg constructor
     {
-        super(new int[]{0, 50}, 10, 10);
+        super(new int[]{0, 50}, 10, 10, new int[]{10, 10});
 
     }
 
