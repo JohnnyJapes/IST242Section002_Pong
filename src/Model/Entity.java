@@ -11,7 +11,8 @@ package Model;
 public abstract class Entity {
     // Instance Variables -- define your private data
     private int[] coordinates;
-    private float velocityX, velocityY;
+    private int velocityX;
+    private int velocityY;
     private int[] size;
 
     public Entity(){
@@ -22,7 +23,7 @@ public abstract class Entity {
 
     }
 
-    public Entity(int[] coordinates, float velocityX, float velocityY, int[] size){
+    public Entity(int[] coordinates, int velocityX, int velocityY, int[] size){
         this.coordinates = coordinates;
         this.velocityX = velocityX;
         this.velocityY = velocityY;
@@ -44,11 +45,26 @@ public abstract class Entity {
     }
 
     /**
+     * Method to set x coordinate
+     * @param x - int, set x coordinate
+     */
+    public void setXCoordinate(int x){
+        coordinates[0] = x;
+    }
+
+    /**
+     * Method to set y coordinate
+     * @param y - int, set y coordinate
+     */
+    public void setYCoordinate(int y){
+        coordinates[0] = y;
+    }
+    /**
      * Method to set velocity.
      *
      * @param velocity float - velocity
      */
-    public void setVelocityX(float velocity) {
+    public void setVelocityX(int velocity) {
         this.velocityX = velocity;
     }
 
@@ -57,7 +73,7 @@ public abstract class Entity {
      *
      * @param velocityY float - velocityY
      */
-    public void setVelocityY(float velocityY) {
+    public void setVelocityY(int velocityY) {
         this.velocityY = velocityY;
     }
 
@@ -74,11 +90,26 @@ public abstract class Entity {
     }
 
     /**
+     * Method to return x coordinate
+     * @return int - x coordinate
+     */
+    public int getXCoordinate() {
+        return coordinates[0];
+    }
+    /**
+     * Method to return Y coordinate
+     * @return int - Y coordinate
+     */
+    public int getYCoordinate() {
+        return coordinates[1];
+    }
+
+    /**
      * Gets velocity.
      *
      * @return float, value of velocity
      */
-    public float getVelocityX() {
+    public int getVelocityX() {
         return velocityX;
     }
 
@@ -87,7 +118,7 @@ public abstract class Entity {
      *
      * @return float, value of velocityY
      */
-    public float getVelocityY() {
+    public int getVelocityY() {
         return velocityY;
     }
 
