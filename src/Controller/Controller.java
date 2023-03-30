@@ -34,22 +34,28 @@ public class Controller {
 
         // Move left paddle up when up arrow key is pressed
         if (key == KeyEvent.VK_UP) {
-            leftPaddle.moveUp();
+            leftPaddle.movePaddle('U');
+            view.getGp().paintPaddle(leftPaddle.getXCoordinate(),leftPaddle.getYCoordinate(), leftPaddle.getSize()[0], leftPaddle.getSize()[1]);
         }
 
         // Move left paddle down when down arrow key is pressed
         if (key == KeyEvent.VK_DOWN) {
-            leftPaddle.moveDown();
+            leftPaddle.movePaddle('D');
+            view.getGp().paintPaddle(leftPaddle.getXCoordinate(),leftPaddle.getYCoordinate(), leftPaddle.getSize()[0], leftPaddle.getSize()[1]);
+
         }
 
         // Move right paddle up when W key is pressed
         if (key == KeyEvent.VK_W) {
-            rightPaddle.moveUp();
+            rightPaddle.movePaddle('U');
+            view.getGp().paintPaddle(rightPaddle.getXCoordinate(),rightPaddle.getYCoordinate(), rightPaddle.getSize()[0], rightPaddle.getSize()[1]);
+
         }
 
         // Move right paddle down when S key is pressed
         if (key == KeyEvent.VK_S) {
-            rightPaddle.moveDown();
+            rightPaddle.movePaddle('D');
+            view.getGp().paintPaddle(rightPaddle.getXCoordinate(),rightPaddle.getYCoordinate(), rightPaddle.getSize()[0], rightPaddle.getSize()[1]);
         }
     }
 
