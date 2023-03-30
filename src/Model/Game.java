@@ -191,7 +191,13 @@ public class Game {
     //Methods for Game logic
 
     public void updatePaddlePosition(int player, char direction) { //handles paddle movement when called by Controller
-
+        Paddle pad;
+        switch(player){
+            case 1: pad = leftPaddle;
+            case 2: pad = rightPaddle;
+            default: pad = leftPaddle;
+        }
+        pad.movePaddle(direction);
     };
 
     public void updateBallPosition(){} //handles tracking of balls next movement
