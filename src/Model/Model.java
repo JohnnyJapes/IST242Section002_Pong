@@ -16,7 +16,7 @@ public class Model {
         Game = new Game();
     }
 
-    public Object getGame() {
+    public Game getGame() {
         return Game;
     }
 
