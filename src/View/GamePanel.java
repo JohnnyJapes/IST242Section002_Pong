@@ -1,4 +1,6 @@
 package View;
+import Model.Paddle;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -14,7 +16,11 @@ import java.awt.event.ActionListener;
 
 public class GamePanel extends JPanel implements ActionListener {
 
-    JButton startGame;
+
+
+    private Paddle leftPaddle;
+    private Paddle rightPaddle;
+    private JButton startGame;
     public GamePanel() {
         startGame = new JButton("Start");
         startGame.addActionListener(this);
@@ -22,10 +28,14 @@ public class GamePanel extends JPanel implements ActionListener {
         setBackground(Color.DARK_GRAY);
     }
 
+
     @Override
     public void actionPerformed(ActionEvent e) {
     }
 
 
-
+    public void paintPaddle(int x, int y, int width, int height) {
+        //super.paintComponent(g);
+        //g.fillRect(x, y, width, height);
+    }
 }

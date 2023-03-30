@@ -17,8 +17,6 @@ public class View {
     private MainFrame mf;
     private GamePanel gp;
 
-    private Paddle leftPaddle;
-    private Paddle rightPaddle;
     // Constructors
     public View() {
         // initialize default values
@@ -31,22 +29,6 @@ public class View {
 
     public GamePanel getGp() {
         return gp;
-    }
-
-
-    protected void paintComponent(Graphics g) {
-        super.paintComponent(g);
-
-        // Draw left paddle
-
-        if () {
-            g.fillRect(leftPaddle.getX(), leftPaddle.getY(), leftPaddle.getWidth(), leftPaddle.getHeight());
-        }
-
-        // Draw right paddle
-        else {
-            g.fillRect(rightPaddle.getX(), rightPaddle.getY(), rightPaddle.getWidth(), rightPaddle.getHeight());
-        }
     }
 
 
