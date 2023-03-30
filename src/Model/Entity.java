@@ -77,6 +77,14 @@ public abstract class Entity {
         this.velocityY = velocityY;
     }
 
+    /**
+     * Method to set size.
+     *
+     * @param size int[] - size
+     */
+    public void setSize(int[] size) {
+        this.size = size;
+    }
     // Get methods - one get method for each instance variable defined above
     //             - purpose is to return the value stored in the private variable
 
@@ -120,6 +128,15 @@ public abstract class Entity {
      */
     public int getVelocityY() {
         return velocityY;
+    }
+
+    /**
+     * Gets size.
+     *
+     * @return int[], value of size
+     */
+    public int[] getSize() {
+        return size;
     }
 
     // Additional methods -- such as for calculation, display
