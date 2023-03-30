@@ -57,7 +57,7 @@ public abstract class Entity {
      * @param y - int, set y coordinate
      */
     public void setYCoordinate(int y){
-        coordinates[0] = y;
+        coordinates[1] = y;
     }
     /**
      * Method to set velocity.

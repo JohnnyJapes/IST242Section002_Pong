@@ -15,20 +15,22 @@ import java.awt.*;
 public class View {
     // Instance Variables -- define your private data
     private MainFrame mf;
+    private GameFrame gf;
     private GamePanel gp;
 
     // Constructors
     public View() {
         // initialize default values
-        mf = new MainFrame();
+        //mf = new MainFrame();
+        gf = new GameFrame();
     }
 
     public MainFrame getMf() {
         return mf;
     }
 
-    public GamePanel getGp() {
-        return gp;
+    public GameFrame getGf() {
+        return gf;
     }
 
 

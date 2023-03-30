@@ -20,4 +20,13 @@ public class GameFrame extends JFrame {
         setResizable(false);
         setVisible(true);
     }
+
+    /**
+     * Gets playPanel.
+     *
+     * @return View.GamePanel, value of playPanel
+     */
+    public GamePanel getPlayPanel() {
+        return playPanel;
+    }
 }

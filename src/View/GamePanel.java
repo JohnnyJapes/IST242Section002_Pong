@@ -1,5 +1,4 @@
 package View;
-import Model.Paddle;
 
 import javax.swing.*;
 import java.awt.*;
@@ -18,16 +17,30 @@ public class GamePanel extends JPanel implements ActionListener {
 
 
 
-    private Paddle leftPaddle;
-    private Paddle rightPaddle;
+
     private JButton startGame;
+    private PaddleComponent lP;
     public GamePanel() {
-        startGame = new JButton("Start");
-        startGame.addActionListener(this);
-        add(startGame);
-        setBackground(Color.DARK_GRAY);
+        //startGame = new JButton("Start");
+        //startGame.addActionListener(this);
+        //add(startGame);
+        setLayout(null);
+        setBackground(Color.white);
+        lP = new PaddleComponent(00,0,20,100);
+        Insets insets = getInsets();
+        add(lP);
+        lP.setBounds(0, 00, 1200, 800);
+        repaint();
+
+        //repaint();
     }
 
+    public void loadPaddle(int x, int y, int w, int h){
+        lP.setAll(x,y,w,h);
+        //lP.setBounds(x, y, w, h);
+        repaint();
+
+    }
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -38,4 +51,5 @@ public class GamePanel extends JPanel implements ActionListener {
         //super.paintComponent(g);
         //g.fillRect(x, y, width, height);
     }
+
 }

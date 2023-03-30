@@ -61,6 +61,7 @@ public class Paddle extends Entity{
             setYCoordinate(getYCoordinate()+ getVelocityY());
         if (direction == 'D')
             setYCoordinate(getYCoordinate()- getVelocityY());
+        System.out.println("New Y: " + getYCoordinate());
     }
     public String toString() {
         // return data as a String
