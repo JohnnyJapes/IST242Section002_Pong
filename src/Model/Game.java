@@ -18,9 +18,9 @@ public class Game {
 
     // Score of each player as well as the score needed to win the game with "highScore" being the overall highest score any has achieved
 
-    int p1Score, p2Score, highestScore, winScore;
+    private int p1Score, p2Score, highestScore, winScore;
     //Playing field size, [x,y]
-    int[] fieldSize;
+    private int[] fieldSize;
 
     // Instance Variables -- define your private data
 
@@ -37,6 +37,9 @@ public class Game {
         p2Score = 0;
         winScore = 0;
         highestScore = 0;
+
+
+
     }
 
     //get methods

@@ -20,6 +20,7 @@ public class Paddle extends Entity{
 
     }
 
+
     // pass in data to initialize variables
     public Paddle(int data)
     {

@@ -9,9 +9,15 @@ package Model;
  */
 public class Model {
 
+    private Game Game;
 
     // pass in data to initialize variables
     public Model() {
+        Game = new Game();
+    }
+
+    public Object getGame() {
+        return Game;
     }
 
     // Set methods - one set method for each instance variable defined above

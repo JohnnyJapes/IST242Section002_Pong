@@ -20,6 +20,6 @@ public static void main(String[] args) {
         Model model = new Model();
         View view = new View();
         Controller controller = new Controller(model,view);
-        MainFrame mFrame = new MainFrame();
+        // MainFrame mFrame = new MainFrame();
         }
 }

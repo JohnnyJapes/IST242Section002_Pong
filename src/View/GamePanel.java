@@ -26,12 +26,6 @@ public class GamePanel extends JPanel implements ActionListener {
     public void actionPerformed(ActionEvent e) {
     }
 
-    public void arrowKeysClicked() {
-        
-    }
 
-    public void characterKeysClicked() {
-
-    }
 
 }
