@@ -52,6 +52,16 @@ public class Paddle extends Entity{
 
     // Additional methods -- such as for calculation, display
 
+    /**
+     *
+     * @param direction
+     */
+    public void movePaddle(char direction){
+        if (direction == 'U')
+            setYCoordinate(getYCoordinate()+ getVelocityY());
+        if (direction == 'D')
+            setYCoordinate(getYCoordinate()- getVelocityY());
+    }
     public String toString() {
         // return data as a String
         return "";
