@@ -2,6 +2,7 @@ package Controller;
 import View.View;
 import Model.Model;
 import Model.Paddle;
+import Model.Ball;
 
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
@@ -21,6 +22,8 @@ public class Controller {
     private Paddle leftPaddle;
     private Paddle rightPaddle;
 
+    private Ball ball;
+
     // Constructors
     public Controller(Model m, View v) {
         // initialize default values
@@ -28,73 +31,51 @@ public class Controller {
         view = v;
         leftPaddle = model.getGame().getLeftPaddle();
         rightPaddle = model.getGame().getRightPaddle();
+        ball = model.getGame().getBall();
 
         view.getGf().addKeyListener(new KeyAdapter() {
-            /**
-             * Invoked when a key has been pressed.
-             *
-             * @param e
-             */
             @Override
             public void keyPressed(KeyEvent e) {
                 super.keyPressed(e);
 
-                    // Check which key was pressed
-                    int key = e.getKeyCode();
-                System.out.println("key");
+                // Check which key was pressed
+                int key = e.getKeyCode();
+                    System.out.println(key);
 
-                    // Move left paddle up when up arrow key is pressed
-                    if (key == KeyEvent.VK_UP) {
-                        leftPaddle.movePaddle('U');
-                        System.out.println('U');
-                        view.getGf().getPlayPanel().loadPaddle(leftPaddle.getXCoordinate(),leftPaddle.getYCoordinate(), leftPaddle.getSize()[0], leftPaddle.getSize()[1]);
-                    }
+                // Move left paddle up when up W is pressed
+                if (key == KeyEvent.VK_W) {
+                    leftPaddle.movePaddle('U');
+                    System.out.println('U');
+                    view.getGf().getPlayPanel().loadLeftPaddle(leftPaddle.getXCoordinate(),leftPaddle.getYCoordinate(), leftPaddle.getSize()[0], leftPaddle.getSize()[1]);
+                }
+
+                // Move left paddle down when S key is pressed
+                if (key == KeyEvent.VK_S) {
+                    leftPaddle.movePaddle('D');
+                    System.out.println('D');
+                    view.getGf().getPlayPanel().loadLeftPaddle(leftPaddle.getXCoordinate(),leftPaddle.getYCoordinate(), leftPaddle.getSize()[0], leftPaddle.getSize()[1]);
+                }
+
+                // Move right paddle down when down arrow key is pressed
+                if (key == KeyEvent.VK_UP) {
+                    rightPaddle.movePaddle('U');
+                    System.out.println('U');
+                    view.getGf().getPlayPanel().loadRightPaddle(rightPaddle.getXCoordinate(),rightPaddle.getYCoordinate(), rightPaddle.getSize()[0], rightPaddle.getSize()[1]);
+                }
+
+                // Move right paddle down when down arrow key is pressed
+                if (key == KeyEvent.VK_DOWN) {
+                    rightPaddle.movePaddle('D');
+                    System.out.println('D');
+                    view.getGf().getPlayPanel().loadRightPaddle(rightPaddle.getXCoordinate(),rightPaddle.getYCoordinate(), rightPaddle.getSize()[0], rightPaddle.getSize()[1]);
+                }
             }
-
             @Override
             public void keyTyped(KeyEvent e) {
                 super.keyTyped(e);
                 System.out.println("KEY");
             }
         });
-    }
-
-    public void keyPressed(KeyEvent e) {
-        // Check which key was pressed
-        int key = e.getKeyCode();
-
-        // Move left paddle up when up arrow key is pressed
-        if (key == KeyEvent.VK_UP) {
-            leftPaddle.movePaddle('U');
-            System.out.println('U');
-           // view.getGp().loadPaddle(leftPaddle.getXCoordinate(),leftPaddle.getYCoordinate(), leftPaddle.getSize()[0], leftPaddle.getSize()[1]);
-        }
-
-        // Move left paddle down when down arrow key is pressed
-        if (key == KeyEvent.VK_DOWN) {
-            leftPaddle.movePaddle('D');
-            //view.getGp().paintPaddle(leftPaddle.getXCoordinate(),leftPaddle.getYCoordinate(), leftPaddle.getSize()[0], leftPaddle.getSize()[1]);
-
-        }
-
-        // Move right paddle up when W key is pressed
-        if (key == KeyEvent.VK_W) {
-            rightPaddle.movePaddle('U');
-           // view.getGp().paintPaddle(rightPaddle.getXCoordinate(),rightPaddle.getYCoordinate(), rightPaddle.getSize()[0], rightPaddle.getSize()[1]);
-
-        }
-
-        // Move right paddle down when S key is pressed
-        if (key == KeyEvent.VK_S) {
-            rightPaddle.movePaddle('D');
-           // view.getGp().paintPaddle(rightPaddle.getXCoordinate(),rightPaddle.getYCoordinate(), rightPaddle.getSize()[0], rightPaddle.getSize()[1]);
-        }
-    }
-
-
-    public String toString() {
-        // return data as a String
-        return "";
     }
 }
 

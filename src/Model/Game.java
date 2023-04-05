@@ -15,9 +15,6 @@ public class Game {
 
     private Paddle leftPaddle, rightPaddle;
 
-
-    // Score of each player as well as the score needed to win the game with "highScore" being the overall highest score any has achieved
-
     private int p1Score, p2Score, highestScore, winScore;
     //Playing field size, [x,y]
     private int[] fieldSize;
@@ -37,9 +34,6 @@ public class Game {
         p2Score = 0;
         winScore = 0;
         highestScore = 0;
-
-
-
     }
 
     //get methods

@@ -16,7 +16,7 @@ public class GameFrame extends JFrame {
         playPanel = new GamePanel();
         add(playPanel);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setSize (1200, 800);
+        setSize(1200, 800);
         setResizable(false);
         setVisible(true);
     }
@@ -24,7 +24,7 @@ public class GameFrame extends JFrame {
     /**
      * Gets playPanel.
      *
-     * @return View.GamePanel, value of playPanel
+     * @return GamePanel, value of playPanel
      */
     public GamePanel getPlayPanel() {
         return playPanel;

@@ -17,7 +17,7 @@ public class MainFrame extends JFrame {
         initialPanel = new MenuPanel();
         add(initialPanel);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setSize (500, 500);
+        setSize(500, 500);
         setBackground(Color.DARK_GRAY);
         setResizable(false);
         setVisible(true);

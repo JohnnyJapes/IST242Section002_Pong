@@ -8,7 +8,7 @@ package Model;
  * @version 1.0 3/27/23
  */
 
-public class Ball extends Entity{
+public class Ball extends Entity {
     // Instance Variables -- define your private data
     int[] lastKnownCoordinates;
 

@@ -1,9 +1,12 @@
 package View;
 
+
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 
 /**
  * File name: GamePanel.java
@@ -15,41 +18,47 @@ import java.awt.event.ActionListener;
 
 public class GamePanel extends JPanel implements ActionListener {
 
-
-
-
-    private JButton startGame;
+    //private JButton startGame;
+    private BallComponent ball;
     private PaddleComponent lP;
+    private PaddleComponent rP;
+
+
     public GamePanel() {
         //startGame = new JButton("Start");
         //startGame.addActionListener(this);
         //add(startGame);
         setLayout(null);
-        setBackground(Color.white);
-        lP = new PaddleComponent(00,0,20,100);
-        Insets insets = getInsets();
+        setBackground(Color.darkGray);
+        ball = new BallComponent(400,400,10,10);
+        lP = new PaddleComponent(0,0,20,100);
+        rP = new PaddleComponent(0,0,20,100);
+        //add(ball); - Throwing Error
         add(lP);
-        lP.setBounds(0, 00, 1200, 800);
+        add(rP);
+        lP.setBounds(90, 0, 10000, 10000);
+        rP.setBounds(1050, 0, 10000, 10000);
         repaint();
-
-        //repaint();
     }
 
-    public void loadPaddle(int x, int y, int w, int h){
-        lP.setAll(x,y,w,h);
-        //lP.setBounds(x, y, w, h);
+    // Method for updating left paddle
+    public void loadLeftPaddle(int x, int y, int w, int h){
+        lP.setAll(x,y,20,100);
         repaint();
+    }
 
+    // Method for updating right paddle
+    public void loadRightPaddle(int x, int y, int w, int h){
+        rP.setAll(x,y,20,100);
+        repaint();
+    }
+
+    public void loadBall(int x, int y, int w, int h){
+        ball.setAll(x,y,w,h);
+        repaint();
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
     }
-
-
-    public void paintPaddle(int x, int y, int width, int height) {
-        //super.paintComponent(g);
-        //g.fillRect(x, y, width, height);
-    }
-
 }

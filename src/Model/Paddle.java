@@ -14,16 +14,14 @@ public class Paddle extends Entity{
     int scoringNetPosition;
 
     // Constructors
-    public Paddle() //no-arg constructor
-    {
+    public Paddle() {
         super(new int[]{0, 50}, 10, 10, new int[]{5, 30});
 
     }
 
 
     // pass in data to initialize variables
-    public Paddle(int data)
-    {
+    public Paddle (int data) {
     }
 
     // Set methods - one set method for each instance variable defined above
@@ -58,10 +56,11 @@ public class Paddle extends Entity{
      */
     public void movePaddle(char direction){
         if (direction == 'U')
-            setYCoordinate(getYCoordinate()+ getVelocityY());
+            setYCoordinate(getYCoordinate() - getVelocityY());
+        System.out.println("New Y (Up): " + getYCoordinate());
         if (direction == 'D')
-            setYCoordinate(getYCoordinate()- getVelocityY());
-        System.out.println("New Y: " + getYCoordinate());
+            setYCoordinate(getYCoordinate() + getVelocityY());
+        System.out.println("New Y (Down): " + getYCoordinate());
     }
     public String toString() {
         // return data as a String
