@@ -1,7 +1,8 @@
 package View;
+import javax.swing.*;
 import java.awt.*;
 
-public class BallComponent {
+public class BallComponent extends JComponent {
     private int x, y, width, height;
 
     public BallComponent(int x, int y, int width, int height) {

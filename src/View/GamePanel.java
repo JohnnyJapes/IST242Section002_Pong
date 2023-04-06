@@ -33,11 +33,11 @@ public class GamePanel extends JPanel implements ActionListener {
         ball = new BallComponent(400,400,10,10);
         lP = new PaddleComponent(0,0,20,100);
         rP = new PaddleComponent(0,0,20,100);
-        //add(ball); - Throwing Error
+        add(ball);
         add(lP);
         add(rP);
         lP.setBounds(90, 0, 10000, 10000);
-        rP.setBounds(1050, 0, 10000, 10000);
+        rP.setBounds(1090, 0, 10000, 10000);
         repaint();
     }
 
