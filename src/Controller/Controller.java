@@ -6,6 +6,9 @@ import Model.Ball;
 
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.sql.Time;
+import java.util.Collection;
+import java.util.HashSet;
 
 /**
  * File name: Controller.java
@@ -23,6 +26,9 @@ public class Controller {
     private Paddle rightPaddle;
 
     private Ball ball;
+    private HashSet<Integer> currentKeys;
+
+    private boolean game;
 
     // Constructors
     public Controller(Model m, View v) {
@@ -32,6 +38,29 @@ public class Controller {
         leftPaddle = model.getGame().getLeftPaddle();
         rightPaddle = model.getGame().getRightPaddle();
         ball = model.getGame().getBall();
+        currentKeys = new HashSet<>();
+        game = true;
+/*        BallController b = new BallController(model, view, ball);
+        Thread ballThread = new Thread(b);
+        ballThread.start();
+        while (game){
+            primaryLoop();
+        }*/
+        Thread pR = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                while(true) {
+                    handleMovement();
+                    try {
+                        Thread.sleep(16);
+                    } catch (InterruptedException e) {
+                        throw new RuntimeException(e);
+                    }
+                }
+            }
+        });
+        pR.start();
+
 
         view.getGf().addKeyListener(new KeyAdapter() {
             @Override
@@ -44,30 +73,34 @@ public class Controller {
 
                 // Move left paddle up when up W is pressed
                 if (key == KeyEvent.VK_W) {
-                    leftPaddle.movePaddle('U');
+                    currentKeys.add(key);
                     System.out.println('U');
-                    view.getGf().getPlayPanel().loadLeftPaddle(leftPaddle.getXCoordinate(),leftPaddle.getYCoordinate(), leftPaddle.getSize()[0], leftPaddle.getSize()[1]);
+//                    leftPaddle.movePaddle('U');
+//                    view.getGf().getPlayPanel().loadLeftPaddle(leftPaddle.getXCoordinate(),leftPaddle.getYCoordinate(), leftPaddle.getSize()[0], leftPaddle.getSize()[1]);
                 }
 
                 // Move left paddle down when S key is pressed
                 if (key == KeyEvent.VK_S) {
-                    leftPaddle.movePaddle('D');
+                    currentKeys.add(key);
                     System.out.println('D');
-                    view.getGf().getPlayPanel().loadLeftPaddle(leftPaddle.getXCoordinate(),leftPaddle.getYCoordinate(), leftPaddle.getSize()[0], leftPaddle.getSize()[1]);
+//                    leftPaddle.movePaddle('D');
+//                    view.getGf().getPlayPanel().loadLeftPaddle(leftPaddle.getXCoordinate(),leftPaddle.getYCoordinate(), leftPaddle.getSize()[0], leftPaddle.getSize()[1]);
                 }
 
-                // Move right paddle down when down arrow key is pressed
+                // Move right paddle up when up arrow key is pressed
                 if (key == KeyEvent.VK_UP) {
-                    rightPaddle.movePaddle('U');
-                    System.out.println('U');
-                    view.getGf().getPlayPanel().loadRightPaddle(rightPaddle.getXCoordinate(),rightPaddle.getYCoordinate(), rightPaddle.getSize()[0], rightPaddle.getSize()[1]);
+                    currentKeys.add(key);
+                    System.out.println("Up Arrow Pressed");
+//                    rightPaddle.movePaddle('U');
+//                    view.getGf().getPlayPanel().loadRightPaddle(rightPaddle.getXCoordinate(),rightPaddle.getYCoordinate(), rightPaddle.getSize()[0], rightPaddle.getSize()[1]);
                 }
 
                 // Move right paddle down when down arrow key is pressed
                 if (key == KeyEvent.VK_DOWN) {
-                    rightPaddle.movePaddle('D');
+                    currentKeys.add(key);
                     System.out.println('D');
-                    view.getGf().getPlayPanel().loadRightPaddle(rightPaddle.getXCoordinate(),rightPaddle.getYCoordinate(), rightPaddle.getSize()[0], rightPaddle.getSize()[1]);
+//                    rightPaddle.movePaddle('D');
+//                    view.getGf().getPlayPanel().loadRightPaddle(rightPaddle.getXCoordinate(),rightPaddle.getYCoordinate(), rightPaddle.getSize()[0], rightPaddle.getSize()[1]);
                 }
             }
             @Override
@@ -75,8 +108,49 @@ public class Controller {
                 super.keyTyped(e);
                 System.out.println("KEY");
             }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+                super.keyReleased(e);
+                currentKeys.remove(e.getKeyCode());
+            }
         });
     }
+
+    private void primaryLoop(){
+        handleMovement();
+        moveBall();
+        checkScores();
+
+    }
+    private void handleMovement(){
+        if (currentKeys.contains(38))
+        {
+            rightPaddle.movePaddle('U');
+            view.getGf().getPlayPanel().loadRightPaddle(rightPaddle.getXCoordinate(),rightPaddle.getYCoordinate(), rightPaddle.getSize()[0], rightPaddle.getSize()[1]);
+
+        }
+        //add if statements for other keys
+        if (currentKeys.contains(40)){
+            rightPaddle.movePaddle('D');
+            view.getGf().getPlayPanel().loadRightPaddle(rightPaddle.getXCoordinate(),rightPaddle.getYCoordinate(), rightPaddle.getSize()[0], rightPaddle.getSize()[1]);
+        }
+        if (currentKeys.contains(87)){
+            leftPaddle.movePaddle('U');
+            view.getGf().getPlayPanel().loadLeftPaddle(leftPaddle.getXCoordinate(),leftPaddle.getYCoordinate(), leftPaddle.getSize()[0], leftPaddle.getSize()[1]);
+        }
+        if (currentKeys.contains(KeyEvent.VK_S)){
+            leftPaddle.movePaddle('D');
+            view.getGf().getPlayPanel().loadLeftPaddle(leftPaddle.getXCoordinate(),leftPaddle.getYCoordinate(), leftPaddle.getSize()[0], leftPaddle.getSize()[1]);
+        }
+    }
+    private void moveBall(){
+
+    }
+    private void checkScores(){
+
+    }
+
 }
 
 
