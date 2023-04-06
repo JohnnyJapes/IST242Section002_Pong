@@ -15,7 +15,7 @@ public class Paddle extends Entity{
 
     // Constructors
     public Paddle() {
-        super(new int[]{0, 50}, 10, 10, new int[]{5, 30});
+        super(new int[]{0, 350}, 1, 5, new int[]{5, 100});
 
     }
 
@@ -55,11 +55,19 @@ public class Paddle extends Entity{
      * @param direction
      */
     public void movePaddle(char direction){
-        if (direction == 'U')
+        if (direction == 'U'){
             setYCoordinate(getYCoordinate() - getVelocityY());
-        System.out.println("New Y (Up): " + getYCoordinate());
-        if (direction == 'D')
+            if (getYCoordinate() <= 0) setYCoordinate(0);
+            System.out.println("New Y (Up): " + getYCoordinate());
+        }
+
+        if (direction == 'D'){
             setYCoordinate(getYCoordinate() + getVelocityY());
+            //2nd index of size is y coordinate
+            if (getYCoordinate() >= (770 - getSize()[1])) setYCoordinate(770 - getSize()[1]);
+
+        }
+
         System.out.println("New Y (Down): " + getYCoordinate());
     }
     public String toString() {
