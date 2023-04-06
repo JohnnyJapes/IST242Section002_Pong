@@ -1,6 +1,7 @@
 package View;
 import javax.swing.*;
 import java.awt.*;
+import java.util.Random;
 
 public class BallComponent extends JComponent {
     private int x, y, width, height;
@@ -19,7 +20,7 @@ public class BallComponent extends JComponent {
         this.height = height;
     }
 
-    public void paintComponent(Graphics g){
+    public void paintComponent(Graphics g) {
         g.setColor(Color.white);
         System.out.println(width);
         g.fillRect(x, y, width, height);
