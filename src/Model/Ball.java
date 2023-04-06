@@ -10,7 +10,7 @@ package Model;
 
 public class Ball extends Entity {
     // Instance Variables -- define your private data
-    int[] lastKnownCoordinates;
+    private int[] lastKnownCoordinates;
 
     // Constructors
     public Ball() //no-arg constructor

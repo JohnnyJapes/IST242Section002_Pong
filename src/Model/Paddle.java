@@ -11,7 +11,7 @@ package Model;
 public class Paddle extends Entity{
     // Instance Variables -- define your private data
 
-    int scoringNetPosition;
+    private int scoringNetPosition;
 
     // Constructors
     public Paddle() {
