@@ -46,7 +46,7 @@ public class Controller {
         while (game){
             primaryLoop();
         }*/
-        Thread pR = new Thread(new Runnable() {
+        Thread pThread = new Thread(new Runnable() { //thread handles movement so main thread doesn't get locked up, enables both paddles to move at the same time
             @Override
             public void run() {
                 while(true) {
@@ -59,7 +59,7 @@ public class Controller {
                 }
             }
         });
-        pR.start();
+        pThread.start();
 
 
         view.getGf().addKeyListener(new KeyAdapter() {
