@@ -67,8 +67,22 @@ public class Controller {
                 }
             }
         });
+        Thread bThread = new Thread(new Runnable() { //thread handles ball so main thread doesn't get locked up
+            @Override
+            public void run() {
+                while (true) {
+                    moveBall();
+                    try {
+                        Thread.sleep(16);
+                    } catch (InterruptedException e) {
+                        throw new RuntimeException(e);
+                    }
+                }
+            }
+        });
 
         pThread.start();
+        bThread.start();
 
         view.getGf().addKeyListener(new KeyAdapter() {
             @Override
@@ -77,7 +91,7 @@ public class Controller {
 
                 // Check which key was pressed
                 int key = e.getKeyCode();
-                    System.out.println(key);
+                   // System.out.println(key);
 
                 // Move left paddle up when up W is pressed
                 if (key == KeyEvent.VK_W) {
@@ -153,11 +167,18 @@ public class Controller {
     }
 
     public void serveBall() {
+        ball.setCoordinates(new int[]{600, 400});
         int randomDirection = Math.random() < 0.5 ? -1 : 1; // Randomly choose left or right direction
         ball.setVelocityX(randomDirection * ball.getVelocityX());
-        ball.setVelocityY(0);
+        ball.setVelocityY(Math.random() < 0.5 ? -1 : 1);
     }
     private void moveBall() {
+        int res = ball.moveBall(leftPaddle, rightPaddle);
+        view.getGf().getPlayPanel().loadBall(ball.getXCoordinate(), ball.getYCoordinate(), ball.getSize()[0], ball.getSize()[1]);
+        if (res > 0 ){
+
+            serveBall();
+        }
 
     }
     private void checkScores() {
