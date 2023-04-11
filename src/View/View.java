@@ -20,6 +20,8 @@ public class View {
 
     // Constructors
     public View() {
+        //linux force opengl
+        System.setProperty("sun.java2d.opengl", "true");
         // initialize default values
         //mf = new MainFrame();
         gf = new GameFrame();

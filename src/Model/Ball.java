@@ -68,7 +68,7 @@ public class Ball extends Entity {
         }
 
         //if (newX > left.getScoringNetPosition() && newX < right.getScoringNetPosition())
-        if (newX > 100 && newX < 1100)
+        if (newX > 60 && newX < 1150)
         {
             score = false;
         }
