@@ -16,7 +16,7 @@ public class MenuPanel extends JPanel implements ActionListener {
         JLabel title;
         public MenuPanel() {
             startButton = new JButton("Play Pong");
-            startButton.addActionListener(e -> new GameFrame());
+            //startButton.addActionListener(e -> new GameFrame());
             startButton.setLocation(100, 100);
             startButton.setBounds(100, 100, 100, 100);
             add(startButton);
@@ -30,5 +30,15 @@ public class MenuPanel extends JPanel implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         }
+
+    /**
+     * Gets startButton.
+     *
+     * @return javax.swing.JButton, value of startButton
+     */
+    public JButton getStartButton() {
+        return startButton;
     }
+}
+
 

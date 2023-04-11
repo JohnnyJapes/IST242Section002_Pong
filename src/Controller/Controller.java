@@ -5,6 +5,8 @@ import Model.Paddle;
 import Model.Ball;
 import View.BallComponent;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.sql.Time;
@@ -23,6 +25,7 @@ public class Controller {
     // Instance Variables -- define your private data
     private Model model;
     private View view;
+    private boolean start;
     private Paddle leftPaddle;
     private Paddle rightPaddle;
 
@@ -44,46 +47,9 @@ public class Controller {
         currentKeys = new HashSet<>();
         game = true;
         ballComponent = ballComponent;
-        serveBall();
 
-        /*
-        BallController b = new BallController(model, view, ball);
-        Thread ballThread = new Thread(b);
-        ballThread.start();
-        while (game){
-        primaryLoop();
-        }*/
-
-        Thread pThread = new Thread(new Runnable() { //thread handles movement so main thread doesn't get locked up, enables both paddles to move at the same time
-            @Override
-            public void run() {
-                while (true) {
-                    handleMovement();
-                    try {
-                        Thread.sleep(16);
-                    } catch (InterruptedException e) {
-                        throw new RuntimeException(e);
-                    }
-                }
-            }
-        });
-        Thread bThread = new Thread(new Runnable() { //thread handles ball so main thread doesn't get locked up
-            @Override
-            public void run() {
-                while (true) {
-                    moveBall();
-                    try {
-                        Thread.sleep(16);
-                    } catch (InterruptedException e) {
-                        throw new RuntimeException(e);
-                    }
-                }
-            }
-        });
-
-        pThread.start();
-        bThread.start();
-
+        addMenuListeners();
+        while(!start) System.out.println("wait");
         view.getGf().addKeyListener(new KeyAdapter() {
             @Override
             public void keyPressed(KeyEvent e) {
@@ -91,7 +57,7 @@ public class Controller {
 
                 // Check which key was pressed
                 int key = e.getKeyCode();
-                   // System.out.println(key);
+                // System.out.println(key);
 
                 // Move left paddle up when up W is pressed
                 if (key == KeyEvent.VK_W) {
@@ -137,6 +103,48 @@ public class Controller {
                 currentKeys.remove(e.getKeyCode());
             }
         });
+        serveBall();
+
+        /*
+        BallController b = new BallController(model, view, ball);
+        Thread ballThread = new Thread(b);
+        ballThread.start();
+        while (game){
+        primaryLoop();
+        }*/
+
+        Thread pThread = new Thread(new Runnable() { //thread handles movement so main thread doesn't get locked up, enables both paddles to move at the same time
+            @Override
+            public void run() {
+                System.out.println("start pThread");
+                while (true) {
+                    handleMovement();
+                    try {
+                        Thread.sleep(16);
+                    } catch (InterruptedException e) {
+                        throw new RuntimeException(e);
+                    }
+                }
+            }
+        });
+        Thread bThread = new Thread(new Runnable() { //thread handles ball so main thread doesn't get locked up
+            @Override
+            public void run() {
+                while (true) {
+                    moveBall();
+                    try {
+                        Thread.sleep(16);
+                    } catch (InterruptedException e) {
+                        throw new RuntimeException(e);
+                    }
+                }
+            }
+        });
+
+        pThread.start();
+        bThread.start();
+
+
     }
 
     private void primaryLoop(){
@@ -182,6 +190,18 @@ public class Controller {
 
     }
     private void checkScores() {
+
+    }
+
+    private void addMenuListeners()
+    {
+        view.getGf().getmP().getStartButton().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                view.getGf().activatePlayPanel();
+                start = true;
+            }
+        });
 
     }
 }

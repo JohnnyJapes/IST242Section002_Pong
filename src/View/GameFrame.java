@@ -11,10 +11,12 @@ import javax.swing.*;
 
 public class GameFrame extends JFrame {
     GamePanel playPanel;
+    MenuPanel mP;
     public GameFrame () {
         super ("Pong");
         playPanel = new GamePanel();
-        add(playPanel);
+        mP = new MenuPanel();
+        add(mP);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setSize(1200, 800);
         setResizable(false);
@@ -28,5 +30,22 @@ public class GameFrame extends JFrame {
      */
     public GamePanel getPlayPanel() {
         return playPanel;
+    }
+
+    /**
+     * Gets mP.
+     *
+     * @return View.MenuPanel, value of mP
+     */
+    public MenuPanel getmP() {
+        return mP;
+    }
+
+    public void activatePlayPanel(){
+        getContentPane().removeAll();
+        invalidate();
+        add(playPanel);
+        revalidate();
+        repaint();
     }
 }
