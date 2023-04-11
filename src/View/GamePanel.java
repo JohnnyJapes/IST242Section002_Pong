@@ -2,10 +2,13 @@ package View;
 
 
 
+import Model.Entity;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Random;
 
 
 /**
@@ -30,7 +33,7 @@ public class GamePanel extends JPanel implements ActionListener {
         //add(startGame);
         setLayout(null);
         setBackground(Color.darkGray);
-        ball = new BallComponent(400,400,10,10);
+        ball = new BallComponent(600,400,20,20);
         lP = new PaddleComponent(0,0,20,100);
         rP = new PaddleComponent(0,0,20,100);
         add(ball);
@@ -38,6 +41,7 @@ public class GamePanel extends JPanel implements ActionListener {
         add(rP);
         lP.setBounds(90, 0, 10000, 10000);
         rP.setBounds(1090, 0, 10000, 10000);
+        ball.setBounds(0,0,10000,10000);
         repaint();
     }
 
@@ -57,6 +61,8 @@ public class GamePanel extends JPanel implements ActionListener {
         ball.setAll(x,y,w,h);
         repaint();
     }
+
+
 
     @Override
     public void actionPerformed(ActionEvent e) {

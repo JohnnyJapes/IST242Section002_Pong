@@ -19,9 +19,9 @@ public class BallComponent extends JComponent {
         this.height = height;
     }
 
-    public void paintComponent(Graphics g){
+    public void paintComponent(Graphics g) {
         g.setColor(Color.white);
-        System.out.println(width);
+        //System.out.println(width);
         g.fillRect(x, y, width, height);
     }
 }

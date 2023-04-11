@@ -3,6 +3,7 @@ import View.View;
 import Model.Model;
 import Model.Paddle;
 import Model.Ball;
+import View.BallComponent;
 
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
@@ -28,6 +29,8 @@ public class Controller {
     private Ball ball;
     private HashSet<Integer> currentKeys;
 
+    private BallComponent ballComponent;
+
     private boolean game;
 
     // Constructors
@@ -40,16 +43,21 @@ public class Controller {
         ball = model.getGame().getBall();
         currentKeys = new HashSet<>();
         game = true;
-/*        BallController b = new BallController(model, view, ball);
+        ballComponent = ballComponent;
+        serveBall();
+
+        /*
+        BallController b = new BallController(model, view, ball);
         Thread ballThread = new Thread(b);
         ballThread.start();
         while (game){
-            primaryLoop();
+        primaryLoop();
         }*/
+
         Thread pThread = new Thread(new Runnable() { //thread handles movement so main thread doesn't get locked up, enables both paddles to move at the same time
             @Override
             public void run() {
-                while(true) {
+                while (true) {
                     handleMovement();
                     try {
                         Thread.sleep(16);
@@ -59,8 +67,22 @@ public class Controller {
                 }
             }
         });
-        pThread.start();
+        Thread bThread = new Thread(new Runnable() { //thread handles ball so main thread doesn't get locked up
+            @Override
+            public void run() {
+                while (true) {
+                    moveBall();
+                    try {
+                        Thread.sleep(16);
+                    } catch (InterruptedException e) {
+                        throw new RuntimeException(e);
+                    }
+                }
+            }
+        });
 
+        pThread.start();
+        bThread.start();
 
         view.getGf().addKeyListener(new KeyAdapter() {
             @Override
@@ -69,7 +91,7 @@ public class Controller {
 
                 // Check which key was pressed
                 int key = e.getKeyCode();
-                    System.out.println(key);
+                   // System.out.println(key);
 
                 // Move left paddle up when up W is pressed
                 if (key == KeyEvent.VK_W) {
@@ -121,7 +143,6 @@ public class Controller {
         handleMovement();
         moveBall();
         checkScores();
-
     }
     private void handleMovement(){
         if (currentKeys.contains(38))
@@ -144,13 +165,25 @@ public class Controller {
             view.getGf().getPlayPanel().loadLeftPaddle(leftPaddle.getXCoordinate(),leftPaddle.getYCoordinate(), leftPaddle.getSize()[0], leftPaddle.getSize()[1]);
         }
     }
-    private void moveBall(){
+
+    public void serveBall() {
+        ball.setCoordinates(new int[]{600, 400});
+        int randomDirection = Math.random() < 0.5 ? -1 : 1; // Randomly choose left or right direction
+        ball.setVelocityX(randomDirection * ball.getVelocityX());
+        ball.setVelocityY(Math.random() < 0.5 ? -1 : 1);
+    }
+    private void moveBall() {
+        int res = ball.moveBall(leftPaddle, rightPaddle);
+        view.getGf().getPlayPanel().loadBall(ball.getXCoordinate(), ball.getYCoordinate(), ball.getSize()[0], ball.getSize()[1]);
+        if (res > 0 ){
+
+            serveBall();
+        }
 
     }
-    private void checkScores(){
+    private void checkScores() {
 
     }
-
 }
 
 
