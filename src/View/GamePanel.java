@@ -62,6 +62,16 @@ public class GamePanel extends JPanel implements ActionListener {
         repaint();
     }
 
+    public void update() {
+        ball.move();
+        if (lP.collidesWith(ball)) {
+            ball.reverseX();
+        }
+        if (rP.collidesWith(ball)) {
+            ball.reverseX();
+        }
+        repaint();
+    }
 
 
     @Override

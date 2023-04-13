@@ -99,28 +99,13 @@ public class Ball extends Entity {
 
         if (score) return 1;
 
-        if (!vertWalls && !score)
-        {
+        if (!vertWalls && !score) {
             setYCoordinate(newY);
             setXCoordinate(newX);
             //System.out.println("move");
         }
-
-
-
-
-
         return 0;
-
     }
-
-
-
-    public String toString() {
-        // return data as a String
-        return "";
-    }
-
 }
 
 

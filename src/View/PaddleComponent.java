@@ -34,6 +34,13 @@ public class PaddleComponent extends JComponent {
         this.height = height;
     }
 
+    public boolean collidesWith(BallComponent ball) {
+        Rectangle paddleBounds = getBounds();
+        Rectangle ballBounds = ball.getBounds();
+
+        return paddleBounds.intersects(ballBounds);
+    }
+
     public void paintComponent(Graphics g) {
         g.setColor(Color.white);
         g.fillRect(x, y, width, height);

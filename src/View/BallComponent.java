@@ -24,4 +24,12 @@ public class BallComponent extends JComponent {
         //System.out.println(width);
         g.fillRect(x, y, width, height);
     }
+
+    public void move() {
+
+    }
+
+    public void reverseX() {
+        x = -x;
+    }
 }
