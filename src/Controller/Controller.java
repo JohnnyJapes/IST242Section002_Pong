@@ -5,6 +5,7 @@ import Model.Paddle;
 import Model.Ball;
 import View.BallComponent;
 
+import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
@@ -50,59 +51,10 @@ public class Controller {
 
         addMenuListeners();
         while(!start) System.out.println("wait");
-        view.getGf().addKeyListener(new KeyAdapter() {
-            @Override
-            public void keyPressed(KeyEvent e) {
-                super.keyPressed(e);
+        addKeyBindings();
 
-                // Check which key was pressed
-                int key = e.getKeyCode();
-                // System.out.println(key);
 
-                // Move left paddle up when up W is pressed
-                if (key == KeyEvent.VK_W) {
-                    currentKeys.add(key);
-                    System.out.println('U');
-//                    leftPaddle.movePaddle('U');
-//                    view.getGf().getPlayPanel().loadLeftPaddle(leftPaddle.getXCoordinate(),leftPaddle.getYCoordinate(), leftPaddle.getSize()[0], leftPaddle.getSize()[1]);
-                }
 
-                // Move left paddle down when S key is pressed
-                if (key == KeyEvent.VK_S) {
-                    currentKeys.add(key);
-                    System.out.println('D');
-//                    leftPaddle.movePaddle('D');
-//                    view.getGf().getPlayPanel().loadLeftPaddle(leftPaddle.getXCoordinate(),leftPaddle.getYCoordinate(), leftPaddle.getSize()[0], leftPaddle.getSize()[1]);
-                }
-
-                // Move right paddle up when up arrow key is pressed
-                if (key == KeyEvent.VK_UP) {
-                    currentKeys.add(key);
-                    System.out.println("Up Arrow Pressed");
-//                    rightPaddle.movePaddle('U');
-//                    view.getGf().getPlayPanel().loadRightPaddle(rightPaddle.getXCoordinate(),rightPaddle.getYCoordinate(), rightPaddle.getSize()[0], rightPaddle.getSize()[1]);
-                }
-
-                // Move right paddle down when down arrow key is pressed
-                if (key == KeyEvent.VK_DOWN) {
-                    currentKeys.add(key);
-                    System.out.println('D');
-//                    rightPaddle.movePaddle('D');
-//                    view.getGf().getPlayPanel().loadRightPaddle(rightPaddle.getXCoordinate(),rightPaddle.getYCoordinate(), rightPaddle.getSize()[0], rightPaddle.getSize()[1]);
-                }
-            }
-            @Override
-            public void keyTyped(KeyEvent e) {
-                super.keyTyped(e);
-                System.out.println("KEY");
-            }
-
-            @Override
-            public void keyReleased(KeyEvent e) {
-                super.keyReleased(e);
-                currentKeys.remove(e.getKeyCode());
-            }
-        });
         serveBall();
 
         /*
@@ -203,6 +155,37 @@ public class Controller {
             }
         });
 
+    }
+
+    private void addKeyBindings(){
+        addMotionBind("UP", KeyEvent.VK_UP);
+        addMotionBind("DOWN", KeyEvent.VK_DOWN);
+        addMotionBind("W", KeyEvent.VK_W);
+        addMotionBind("S", KeyEvent.VK_S);
+    }
+
+    /**
+     * Method that adds Keybinds to input/action map
+     * @param keyName String - name of the desired key
+     * @param keycode int - the keycode of the desired key
+     */
+    private void addMotionBind(String keyName, int keycode){
+        String pressed = "pressed " + keyName;
+        String released = "released " + keyName;
+        view.getGf().getPlayPanel().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(pressed), pressed);
+        view.getGf().getPlayPanel().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(released), released);
+        view.getGf().getPlayPanel().getActionMap().put(pressed, new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                currentKeys.add(keycode);
+            }
+        });
+        view.getGf().getPlayPanel().getActionMap().put(released, new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                currentKeys.remove(keycode);
+            }
+        });
     }
 }
 
