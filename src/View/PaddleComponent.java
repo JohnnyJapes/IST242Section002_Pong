@@ -43,7 +43,7 @@ public class PaddleComponent extends JComponent {
 
     public void paintComponent(Graphics g) {
         g.setColor(Color.white);
-        g.fillRect(x, y, width, height);
+        g.fillRect(0, 0, width, height);
     }
 }
 

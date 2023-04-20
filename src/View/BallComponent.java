@@ -12,8 +12,9 @@ public class BallComponent extends JComponent {
         this.y = y;
         this.width = width;
         this.height = height;
-        this.velocityX = 1;
-        this.velocityY = 1;
+        this.velocityX = 5;
+        this.velocityY = 5;
+        //setBounds(x,y, width, height);
     }
 
     public void setAll(int x, int y, int width, int height) {
@@ -21,6 +22,7 @@ public class BallComponent extends JComponent {
         this.y = y;
         this.width = width;
         this.height = height;
+        //setBounds(x,y, width, height);
     }
 
     public void setVelocity(int velocityX, int velocityY) {
@@ -28,10 +30,7 @@ public class BallComponent extends JComponent {
         this.velocityY = velocityY;
     }
 
-    public void paintComponent(Graphics g) {
-        g.setColor(Color.white);
-        g.fillRect(x, y, width, height);
-    }
+
 
     public void move() {
         // Update x and y coordinates based on current velocity
@@ -61,6 +60,7 @@ public class BallComponent extends JComponent {
                 y = getParent().getHeight() - height;
             }
         }
+        setBounds(x, y, 20, 20);
     }
 
     public void bounceOffPaddle(PaddleComponent paddle) {
@@ -101,5 +101,11 @@ public class BallComponent extends JComponent {
 
     public int getHeight() {
         return height;
+    }
+
+    public void paintComponent(Graphics g) {
+        g.setColor(Color.white);
+        //System.out.println(x);
+        g.fillRect(0, 0, width, height);
     }
 }

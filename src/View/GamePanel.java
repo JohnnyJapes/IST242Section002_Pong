@@ -16,7 +16,7 @@ import java.awt.event.ActionListener;
  * @version 1.0 3/27/23
  */
 
-public class GamePanel extends JPanel implements ActionListener {
+public class GamePanel extends JPanel {
 
     //private JButton startGame;
     private BallComponent ball;
@@ -38,7 +38,8 @@ public class GamePanel extends JPanel implements ActionListener {
         add(rightPaddle);
         leftPaddle.setBounds(90, 0, 20, 100);
         rightPaddle.setBounds(1090, 0, 20, 100);
-        ball.setBounds(600,400,1000,800);
+        ball.setBounds(600,400,20,20);
+        validate();
         repaint();
     }
 
@@ -48,29 +49,7 @@ public class GamePanel extends JPanel implements ActionListener {
         this.rightPaddle = rightPaddle;
     }
 
-    public void paintComponent(Graphics g) {
-        super.paintComponent(g);
 
-        ball.move();
-
-        // Check for collisions with left paddle
-        if (leftPaddle.collidesWith(ball)) {
-            ball.bounceOffPaddle(leftPaddle);
-            System.out.println("Left Paddle Collision");
-        }
-
-        // Check for collisions with right paddle
-        if (rightPaddle.collidesWith(ball)) {
-            ball.bounceOffPaddle(rightPaddle);
-            System.out.println("Right Paddle Collision");
-        }
-
-        validate();
-        repaint();
-        ball.paintComponent(g);
-        //leftPaddle.paintComponent(g);
-        //rightPaddle.paintComponent(g);
-    }
 
 
     // Method for updating left paddle
@@ -88,14 +67,26 @@ public class GamePanel extends JPanel implements ActionListener {
     }
 
     public void loadBall(int xCoordinate, int yCoordinate, int width, int height) {
-        ball.setBounds(600,400,20,20);
+        //ball.setBounds(xCoordinate,yCoordinate,20,20);
+
+        ball.move();
+
+        // Check for collisions with left paddle
+        if (leftPaddle.collidesWith(ball)) {
+            ball.bounceOffPaddle(leftPaddle);
+            System.out.println("Left Paddle Collision");
+        }
+
+        // Check for collisions with right paddle
+        if (rightPaddle.collidesWith(ball)) {
+            ball.bounceOffPaddle(rightPaddle);
+            System.out.println("Right Paddle Collision");
+        }
         repaint();
     }
 
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
-    }
+
 
     public BallComponent getBallComponent() {
         return this.ball;
