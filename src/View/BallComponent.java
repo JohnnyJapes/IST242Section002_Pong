@@ -37,19 +37,6 @@ public class BallComponent extends JComponent {
         x += velocityX;
         y += velocityY;
 
-
-        // TEMPORARY CODE TO TEST PADDLES MAKING BALL BOUNCE EVERYWHERE
-        // Check for collision with left or right side of screen
-        if (x < 0 || x + width > getParent().getWidth()) {
-            // Reverse x direction and move ball back inside the screen
-            velocityX *= -1;
-            if (x < 0) {
-                x = 0;
-            } else {
-                x = getParent().getWidth() - width;
-            }
-        }
-
         // Check for collision with top or bottom of screen
         if (y < 0 || y + height > getParent().getHeight()) {
             // Reverse y direction and move ball back inside the screen
