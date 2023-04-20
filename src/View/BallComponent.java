@@ -65,8 +65,8 @@ public class BallComponent extends JComponent {
 
     public void bounceOffPaddle(PaddleComponent paddle) {
         // Get the center of the paddle and the ball
-        int paddleCenterX = paddle.getX() + (paddle.getWidth() / 2);
-        int paddleCenterY = paddle.getY() + (paddle.getHeight() / 2);
+        int paddleCenterX = paddle.getBounds().x + (paddle.getWidth() / 2);
+        int paddleCenterY = paddle.getBounds().y + (paddle.getHeight() / 2);
         int ballCenterX = x + (width / 2);
         int ballCenterY = y + (height / 2);
 
@@ -88,10 +88,13 @@ public class BallComponent extends JComponent {
         int angleY = dy * 45 / (paddle.getHeight() / 2);
 
         // Calculate the new velocity of the ball
-        int newVelocityX = (int) (velocityX * Math.cos(Math.toRadians(angleX)) * directionX);
+        int newVelocityX = velocityX * directionX;
+        //int newVelocityY = velocityY;
+        //int newVelocityX = (int) (velocityX * Math.cos(Math.toRadians(angleX)) * directionX);
         int newVelocityY = (int) (velocityY * Math.sin(Math.toRadians(angleY)) * directionY);
 
         // Update the ball's velocity
+        System.out.println(velocityY * Math.sin(Math.toRadians(angleY)) * directionY);
         setVelocity(newVelocityX, -newVelocityY);
     }
 
