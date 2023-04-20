@@ -57,7 +57,7 @@ public class Paddle extends Entity{
         if (direction == 'U'){
             setYCoordinate(getYCoordinate() - getVelocityY());
             if (getYCoordinate() <= 0) setYCoordinate(0);
-            System.out.println("New Y (Up): " + getYCoordinate());
+           // System.out.println("New Y (Up): " + getYCoordinate());
         }
 
         if (direction == 'D'){
@@ -65,7 +65,7 @@ public class Paddle extends Entity{
             //2nd index of size is y coordinate
             if (getYCoordinate() >= (770 - getSize()[1])) setYCoordinate(770 - getSize()[1]);
         }
-        System.out.println("New Y (Down): " + getYCoordinate());
+        //System.out.println("New Y (Down): " + getYCoordinate());
     }
 }
 
