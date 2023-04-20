@@ -33,7 +33,6 @@ public class MenuPanel extends JPanel implements ActionListener {
 
     /**
      * Gets startButton.
-     *
      * @return javax.swing.JButton, value of startButton
      */
     public JButton getStartButton() {

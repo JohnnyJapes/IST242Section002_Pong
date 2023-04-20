@@ -47,14 +47,10 @@ public class Controller {
         ball = model.getGame().getBall();
         currentKeys = new HashSet<>();
         game = true;
-        ballComponent = ballComponent;
-
+        ballComponent = view.getGf().getPlayPanel().getBallComponent();
         addMenuListeners();
         while(!start) System.out.println("wait");
         addKeyBindings();
-
-
-
         serveBall();
 
         /*
@@ -82,6 +78,7 @@ public class Controller {
         Thread bThread = new Thread(new Runnable() { //thread handles ball so main thread doesn't get locked up
             @Override
             public void run() {
+                System.out.println("Start moveBall thread");
                 while (true) {
                     moveBall();
                     try {
@@ -92,11 +89,8 @@ public class Controller {
                 }
             }
         });
-
         pThread.start();
         bThread.start();
-
-
     }
 
     private void primaryLoop(){
@@ -105,11 +99,9 @@ public class Controller {
         checkScores();
     }
     private void handleMovement(){
-        if (currentKeys.contains(38))
-        {
+        if (currentKeys.contains(38)) {
             rightPaddle.movePaddle('U');
             view.getGf().getPlayPanel().loadRightPaddle(rightPaddle.getXCoordinate(),rightPaddle.getYCoordinate(), rightPaddle.getSize()[0], rightPaddle.getSize()[1]);
-
         }
         //add if statements for other keys
         if (currentKeys.contains(40)){
@@ -132,21 +124,20 @@ public class Controller {
         ball.setVelocityX(randomDirection * ball.getVelocityX());
         ball.setVelocityY(Math.random() < 0.5 ? -1 : 1);
     }
+
     private void moveBall() {
-        int res = ball.moveBall(leftPaddle, rightPaddle);
-        view.getGf().getPlayPanel().loadBall(ball.getXCoordinate(), ball.getYCoordinate(), ball.getSize()[0], ball.getSize()[1]);
-        if (res > 0 ){
-
+        int moveResult = ball.moveBall(leftPaddle, rightPaddle);
+        view.getGf().getPlayPanel().loadBall(ball.getXCoordinate(), ball.getYCoordinate(), ballComponent.getWidth(), ballComponent.getHeight());
+        if (moveResult > 0 ){
             serveBall();
+            System.out.println("Ball Served");
         }
-
     }
     private void checkScores() {
 
     }
 
-    private void addMenuListeners()
-    {
+    private void addMenuListeners() {
         view.getGf().getmP().getStartButton().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

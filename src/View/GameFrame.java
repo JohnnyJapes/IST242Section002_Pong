@@ -35,7 +35,7 @@ public class GameFrame extends JFrame {
     /**
      * Gets mP.
      *
-     * @return View.MenuPanel, value of mP
+     * @return MenuPanel, value of mP
      */
     public MenuPanel getmP() {
         return mP;

@@ -1,5 +1,9 @@
 package Model;
 
+import View.PaddleComponent;
+
+import java.awt.*;
+
 /**
  * File name: Ball.java
  * Short description: Class to create ball object
@@ -42,6 +46,8 @@ public class Ball extends Entity {
     public void bounce(Paddle pad, int x, int y, char hit){
 
     }
+
+
 
     /**
      * Method to handle ball movement, takes paddles as parameters to keep track of their location
