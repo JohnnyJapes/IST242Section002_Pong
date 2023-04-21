@@ -30,8 +30,6 @@ public class BallComponent extends JComponent {
         this.velocityY = velocityY;
     }
 
-
-
     public void move() {
         // Update x and y coordinates based on current velocity
         x += velocityX;
@@ -57,33 +55,19 @@ public class BallComponent extends JComponent {
         int ballCenterX = x + (width / 2);
         int ballCenterY = y + (height / 2);
 
-        // Calculate the distance between the centers of the paddle and the ball
-        int dx = Math.abs(ballCenterX - paddleCenterX);
-        int dy = Math.abs(ballCenterY - paddleCenterY);
-
-        // If the ball is too far away from the paddle, do nothing
-        if (dx > (paddle.getWidth() / 2 + width / 2) || dy > (paddle.getHeight() / 2 + height / 2)) {
-            return;
-        }
-
         // Calculate the direction to bounce the ball
         int directionX = (ballCenterX < paddleCenterX) ? -1 : 1;
         int directionY = (ballCenterY < paddleCenterY) ? -1 : 1;
 
-        // Calculate the angle to bounce the ball (based on the distance from the center of the paddle)
-        int angleX = dx * 45 / (paddle.getWidth() / 2);
-        int angleY = dy * 45 / (paddle.getHeight() / 2);
-
         // Calculate the new velocity of the ball
         int newVelocityX = velocityX * directionX;
-        //int newVelocityY = velocityY;
-        //int newVelocityX = (int) (velocityX * Math.cos(Math.toRadians(angleX)) * directionX);
-        int newVelocityY = (int) (velocityY * Math.sin(Math.toRadians(angleY)) * directionY);
+        int newVelocityY = velocityY * directionY;
 
         // Update the ball's velocity
-        System.out.println(velocityY * Math.sin(Math.toRadians(angleY)) * directionY);
         setVelocity(newVelocityX, -newVelocityY);
     }
+
+
 
     public int getWidth() {
         return width;
@@ -95,7 +79,6 @@ public class BallComponent extends JComponent {
 
     public void paintComponent(Graphics g) {
         g.setColor(Color.white);
-        //System.out.println(x);
         g.fillRect(0, 0, width, height);
     }
 }
