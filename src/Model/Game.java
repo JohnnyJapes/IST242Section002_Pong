@@ -10,30 +10,57 @@ package Model;
 
 public class Game {
     // Instance Variables -- define your private data
-    // Ball
     private Ball ball;
-
     private Paddle leftPaddle, rightPaddle;
-
     private int p1Score, p2Score, highestScore, winScore;
-    //Playing field size, [x,y]
-    private int[] fieldSize;
 
-    // Instance Variables -- define your private data
-
-
-    // Constructors
     //no-arg constructor
     public Game() {
         // initialize default values
         ball = new Ball();
         leftPaddle = new Paddle();
         rightPaddle = new Paddle();
-        fieldSize = new int[]{1200, 800};
         p1Score = 0;
         p2Score = 0;
         winScore = 0;
         highestScore = 0;
+    }
+
+    // Checks if the ball goes off the screen and updates the score accordingly.
+    public void checkBallOffScreen() {
+        System.out.println("Checking ball");
+        if (ball.getXCoordinate() < 0) {
+            // Ball went off the left side, player two scores
+            p2Score++;
+            System.out.println("Player Two Score: " + p2Score);
+            //resetPositions();
+        } else if (ball.getXCoordinate() > 1200) {
+            // Ball went off the right side, player one scores
+            p1Score++;
+            System.out.println("Player One Score: " + p1Score);
+            //resetPositions();
+        }
+    }
+
+    public void resetPositions() {
+        // Reset the ball to the center of the screen
+        ball.setXCoordinate(600 - ball.getSize()[0]/2);
+        ball.setYCoordinate(400 - ball.getSize()[1]/2);
+        ball.setVelocityX(0);
+        ball.setVelocityY(0);
+
+        // Reset leftPaddle to its starting position
+        leftPaddle.setXCoordinate(50);
+        leftPaddle.setYCoordinate(350);
+
+        // Reset rightPaddle to its starting position
+        rightPaddle.setXCoordinate(1200 - rightPaddle.getSize()[0] - 50);
+        rightPaddle.setYCoordinate(350);
+    }
+
+    //clear the point totals of both players
+    public void resetPoints() {
+
     }
 
     //get methods
@@ -101,17 +128,7 @@ public class Game {
         return winScore;
     }
 
-    /**
-     * Gets fieldSize.
-     *
-     * @return int[], value of size
-     */
-    public int[] getFieldSize() {
-        return fieldSize;
-    }
-
     //Set Methods
-
     /**
      * Method to set ball.
      *
@@ -174,32 +191,4 @@ public class Game {
     public void setWinScore(int winScore) {
         this.winScore = winScore;
     }
-
-    /**
-     * Method to set fieldSize.
-     *
-     * @param size int[] - size
-     */
-    public void setFieldSize(int[] size) {
-        this.fieldSize = size;
-    }
-
-
-    //Methods for Game logic
-
-    public void updatePaddlePosition(int player, char direction) { //handles paddle movement when called by Controller
-        Paddle pad;
-        switch(player){
-            case 1: pad = leftPaddle;
-            case 2: pad = rightPaddle;
-            default: pad = leftPaddle;
-        }
-        pad.movePaddle(direction);
-    };
-
-    public void updateBallPosition(){} //handles tracking of balls next movement
-
-    public void addPoint(int player) {} //add point to selected player
-
-    public void resetPoints() {} //clear the point totals of both players
 }

@@ -6,7 +6,6 @@ public class BallComponent extends JComponent {
     private int x, y, width, height;
     private int velocityX, velocityY;
 
-
     public BallComponent(int x, int y, int width, int height) {
         this.x = x;
         this.y = y;
@@ -14,7 +13,6 @@ public class BallComponent extends JComponent {
         this.height = height;
         this.velocityX = 5;
         this.velocityY = 5;
-        //setBounds(x,y, width, height);
     }
 
     public void setAll(int x, int y, int width, int height) {
@@ -22,7 +20,6 @@ public class BallComponent extends JComponent {
         this.y = y;
         this.width = width;
         this.height = height;
-        //setBounds(x,y, width, height);
     }
 
     public void setVelocity(int velocityX, int velocityY) {
@@ -66,8 +63,6 @@ public class BallComponent extends JComponent {
         // Update the ball's velocity
         setVelocity(newVelocityX, -newVelocityY);
     }
-
-
 
     public int getWidth() {
         return width;

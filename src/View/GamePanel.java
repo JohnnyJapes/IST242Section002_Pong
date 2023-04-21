@@ -1,12 +1,6 @@
 package View;
-
-
-
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
 
 /**
  * File name: GamePanel.java
@@ -49,26 +43,20 @@ public class GamePanel extends JPanel {
         this.rightPaddle = rightPaddle;
     }
 
-
-
-
     // Method for updating left paddle
     public void loadLeftPaddle(int x, int y, int w, int h){
-        //.setAll(x,y,w,h);
         leftPaddle.setBounds(90, y, 20, 100);
         repaint();
     }
 
     // Method for updating right paddle
     public void loadRightPaddle(int x, int y, int w, int h){
-        //leftPaddle.setAll(x,y,w,h);
         rightPaddle.setBounds(1090, y, 20, 100);
         repaint();
     }
 
     public void loadBall(int xCoordinate, int yCoordinate, int width, int height) {
-        //ball.setBounds(xCoordinate,yCoordinate,20,20);
-
+        // Move / Serve the ball
         ball.move();
 
         // Check for collisions with left paddle
@@ -84,9 +72,6 @@ public class GamePanel extends JPanel {
         }
         repaint();
     }
-
-
-
 
     public BallComponent getBallComponent() {
         return this.ball;
