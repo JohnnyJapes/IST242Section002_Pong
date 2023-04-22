@@ -56,6 +56,7 @@ public abstract class Entity {
      */
     public void setXCoordinate(int x){
         coordinates[0] = x;
+        bounds.x = x;
     }
 
     /**
@@ -64,6 +65,7 @@ public abstract class Entity {
      */
     public void setYCoordinate(int y){
         coordinates[1] = y;
+        bounds.y = y;
     }
     /**
      * Method to set velocity.
@@ -90,6 +92,8 @@ public abstract class Entity {
      */
     public void setSize(int[] size) {
         this.size = size;
+        bounds.width = size[0];
+        bounds.height = size[1];
     }
 
     /**
