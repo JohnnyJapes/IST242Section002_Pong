@@ -42,10 +42,10 @@ public class Ball extends Entity {
         setBounds(newX, newY, 20, 20);
     }
 
-    public void bounceOffPaddle(PaddleComponent paddle) {
+    public void bounceOffPaddle(Paddle paddle) {
         // Get the center of the paddle and the ball
-        int paddleCenterX = paddle.getBounds().x + (paddle.getWidth() / 2);
-        int paddleCenterY = paddle.getBounds().y + (paddle.getHeight() / 2);
+        int paddleCenterX = paddle.getBounds().x + (paddle.getBounds().width / 2);
+        int paddleCenterY = paddle.getBounds().y + (paddle.getBounds().height / 2);
         int ballCenterX = getBounds().x + (getBounds().width / 2);
         int ballCenterY = getBounds().y + (getBounds().height / 2);
 
