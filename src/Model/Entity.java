@@ -1,5 +1,7 @@
 package Model;
 
+import java.awt.*;
+
 /**
  * File name: Entity.java
  * Short description: Abstract class to manage entities (position, speed, etc.)
@@ -15,11 +17,14 @@ public abstract class Entity {
     private int velocityY;
     private int[] size;
 
+    private Rectangle bounds;
+
     public Entity(){
         coordinates = new int[]{50, 50};
         size = new int[]{2,2};
         velocityX = 5;
         velocityY = 5;
+        bounds = new Rectangle(50,50, 20, 20);
 
     }
 
@@ -28,6 +33,7 @@ public abstract class Entity {
         this.velocityX = velocityX;
         this.velocityY = velocityY;
         this.size = size;
+        bounds = new Rectangle(coordinates[0], coordinates[1], size[0], size[1]);
     }
 
     // Set methods - one set method for each instance variable defined above
@@ -85,6 +91,20 @@ public abstract class Entity {
     public void setSize(int[] size) {
         this.size = size;
     }
+
+    /**
+     * Method to set bounds.
+     *
+     * @param bounds java.awt.Rectangle - bounds
+     */
+    public void setBounds(Rectangle bounds) {
+        this.bounds = bounds;
+    }
+
+    public void setBounds(int x, int y, int w, int h) {
+        Rectangle rect = new Rectangle(x, y, w, h);
+        this.bounds = rect;
+    }
     // Get methods - one get method for each instance variable defined above
     //             - purpose is to return the value stored in the private variable
 
@@ -139,6 +159,14 @@ public abstract class Entity {
         return size;
     }
 
+    /**
+     * Gets bounds.
+     *
+     * @return java.awt.Rectangle, value of bounds
+     */
+    public Rectangle getBounds() {
+        return bounds;
+    }
     // Additional methods -- such as for calculation, display
 
     public String toString() {

@@ -15,7 +15,8 @@ public class Paddle extends Entity{
 
     // Constructors
     public Paddle() {
-        super(new int[]{0, 350}, 1, 5, new int[]{5, 100});
+        super(new int[]{0, 350}, 0, 5, new int[]{20, 100});
+        scoringNetPosition = 0;
 
     }
 
