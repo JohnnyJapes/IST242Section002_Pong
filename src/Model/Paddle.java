@@ -1,5 +1,9 @@
 package Model;
 
+import View.BallComponent;
+
+import java.awt.*;
+
 /**
  * File name: Paddle.java
  * Short description: Class to create paddle object
@@ -67,6 +71,13 @@ public class Paddle extends Entity{
             if (getYCoordinate() >= (770 - getSize()[1])) setYCoordinate(770 - getSize()[1]);
         }
         //System.out.println("New Y (Down): " + getYCoordinate());
+    }
+
+    public boolean collidesWith(Ball ball) {
+        Rectangle paddleBounds = getBounds();
+        Rectangle ballBounds = ball.getBounds();
+
+        return paddleBounds.intersects(ballBounds);
     }
 }
 
