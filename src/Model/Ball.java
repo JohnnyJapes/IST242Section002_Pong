@@ -30,13 +30,14 @@ public class Ball extends Entity {
         int newY = getBounds().y + getVelocityY();
 
         // Check for collision with top or bottom of screen
-        if (newY < 0 || newY + getBounds().height > 800) {
+        if (newY < 0 || newY + getBounds().height > 760) {
             // Reverse y direction and move ball back inside the screen
             setVelocityY(getVelocityY()*-1);
             if (newY < 0) {
                 newY = 0;
             } else {
-                newY = 800 - getBounds().height;
+                System.out.println("bottom collision");
+                newY = 760 - getBounds().height;
             }
         }
         setBounds(newX, newY, 20, 20);
@@ -58,8 +59,8 @@ public class Ball extends Entity {
         int newVelocityY = getVelocityY() * directionY;
 
         // Update the ball's velocity
-        setVelocityX(newVelocityX);
-        setVelocityY(-newVelocityY);
+        setVelocityX(getVelocityX()*-1);
+        setVelocityY(newVelocityY);
     }
 }
 
