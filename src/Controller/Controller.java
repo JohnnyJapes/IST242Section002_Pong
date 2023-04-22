@@ -61,6 +61,7 @@ public class Controller {
                 System.out.println("start pThread");
                 while (true) {
                     handleMovement();
+                    moveBall();
                     model.getGame().checkBallOffScreen();
                     try {
                         Thread.sleep(16);
@@ -77,7 +78,7 @@ public class Controller {
             public void run() {
                 System.out.println("Start moveBall thread");
                 while (true) {
-                    moveBall();
+
                     try {
                         Thread.sleep(16);
                     } catch (InterruptedException e) {
@@ -87,7 +88,8 @@ public class Controller {
             }
         });
         pThread.start();
-        bThread.start();
+        //bThread.start();
+        model.getGame().resetPositions();
         model.getGame().serveBall();
     }
 
@@ -99,20 +101,20 @@ public class Controller {
     private void handleMovement(){
         if (currentKeys.contains(38)) {
             rightPaddle.movePaddle('U');
-            view.getGf().getPlayPanel().loadRightPaddle(rightPaddle.getBounds().x,rightPaddle.getBounds().y, rightPaddle.getSize()[0], rightPaddle.getSize()[1]);
+            view.getGf().getPlayPanel().loadRightPaddle(rightPaddle.getBounds().x,rightPaddle.getBounds().y, rightPaddle.getBounds().width, rightPaddle.getBounds().height);
         }
         //add if statements for other keys
         if (currentKeys.contains(40)){
             rightPaddle.movePaddle('D');
-            view.getGf().getPlayPanel().loadRightPaddle(rightPaddle.getBounds().x,rightPaddle.getBounds().y, rightPaddle.getSize()[0], rightPaddle.getSize()[1]);
+            view.getGf().getPlayPanel().loadRightPaddle(rightPaddle.getBounds().x,rightPaddle.getBounds().y, rightPaddle.getBounds().width, rightPaddle.getBounds().height);
         }
         if (currentKeys.contains(87)){
             leftPaddle.movePaddle('U');
-            view.getGf().getPlayPanel().loadLeftPaddle(leftPaddle.getBounds().x, leftPaddle.getBounds().y, leftPaddle.getSize()[0], leftPaddle.getSize()[1]);
+            view.getGf().getPlayPanel().loadLeftPaddle(leftPaddle.getBounds().x, leftPaddle.getBounds().y, leftPaddle.getBounds().width, leftPaddle.getBounds().height);
         }
         if (currentKeys.contains(KeyEvent.VK_S)){
             leftPaddle.movePaddle('D');
-            view.getGf().getPlayPanel().loadLeftPaddle(leftPaddle.getBounds().x,leftPaddle.getBounds().y, leftPaddle.getSize()[0], leftPaddle.getSize()[1]);
+            view.getGf().getPlayPanel().loadLeftPaddle(leftPaddle.getBounds().x,leftPaddle.getBounds().y, leftPaddle.getBounds().width, leftPaddle.getBounds().height);
         }
     }
 
