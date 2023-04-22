@@ -34,12 +34,14 @@ public class Game {
             // Ball went off the left side, player two scores
             p2Score++;
             System.out.println("Player Two Score: " + p2Score);
-            resetPositions();
+            //resetPositions();
+            serveBall();
         } else if (ball.getXCoordinate() > 1200) {
             // Ball went off the right side, player one scores
             p1Score++;
             System.out.println("Player One Score: " + p1Score);
-            resetPositions();
+            //resetPositions();
+            serveBall();
         }
     }
 
@@ -65,7 +67,12 @@ public class Game {
     }
 
     public void serveBall (){
-        resetPositions();
+        //resetPositions();
+        // Reset the ball to the center of the screen
+        ball.setXCoordinate(600 - ball.getBounds().width/2);
+        ball.setYCoordinate(400 - ball.getBounds().height/2);
+        ball.setVelocityX(0);
+        ball.setVelocityY(0);
         int randomDirection = Math.random() < 0.5 ? -1 : 1; // Randomly choose left or right direction
         ball.setVelocityX(randomDirection * 5);
         ball.setVelocityY(Math.random() < 0.5 ? -5 : 5);
