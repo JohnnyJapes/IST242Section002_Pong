@@ -49,7 +49,7 @@ public class Controller {
         game = true;
         ballComponent = view.getGf().getPlayPanel().getBallComponent();
         addMenuListeners();
-        while(!start) System.out.println("wait");
+        while(!start) ;
         addKeyBindings();
 
 
@@ -98,27 +98,40 @@ public class Controller {
     private void handleMovement(){
         if (currentKeys.contains(38)) {
             rightPaddle.movePaddle('U');
-            view.getGf().getPlayPanel().loadRightPaddle(rightPaddle.getXCoordinate(),rightPaddle.getYCoordinate(), rightPaddle.getSize()[0], rightPaddle.getSize()[1]);
+            view.getGf().getPlayPanel().loadRightPaddle(rightPaddle.getBounds().x,rightPaddle.getBounds().y, rightPaddle.getSize()[0], rightPaddle.getSize()[1]);
         }
         //add if statements for other keys
         if (currentKeys.contains(40)){
             rightPaddle.movePaddle('D');
-            view.getGf().getPlayPanel().loadRightPaddle(rightPaddle.getXCoordinate(),rightPaddle.getYCoordinate(), rightPaddle.getSize()[0], rightPaddle.getSize()[1]);
+            view.getGf().getPlayPanel().loadRightPaddle(rightPaddle.getBounds().x,rightPaddle.getBounds().y, rightPaddle.getSize()[0], rightPaddle.getSize()[1]);
         }
         if (currentKeys.contains(87)){
             leftPaddle.movePaddle('U');
-            view.getGf().getPlayPanel().loadLeftPaddle(leftPaddle.getXCoordinate(),leftPaddle.getYCoordinate(), leftPaddle.getSize()[0], leftPaddle.getSize()[1]);
+            view.getGf().getPlayPanel().loadLeftPaddle(leftPaddle.getBounds().x, leftPaddle.getBounds().y, leftPaddle.getSize()[0], leftPaddle.getSize()[1]);
         }
         if (currentKeys.contains(KeyEvent.VK_S)){
             leftPaddle.movePaddle('D');
-            view.getGf().getPlayPanel().loadLeftPaddle(leftPaddle.getXCoordinate(),leftPaddle.getYCoordinate(), leftPaddle.getSize()[0], leftPaddle.getSize()[1]);
+            view.getGf().getPlayPanel().loadLeftPaddle(leftPaddle.getBounds().x,leftPaddle.getBounds().y, leftPaddle.getSize()[0], leftPaddle.getSize()[1]);
         }
     }
 
 
 
     private void moveBall() {
-        view.getGf().getPlayPanel().loadBall(ball.getXCoordinate(), ball.getYCoordinate(), ballComponent.getWidth(), ballComponent.getHeight());
+        ball.move();
+
+        // Check for collisions with left paddle
+        if (leftPaddle.collidesWith(ball)) {
+            ball.bounceOffPaddle(leftPaddle);
+            System.out.println("Left Paddle Collision");
+        }
+
+        // Check for collisions with right paddle
+        if (rightPaddle.collidesWith(ball)) {
+            ball.bounceOffPaddle(rightPaddle);
+            System.out.println("Right Paddle Collision");
+        }
+        view.getGf().getPlayPanel().loadBall(ball.getBounds());
     }
     private void checkScores() {
 

@@ -30,8 +30,8 @@ public class GamePanel extends JPanel {
         add(ball);
         add(leftPaddle);
         add(rightPaddle);
-        leftPaddle.setBounds(90, 0, 20, 100);
-        rightPaddle.setBounds(1090, 0, 20, 100);
+        leftPaddle.setBounds(90, 350, 20, 100);
+        rightPaddle.setBounds(1090, 350, 20, 100);
         ball.setBounds(600,400,20,20);
         validate();
         repaint();
@@ -57,7 +57,7 @@ public class GamePanel extends JPanel {
 
     public void loadBall(int xCoordinate, int yCoordinate, int width, int height) {
         // Move / Serve the ball
-        ball.move();
+/*        ball.move();
 
         // Check for collisions with left paddle
         if (leftPaddle.collidesWith(ball)) {
@@ -69,7 +69,14 @@ public class GamePanel extends JPanel {
         if (rightPaddle.collidesWith(ball)) {
             ball.bounceOffPaddle(rightPaddle);
             System.out.println("Right Paddle Collision");
-        }
+        }*/
+        ball.setBounds(xCoordinate,yCoordinate,width,height);
+        repaint();
+    }
+    public void loadBall(Rectangle ballBounds) {
+        // Move / Serve the ball
+
+        ball.setBounds(ballBounds);
         repaint();
     }
 
