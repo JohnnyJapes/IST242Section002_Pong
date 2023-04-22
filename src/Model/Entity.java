@@ -47,7 +47,9 @@ public abstract class Entity {
      * @param coordinates int[] - coordinates
      */
     public void setCoordinates(int[] coordinates) {
-        this.coordinates = coordinates;
+        //this.coordinates = coordinates;
+        bounds.x = coordinates[0];
+        bounds.y = coordinates[1];
     }
 
     /**
@@ -55,7 +57,7 @@ public abstract class Entity {
      * @param x - int, set x coordinate
      */
     public void setXCoordinate(int x){
-        coordinates[0] = x;
+        //coordinates[0] = x;
         bounds.x = x;
     }
 
@@ -64,7 +66,7 @@ public abstract class Entity {
      * @param y - int, set y coordinate
      */
     public void setYCoordinate(int y){
-        coordinates[1] = y;
+        //coordinates[1] = y;
         bounds.y = y;
     }
     /**
@@ -126,14 +128,14 @@ public abstract class Entity {
      * @return int - x coordinate
      */
     public int getXCoordinate() {
-        return coordinates[0];
+        return bounds.x;
     }
     /**
      * Method to return Y coordinate
      * @return int - Y coordinate
      */
     public int getYCoordinate() {
-        return coordinates[1];
+        return bounds.y;
     }
 
     /**
