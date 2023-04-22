@@ -49,7 +49,7 @@ public class Controller {
         game = true;
         ballComponent = view.getGf().getPlayPanel().getBallComponent();
         addMenuListeners();
-        while(!start) ;
+        while(!start) System.out.println("");
         addKeyBindings();
 
 
@@ -88,6 +88,7 @@ public class Controller {
         });
         pThread.start();
         bThread.start();
+        model.getGame().serveBall();
     }
 
     private void primaryLoop(){
