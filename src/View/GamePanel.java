@@ -45,13 +45,13 @@ public class GamePanel extends JPanel {
 
     // Method for updating left paddle
     public void loadLeftPaddle(int x, int y, int w, int h){
-        leftPaddle.setBounds(90, y, 20, 100);
+        leftPaddle.setBounds(x, y, w, h);
         repaint();
     }
 
     // Method for updating right paddle
     public void loadRightPaddle(int x, int y, int w, int h){
-        rightPaddle.setBounds(1090, y, 20, 100);
+        rightPaddle.setBounds(x, y, w, h);
         repaint();
     }
 
