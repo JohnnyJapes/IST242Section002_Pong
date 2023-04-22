@@ -29,17 +29,17 @@ public class Game {
 
     // Checks if the ball goes off the screen and updates the score accordingly.
     public void checkBallOffScreen() {
-        System.out.println("Checking ball");
+        //System.out.println("Checking ball");
         if (ball.getXCoordinate() < 0) {
             // Ball went off the left side, player two scores
             p2Score++;
             System.out.println("Player Two Score: " + p2Score);
-            //resetPositions();
+            resetPositions();
         } else if (ball.getXCoordinate() > 1200) {
             // Ball went off the right side, player one scores
             p1Score++;
             System.out.println("Player One Score: " + p1Score);
-            //resetPositions();
+            resetPositions();
         }
     }
 
@@ -62,6 +62,13 @@ public class Game {
     //clear the point totals of both players
     public void resetPoints() {
 
+    }
+
+    public void serveBall (){
+        resetPositions();
+        int randomDirection = Math.random() < 0.5 ? -1 : 1; // Randomly choose left or right direction
+        ball.setVelocityX(randomDirection * 5);
+        ball.setVelocityY(Math.random() < 0.5 ? -5 : 5);
     }
 
     //get methods
