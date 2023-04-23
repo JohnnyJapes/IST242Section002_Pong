@@ -7,7 +7,7 @@ import java.awt.*;
  * Short description: Panel to display Pong game
  * IST 242 Assignment: GUI Project
  * @author Luke Hanrahan & Brandon Orlando
- * @version 1.0 3/27/23
+ * @version 1.4 4/23/23
  */
 
 public class GamePanel extends JPanel {
@@ -45,37 +45,50 @@ public class GamePanel extends JPanel {
     }
 
     // Method for updating left paddle
-    public void loadLeftPaddle(int x, int y, int w, int h){
+
+    /**
+     * Method to repaint the left paddle
+     * @param x int
+     * @param y int
+     * @param w int
+     * @param h int
+     */public void loadLeftPaddle(int x, int y, int w, int h){
         leftPaddle.setBounds(x, y, w, h);
         repaint();
     }
 
     // Method for updating right paddle
+
+    /**
+     * Method to repaint the right paddle
+     * @param x int
+     * @param y int
+     * @param w int
+     * @param h int
+     */
     public void loadRightPaddle(int x, int y, int w, int h){
         rightPaddle.setBounds(x, y, w, h);
         repaint();
     }
 
+    /**
+     * Method to repaint the ball
+     * @param xCoordinate int
+     * @param yCoordinate int
+     * @param width int
+     * @param height int
+     */
     public void loadBall(int xCoordinate, int yCoordinate, int width, int height) {
-        // Move / Serve the ball
-/*        ball.move();
 
-        // Check for collisions with left paddle
-        if (leftPaddle.collidesWith(ball)) {
-            ball.bounceOffPaddle(leftPaddle);
-            System.out.println("Left Paddle Collision");
-        }
-
-        // Check for collisions with right paddle
-        if (rightPaddle.collidesWith(ball)) {
-            ball.bounceOffPaddle(rightPaddle);
-            System.out.println("Right Paddle Collision");
-        }*/
         ball.setBounds(xCoordinate,yCoordinate,width,height);
         repaint();
     }
+
+    /**
+     * Method to repaint the ball
+     * @param ballBounds Rectangle object
+     */
     public void loadBall(Rectangle ballBounds) {
-        // Move / Serve the ball
 
         ball.setBounds(ballBounds);
         repaint();
