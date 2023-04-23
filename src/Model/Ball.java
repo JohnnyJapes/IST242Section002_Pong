@@ -7,12 +7,11 @@ import View.PaddleComponent;
  * Short description: Class to create ball object
  * IST 242 Assignment: GUI Project
  * @author Luke Hanrahan & Brandon Orlando
- * @version 1.0 3/27/23
+ * @version 1.4 4/23/23
  */
 
 public class Ball extends Entity {
     // Instance Variables -- define your private data
-    private int[] lastKnownCoordinates;
 
     // Constructors
     public Ball() {
@@ -24,6 +23,9 @@ public class Ball extends Entity {
     }
 
 
+    /**
+     * Method to move the ball and simultaneously check for collisions with the top and bottom walls
+     */
     public void move() {
         // Update x and y coordinates based on current velocity
         int newX = getBounds().x + getVelocityX();
@@ -43,6 +45,10 @@ public class Ball extends Entity {
         setBounds(newX, newY, getWidth(), getHeight());
     }
 
+    /**
+     * Method to calculate the new velocity and position of the ball when paddle collision happens
+     * @param paddle Paddle - the paddle that was collided with
+     */
     public void bounceOffPaddle(Paddle paddle) {
         // Get the center of the paddle and the ball
         int paddleCenterX = paddle.getXCoordinate() + (paddle.getWidth() / 2);
@@ -59,9 +65,10 @@ public class Ball extends Entity {
 
 
 
-
+        //find the true velocity of the ball
         float velocity = (float)Math.sqrt(squared(getVelocityX()) + squared(getVelocityY()));
         System.out.println("old Velocity: " +velocity);
+        //increase the velocity of the ball so it slowly increases in speed
         velocity++;
         System.out.println("New Velocity "+velocity);
 
