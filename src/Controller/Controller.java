@@ -125,14 +125,16 @@ public class Controller {
 
         // Check for collisions with left paddle
         if (leftPaddle.collidesWith(ball)) {
-            ball.bounceOffPaddle(leftPaddle);
             System.out.println("Left Paddle Collision");
+            ball.bounceOffPaddle(leftPaddle);
+            System.out.println(" ");
         }
 
         // Check for collisions with right paddle
         if (rightPaddle.collidesWith(ball)) {
-            ball.bounceOffPaddle(rightPaddle);
             System.out.println("Right Paddle Collision");
+            ball.bounceOffPaddle(rightPaddle);
+            System.out.println(" ");
         }
         view.getGf().getPlayPanel().loadBall(ball.getBounds());
     }
