@@ -30,6 +30,21 @@ public abstract class Entity {
         bounds = new Rectangle(coordinates[0], coordinates[1], size[0], size[1]);
     }
 
+    /**
+     * Alternate constructor
+     * @param x int - x position
+     * @param y int - y position
+     * @param w int - width of entity
+     * @param h int - height of entity
+     * @param vX int - velocity on x-axis
+     * @param vY int - velocity on y-axis
+     */
+    public Entity(int x, int y, int w, int h, int vX, int vY){
+        this.velocityX = vX;
+        this.velocityY = vY;
+        bounds = new Rectangle(x, y, w, h);
+    }
+
     // Set methods - one set method for each instance variable defined above
     //             - purpose is to pass in a value stored in the private variable
 
