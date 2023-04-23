@@ -1,5 +1,6 @@
 package View;
 import javax.swing.*;
+import java.awt.*;
 
 /**
  * File name: GameFrame.java
@@ -19,8 +20,11 @@ public class GameFrame extends JFrame {
         add(mP);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setSize(1200, 800);
+        playPanel.setPreferredSize(new Dimension(1200, 800));
+        mP.setPreferredSize(new Dimension(1200, 800));
         setResizable(false);
         setVisible(true);
+        pack();
     }
 
     /**
