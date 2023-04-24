@@ -63,6 +63,8 @@ public class Controller {
                     handleMovement();
                     moveBall();
                     model.getGame().checkBallOffScreen();
+                    view.getGf().getPlayPanel().setScore('l', model.getGame().getP1Score());
+                    view.getGf().getPlayPanel().setScore('r', model.getGame().getP2Score());
                     try {
                         Thread.sleep(16);
                     } catch (InterruptedException e) {
