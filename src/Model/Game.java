@@ -35,7 +35,7 @@ public class Game {
      */
     public boolean checkBallOffScreen() {
         //System.out.println("Checking ball");
-        if (ball.getXCoordinate() < 0) {
+        if (ball.getXCoordinate() < -20) {
             // Ball went off the left side, player two scores
             p2Score++;
             System.out.println("Player Two Score: " + p2Score);
