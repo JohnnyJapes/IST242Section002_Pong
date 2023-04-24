@@ -1,19 +1,16 @@
-package View;/*
- * Filename: NetComponent.java
- * Short description:
- * IST 242 Assignment:
- * @author  Luke Hanrahan
- * @version 2023/04/24
- */
-
+package View;
 
 import javax.swing.*;
 import java.awt.*;
 
 /**
- * @author Luke Hanrahan
- * @version 1.0 2023/04/24
+ * File name: NetComponent.java
+ * Short description: Component to draw simple net graphic
+ * IST 242 Assignment: GUI Project
+ * @author Luke Hanrahan & Brandon Orlando
+ * @version 1.0 4/24/23
  */
+
 public class NetComponent extends JComponent {
     // Instance Variables -- define your private data
 
