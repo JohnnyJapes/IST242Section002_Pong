@@ -28,21 +28,25 @@ public class Game {
     }
 
     // Checks if the ball goes off the screen and updates the score accordingly.
-    public void checkBallOffScreen() {
+
+    /**
+     * Method to check if the ball goes off screen and update scores accordingly
+     * @return boolean - true if score happened, otherwise false
+     */
+    public boolean checkBallOffScreen() {
         //System.out.println("Checking ball");
         if (ball.getXCoordinate() < 0) {
             // Ball went off the left side, player two scores
             p2Score++;
             System.out.println("Player Two Score: " + p2Score);
-            //resetPositions();
-            serveBall();
+            return true;
         } else if (ball.getXCoordinate() > 1200) {
             // Ball went off the right side, player one scores
             p1Score++;
             System.out.println("Player One Score: " + p1Score);
-            //resetPositions();
-            serveBall();
+            return true;
         }
+        return false;
     }
 
     public void resetPositions() {
