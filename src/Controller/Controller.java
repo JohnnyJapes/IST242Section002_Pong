@@ -49,8 +49,9 @@ public class Controller {
         game = true;
         ballComponent = view.getGf().getPlayPanel().getBallComponent();
         addMenuListeners();
-        while(!start) System.out.println("");
         addKeyBindings();
+        while(!start) handleStart();
+
 
 
 
@@ -105,11 +106,10 @@ public class Controller {
         model.getGame().serveBall();
     }
 
-    private void primaryLoop(){
-        handleMovement();
-        moveBall();
-        checkScores();
-    }
+
+    /**
+     * Method that moves paddles based on the currentKeys HashSet
+     */
     private void handleMovement(){
         if (currentKeys.contains(38)) {
             rightPaddle.movePaddle('U');
@@ -131,7 +131,9 @@ public class Controller {
     }
 
 
-
+    /**
+     * Method that handles all ball related movement
+     */
     private void moveBall() {
         ball.move();
 
@@ -150,7 +152,10 @@ public class Controller {
         }
         view.getGf().getPlayPanel().loadBall(ball.getBounds());
     }
-    private void checkScores() {
+    private void handleStart() {
+        if (currentKeys.contains(KeyEvent.VK_SPACE)) {
+            start = true;
+        }
 
     }
 
@@ -159,7 +164,7 @@ public class Controller {
             @Override
             public void actionPerformed(ActionEvent e) {
                 view.getGf().activatePlayPanel();
-                start = true;
+                //start = true;
             }
         });
 
@@ -170,6 +175,7 @@ public class Controller {
         addMotionBind("DOWN", KeyEvent.VK_DOWN);
         addMotionBind("W", KeyEvent.VK_W);
         addMotionBind("S", KeyEvent.VK_S);
+        addMotionBind("SPACE", KeyEvent.VK_SPACE);
     }
 
     /**
