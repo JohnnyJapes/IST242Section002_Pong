@@ -62,9 +62,19 @@ public class Controller {
                 while (true) {
                     handleMovement();
                     moveBall();
-                    model.getGame().checkBallOffScreen();
-                    view.getGf().getPlayPanel().setScore('l', model.getGame().getP1Score());
-                    view.getGf().getPlayPanel().setScore('r', model.getGame().getP2Score());
+                    if(model.getGame().checkBallOffScreen()){
+                        view.getGf().getPlayPanel().setScore('l', model.getGame().getP1Score());
+                        view.getGf().getPlayPanel().setScore('r', model.getGame().getP2Score());
+                        model.getGame().serveBall();
+                        try {
+                            Thread.sleep(150);
+                        } catch (InterruptedException e) {
+                            throw new RuntimeException(e);
+                            }
+                        }
+
+
+
                     try {
                         Thread.sleep(16);
                     } catch (InterruptedException e) {
