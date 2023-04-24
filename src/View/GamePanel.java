@@ -7,7 +7,7 @@ import java.awt.*;
  * Short description: Panel to display Pong game
  * IST 242 Assignment: GUI Project
  * @author Luke Hanrahan & Brandon Orlando
- * @version 1.4 4/23/23
+ * @version 1.5 4/24/23
  */
 
 public class GamePanel extends JPanel {
@@ -16,12 +16,24 @@ public class GamePanel extends JPanel {
     private BallComponent ball;
     private PaddleComponent leftPaddle;
     private PaddleComponent rightPaddle;
-
+    private JLabel scoreBoardP1, scoreBoardP2;
+    private NetComponent net;
 
     public GamePanel() {
         //startGame = new JButton("Start");
         //startGame.addActionListener(this);
         //add(startGame);
+        scoreBoardP1 = new JLabel("0");
+        scoreBoardP1.setBounds(540, 5, 40, 40);
+        scoreBoardP1.setForeground(Color.white);
+        scoreBoardP1.setFont(new Font(Font.SERIF, Font.BOLD, 50));
+
+        scoreBoardP2 = new JLabel("0");
+        scoreBoardP2.setBounds(625, 5, 40, 40);
+        scoreBoardP2.setForeground(Color.white);
+        scoreBoardP2.setFont(new Font(Font.SERIF, Font.BOLD, 50));
+
+        net = new NetComponent();
         setLayout(null);
         setSize(1200, 800);
         setBackground(Color.darkGray);
@@ -31,6 +43,9 @@ public class GamePanel extends JPanel {
         add(ball);
         add(leftPaddle);
         add(rightPaddle);
+        add(scoreBoardP1);
+        add(scoreBoardP2);
+        add(net);
         leftPaddle.setBounds(50, 350, 20, 100);
         rightPaddle.setBounds(1130, 350, 20, 100);
         ball.setBounds(600,400,20,20);
@@ -96,5 +111,71 @@ public class GamePanel extends JPanel {
 
     public BallComponent getBallComponent() {
         return this.ball;
+    }
+
+    /**
+     * Gets ball.
+     *
+     * @return View.BallComponent, value of ball
+     */
+    public BallComponent getBall() {
+        return ball;
+    }
+
+    /**
+     * Gets leftPaddle.
+     *
+     * @return View.PaddleComponent, value of leftPaddle
+     */
+    public PaddleComponent getLeftPaddle() {
+        return leftPaddle;
+    }
+
+    /**
+     * Gets rightPaddle.
+     *
+     * @return View.PaddleComponent, value of rightPaddle
+     */
+    public PaddleComponent getRightPaddle() {
+        return rightPaddle;
+    }
+
+    /**
+     * Gets scoreBoardP1.
+     *
+     * @return javax.swing.JLabel, value of scoreBoardP1
+     */
+    public JLabel getScoreBoardP1() {
+        return scoreBoardP1;
+    }
+
+    /**
+     * Gets scoreBoardP2.
+     *
+     * @return javax.swing.JLabel, value of scoreBoardP2
+     */
+    public JLabel getScoreBoardP2() {
+        return scoreBoardP2;
+    }
+
+    /**
+     * Gets net.
+     *
+     * @return View.NetComponent, value of net
+     */
+    public NetComponent getNet() {
+        return net;
+    }
+
+    //set score
+
+    /**
+     * Method to set the score of either player
+     * @param p char - input 'l' for the left player, 'r' for the right
+     * @param i int - new score
+     */
+    public void setScore(char p, int i){
+        if (p == 'l') scoreBoardP1.setText(String.valueOf(i));
+        else scoreBoardP2.setText(String.valueOf(i));
     }
 }
