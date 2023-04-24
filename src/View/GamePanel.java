@@ -24,14 +24,16 @@ public class GamePanel extends JPanel {
         //startGame.addActionListener(this);
         //add(startGame);
         scoreBoardP1 = new JLabel("0");
-        scoreBoardP1.setBounds(540, 5, 40, 40);
+        scoreBoardP1.setBounds(505, 5, 90, 40);
         scoreBoardP1.setForeground(Color.white);
         scoreBoardP1.setFont(new Font(Font.SERIF, Font.BOLD, 50));
+        scoreBoardP1.setHorizontalAlignment(SwingConstants.CENTER);
 
         scoreBoardP2 = new JLabel("0");
-        scoreBoardP2.setBounds(625, 5, 40, 40);
+        scoreBoardP2.setBounds(605, 5, 90, 40);
         scoreBoardP2.setForeground(Color.white);
         scoreBoardP2.setFont(new Font(Font.SERIF, Font.BOLD, 50));
+        scoreBoardP2.setHorizontalAlignment(SwingConstants.CENTER);
 
         net = new NetComponent();
         setLayout(null);

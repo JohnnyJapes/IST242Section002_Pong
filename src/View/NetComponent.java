@@ -18,7 +18,7 @@ public class NetComponent extends JComponent {
     // Constructors
     public NetComponent() //no-arg constructor
     {
-        setBounds(590, 0, 10, 800);
+        setBounds(595, 0, 10, 800);
     }
 
     public void paintComponent(Graphics g) {
