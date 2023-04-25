@@ -244,6 +244,13 @@ public class Controller {
         }
         catch (IOException ex){
             System.out.println(ex);
+            model.getGame().setP1Score(0);
+            model.getGame().setP2Score(0);
+            model.getGame().writeTextToFile("Player 1: " + model.getGame().getP1Score(), "\n", "Player 2: " + model.getGame().getP2Score());
+            //updates view with scores
+            view.getGf().getPlayPanel().setScore('l', model.getGame().getP1Score());
+            view.getGf().getPlayPanel().setScore('r', model.getGame().getP2Score());
+            view.getGf().getmP().getScores().setText("Player 1: " + model.getGame().getP1Score()+ ", " + "Player 2: " + model.getGame().getP2Score());
 
         }
 
