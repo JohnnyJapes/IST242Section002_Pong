@@ -1,4 +1,6 @@
 package View;
+import javax.swing.*;
+import java.awt.*;
 
 /**
  * File name: PaddleComponent.java
@@ -7,17 +9,9 @@ package View;
  * @author Luke Hanrahan & Brandon Orlando
  * @version 1.0 4/25/2023
  */
-import javax.swing.*;
-import java.awt.*;
+
 public class PaddleComponent extends JComponent {
-    // Instance Variables -- define your private data
-    private int x, y, width, height;
-
     // Constructors
-    public PaddleComponent() //no-arg constructor
-    {
-
-    }
 
     public PaddleComponent(int x, int y, int width, int height) {
         setBounds(x, y, width, height);
@@ -32,5 +26,3 @@ public class PaddleComponent extends JComponent {
         g.fillRect(0, 0, getBounds().width, getBounds().height);
     }
 }
-
-

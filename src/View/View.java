@@ -14,13 +14,11 @@ public class View {
 
     // Constructors
     public View() {
-        //linux force opengl
+        // Linux force opengl
         System.setProperty("sun.java2d.opengl", "true");
-        // initialize default values
-        //mf = new MainFrame();
+        // Initialize default values
         gf = new GameFrame();
     }
-
 
     /**
      * Get GameFrame
@@ -29,8 +27,4 @@ public class View {
     public GameFrame getGf() {
         return gf;
     }
-
-
 }
-
-

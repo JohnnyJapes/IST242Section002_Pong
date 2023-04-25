@@ -11,8 +11,10 @@ import java.awt.*;
  */
 
 public class GameFrame extends JFrame {
+    // Instance Variables
     GamePanel playPanel;
     MenuPanel mP;
+
     public GameFrame () {
         super ("Pong");
         playPanel = new GamePanel();
@@ -29,7 +31,6 @@ public class GameFrame extends JFrame {
 
     /**
      * Gets playPanel.
-     *
      * @return GamePanel, value of playPanel
      */
     public GamePanel getPlayPanel() {
@@ -38,7 +39,6 @@ public class GameFrame extends JFrame {
 
     /**
      * Gets mP.
-     *
      * @return MenuPanel, value of mP
      */
     public MenuPanel getmP() {

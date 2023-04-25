@@ -12,6 +12,7 @@ import java.awt.*;
 
 public class BallComponent extends JComponent {
 
+    // Constructor
     public BallComponent(int x, int y, int width, int height) {
         setBounds(x,y, width, height);
     }
