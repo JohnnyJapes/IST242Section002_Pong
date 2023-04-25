@@ -96,13 +96,13 @@ public class Game {
                 XMLStreamWriter xmlStreamWriter = xmlOutputFactory.createXMLStreamWriter(fileWriter);
 
                 xmlStreamWriter.writeStartDocument();
-                xmlStreamWriter.writeStartElement("Players Scores");
+                xmlStreamWriter.writeStartElement("Players_Scores");
 
-                xmlStreamWriter.writeStartElement("Player 1");
-                xmlStreamWriter.writeAttribute("P1 Score", String.valueOf(p1Score));
+                xmlStreamWriter.writeStartElement("Player_1");
+                xmlStreamWriter.writeAttribute("Score", String.valueOf(p1Score));
                 xmlStreamWriter.writeEndElement();
 
-                xmlStreamWriter.writeStartElement("Player 2");
+                xmlStreamWriter.writeStartElement("Player_2");
                 xmlStreamWriter.writeAttribute("Score", String.valueOf(p2Score));
                 xmlStreamWriter.writeEndElement();
 
