@@ -1,6 +1,4 @@
 package View;
-import Model.Model;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
@@ -15,15 +13,17 @@ import java.awt.event.*;
  */
 
 public class MenuPanel extends JPanel implements ActionListener {
+    // Instance Variables
     JButton startButton, quitButton, resetButton;
     JLabel title, scores;
+
     public MenuPanel() {
         setLayout(new BorderLayout());
         JPanel buttonPanel = new JPanel();
         buttonPanel.setLayout(new FlowLayout(FlowLayout.RIGHT));
         JPanel scorePanel = new JPanel();
         scorePanel.setLayout(new FlowLayout(FlowLayout.LEFT));
-        //adding buttons to south panel
+        // Adding buttons to south panel
         startButton = new JButton("Play Pong");
         startButton.setPreferredSize(new Dimension(300, 100));
         startButton.setForeground(Color.darkGray);
@@ -61,12 +61,18 @@ public class MenuPanel extends JPanel implements ActionListener {
 
     /**
      * Gets startButton.
+     *
      * @return javax.swing.JButton, value of startButton
      */
     public JButton getStartButton() {
         return startButton;
     }
 
+    /**
+     * Gets scores.
+     *
+     * @return javax.swing.JLabel, value of scores
+     */
     public JLabel getScores() {
         return scores;
     }
@@ -88,15 +94,4 @@ public class MenuPanel extends JPanel implements ActionListener {
     public JButton getResetButton() {
         return resetButton;
     }
-
-    /**
-     * Gets title.
-     *
-     * @return javax.swing.JLabel, value of title
-     */
-    public JLabel getTitle() {
-        return title;
-    }
 }
-
-

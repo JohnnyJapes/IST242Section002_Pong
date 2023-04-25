@@ -13,16 +13,16 @@ public abstract class Entity {
     // Instance Variables -- define your private data
     private int velocityX;
     private int velocityY;
-
     private Rectangle bounds;
 
+    // Constructor
     public Entity(){
         velocityX = 5;
         velocityY = 5;
         bounds = new Rectangle(50,50, 20, 20);
-
     }
 
+    // No-arg Constructor
     public Entity(int[] coordinates, int velocityX, int velocityY, int[] size){
         this.velocityX = velocityX;
         this.velocityY = velocityY;
@@ -44,14 +44,11 @@ public abstract class Entity {
         bounds = new Rectangle(x, y, w, h);
     }
 
-    // Set methods - one set method for each instance variable defined above
-    //             - purpose is to pass in a value stored in the private variable
 
-
+    // Set Methods
 
     /**
      * Method to set coordinates of entity.
-     *
      * @param coordinates int[] - coordinates
      */
     public void setCoordinates(int[] coordinates) {
@@ -74,9 +71,9 @@ public abstract class Entity {
     public void setYCoordinate(int y){
         bounds.y = y;
     }
+
     /**
-     * Method to set velocity of the x axis.
-     *
+     * Method to set velocity of the x-axis.
      * @param velocity float - velocity
      */
     public void setVelocityX(int velocity) {
@@ -84,19 +81,19 @@ public abstract class Entity {
     }
 
     /**
-     * Method to set velocity of the y axis.
-     *
+     * Method to set velocity of the y-axis.
      * @param velocityY float - velocityY
      */
+
     public void setVelocityY(int velocityY) {
         this.velocityY = velocityY;
     }
 
     /**
      * Method to set size.
-     *
      * @param size int[] - size
      */
+
     public void setSize(int[] size) {
         bounds.width = size[0];
         bounds.height = size[1];
@@ -104,7 +101,6 @@ public abstract class Entity {
 
     /**
      * Method to set bounds, a Rectangle object
-     *
      * @param bounds java.awt.Rectangle - bounds
      */
     public void setBounds(Rectangle bounds) {
@@ -122,8 +118,8 @@ public abstract class Entity {
         Rectangle rect = new Rectangle(x, y, w, h);
         this.bounds = rect;
     }
-    // Get methods - one get method for each instance variable defined above
-    //             - purpose is to return the value stored in the private variable
+
+    // Get methods
 
     /**
      * Method to return x coordinate
@@ -132,6 +128,7 @@ public abstract class Entity {
     public int getXCoordinate() {
         return bounds.x;
     }
+
     /**
      * Method to return Y coordinate
      * @return int - Y coordinate
@@ -142,27 +139,27 @@ public abstract class Entity {
 
     /**
      * Gets velocity.
-     *
      * @return float, value of velocity
      */
+
     public int getVelocityX() {
         return velocityX;
     }
 
     /**
      * Gets velocityY.
-     *
      * @return float, value of velocityY
      */
+
     public int getVelocityY() {
         return velocityY;
     }
 
     /**
      * Gets bounds.
-     *
      * @return java.awt.Rectangle, value of bounds
      */
+
     public Rectangle getBounds() {
         return bounds;
     }
@@ -171,6 +168,7 @@ public abstract class Entity {
      * Method to return width of the entity
      * @return int - width
      */
+
     public int getWidth(){
         return bounds.width;
     }
@@ -182,7 +180,4 @@ public abstract class Entity {
     public int getHeight(){
         return bounds.height;
     }
-    // Additional methods -- such as for calculation, display
 }
-
-

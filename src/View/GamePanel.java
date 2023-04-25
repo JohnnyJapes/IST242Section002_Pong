@@ -12,7 +12,7 @@ import java.awt.*;
 
 public class GamePanel extends JPanel {
 
-    //private JButton startGame;
+    // Instance Variables
     private BallComponent ball;
     private PaddleComponent leftPaddle;
     private PaddleComponent rightPaddle;
@@ -21,30 +21,30 @@ public class GamePanel extends JPanel {
     private NetComponent net;
 
     public GamePanel() {
-        //adding JLabels for scores
+        // Adding JLabels for scores
         scoreBoardP1 = new JLabel("0");
         scoreBoardP1.setBounds(505, 5, 90, 40);
         scoreBoardP1.setForeground(Color.white);
         scoreBoardP1.setFont(new Font(Font.SERIF, Font.BOLD, 50));
         scoreBoardP1.setHorizontalAlignment(SwingConstants.CENTER);
-        //second score
+        // Second score
         scoreBoardP2 = new JLabel("0");
         scoreBoardP2.setBounds(605, 5, 90, 40);
         scoreBoardP2.setForeground(Color.white);
         scoreBoardP2.setFont(new Font(Font.SERIF, Font.BOLD, 50));
         scoreBoardP2.setHorizontalAlignment(SwingConstants.CENTER);
-        //adding spacebar start text
+        // Adding SpaceBar start text
         space = new JLabel("Press Spacebar to Start!");
         space.setBounds(200, 300, 800, 100);
         space.setForeground(Color.red);
         space.setFont(new Font(Font.SERIF, Font.BOLD, 50));
         space.setHorizontalAlignment(SwingConstants.CENTER);
-        //net component
+        // Net component
         net = new NetComponent();
         setLayout(null);
         setSize(1200, 800);
         setBackground(Color.darkGray);
-        //setting initial bounds of paddles and ball
+        // Setting initial bounds of paddles and ball
         ball = new BallComponent(590,400,20,20);
         leftPaddle = new PaddleComponent(50,350,20,100);
         rightPaddle = new PaddleComponent(1130,350,20,100);
@@ -59,26 +59,17 @@ public class GamePanel extends JPanel {
         repaint();
     }
 
-    public GamePanel(BallComponent ball, PaddleComponent leftPaddle, PaddleComponent rightPaddle) {
-        this.ball = ball;
-        this.leftPaddle = leftPaddle;
-        this.rightPaddle = rightPaddle;
-    }
-
-    // Method for updating left paddle
-
     /**
      * Method to repaint the left paddle
      * @param x int
      * @param y int
      * @param w int
      * @param h int
-     */public void loadLeftPaddle(int x, int y, int w, int h){
+     */
+    public void loadLeftPaddle(int x, int y, int w, int h){
         leftPaddle.setBounds(x, y, w, h);
         repaint();
     }
-
-    // Method for updating right paddle
 
     /**
      * Method to repaint the right paddle
@@ -94,34 +85,20 @@ public class GamePanel extends JPanel {
 
     /**
      * Method to repaint the ball
-     * @param xCoordinate int
-     * @param yCoordinate int
-     * @param width int
-     * @param height int
-     */
-    public void loadBall(int xCoordinate, int yCoordinate, int width, int height) {
-
-        ball.setBounds(xCoordinate,yCoordinate,width,height);
-        repaint();
-    }
-
-    /**
-     * Method to repaint the ball
      * @param ballBounds Rectangle object
      */
     public void loadBall(Rectangle ballBounds) {
-
         ball.setBounds(ballBounds);
         repaint();
     }
 
+    // Get BallComponent
     public BallComponent getBallComponent() {
         return this.ball;
     }
 
     /**
      * Gets ball.
-     *
      * @return View.BallComponent, value of ball
      */
     public BallComponent getBall() {
@@ -130,7 +107,6 @@ public class GamePanel extends JPanel {
 
     /**
      * Gets leftPaddle.
-     *
      * @return View.PaddleComponent, value of leftPaddle
      */
     public PaddleComponent getLeftPaddle() {
@@ -139,7 +115,6 @@ public class GamePanel extends JPanel {
 
     /**
      * Gets rightPaddle.
-     *
      * @return View.PaddleComponent, value of rightPaddle
      */
     public PaddleComponent getRightPaddle() {
@@ -148,7 +123,6 @@ public class GamePanel extends JPanel {
 
     /**
      * Gets scoreBoardP1.
-     *
      * @return javax.swing.JLabel, value of scoreBoardP1
      */
     public JLabel getScoreBoardP1() {
@@ -157,7 +131,6 @@ public class GamePanel extends JPanel {
 
     /**
      * Gets scoreBoardP2.
-     *
      * @return javax.swing.JLabel, value of scoreBoardP2
      */
     public JLabel getScoreBoardP2() {
@@ -166,7 +139,6 @@ public class GamePanel extends JPanel {
 
     /**
      * Gets net.
-     *
      * @return View.NetComponent, value of net
      */
     public NetComponent getNet() {
@@ -175,13 +147,11 @@ public class GamePanel extends JPanel {
 
     /**
      * Gets space.
-     *
      * @return javax.swing.JLabel, value of space
      */
     public JLabel getSpace() {
         return space;
     }
-    //set score
 
     /**
      * Method to set the score of either player
