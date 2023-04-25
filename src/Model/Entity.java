@@ -183,12 +183,6 @@ public abstract class Entity {
         return bounds.height;
     }
     // Additional methods -- such as for calculation, display
-
-    public String toString() {
-        // return data as a String
-        return "";
-    }
-
 }
 
 

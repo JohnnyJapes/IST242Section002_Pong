@@ -82,8 +82,6 @@ public class Game {
         ball.setVelocityY(Math.random() < 0.5 ? -5 : 5);
     }
 
-    //get methods
-
     /**
      * Gets ball.
      *

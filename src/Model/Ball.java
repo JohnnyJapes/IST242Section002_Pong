@@ -67,7 +67,7 @@ public class Ball extends Entity {
         float velocity = (float)Math.sqrt(squared(getVelocityX()) + squared(getVelocityY()));
         System.out.println("old Velocity: " +velocity);
         //increase the velocity of the ball so it slowly increases in speed
-        velocity++;
+        velocity += 0.75;
         System.out.println("New Velocity "+velocity);
 
         // Calculate the new velocity of the ball

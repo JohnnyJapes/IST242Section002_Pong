@@ -19,11 +19,6 @@ public class Model {
     public Game getGame() {
         return Game;
     }
-
-    public String toString() {
-        // return data as a String
-        return "";
-    }
 }
 
 
