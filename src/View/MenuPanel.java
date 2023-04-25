@@ -1,4 +1,6 @@
 package View;
+import Model.Model;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
@@ -14,11 +16,13 @@ import java.awt.event.*;
 
 public class MenuPanel extends JPanel implements ActionListener {
     JButton startButton, quitButton, resetButton;
-    JLabel title;
+    JLabel title, scores;
     public MenuPanel() {
         setLayout(new BorderLayout());
         JPanel buttonPanel = new JPanel();
         buttonPanel.setLayout(new FlowLayout(FlowLayout.RIGHT));
+        JPanel scorePanel = new JPanel();
+        scorePanel.setLayout(new FlowLayout(FlowLayout.LEFT));
         startButton = new JButton("Play Pong");
         startButton.setPreferredSize(new Dimension(300, 100));
         startButton.setForeground(Color.darkGray);
@@ -35,6 +39,12 @@ public class MenuPanel extends JPanel implements ActionListener {
         quitButton.setBackground(Color.lightGray);
         buttonPanel.add(quitButton);
         quitButton.addActionListener(e -> System.exit(0));
+        scores = new JLabel("");
+        scores.setPreferredSize(new Dimension(300, 100));
+        scores.setForeground(Color.white);
+        scorePanel.setBackground(Color.darkGray);
+        scorePanel.add(scores);
+        add(scorePanel, BorderLayout.CENTER);
         add(buttonPanel, BorderLayout.SOUTH);
         buttonPanel.setBackground(Color.DARK_GRAY);
         title = new JLabel("Welcome To Pong!");
@@ -54,6 +64,10 @@ public class MenuPanel extends JPanel implements ActionListener {
      */
     public JButton getStartButton() {
         return startButton;
+    }
+
+    public JLabel getScores() {
+        return scores;
     }
 
     /**
