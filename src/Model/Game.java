@@ -1,4 +1,11 @@
 package Model;
+import java.beans.XMLDecoder;
+import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
+import javax.xml.stream.XMLOutputFactory;
+import javax.xml.stream.XMLStreamException;
+import javax.xml.stream.XMLStreamWriter;
 
 /**
  * File name: Game.java
@@ -81,6 +88,34 @@ public class Game {
         ball.setVelocityX(randomDirection * 5);
         ball.setVelocityY(Math.random() < 0.5 ? -5 : 5);
     }
+
+        public void writeScoresToXml() {
+            try {
+                XMLOutputFactory xmlOutputFactory = XMLOutputFactory.newInstance();
+                FileWriter fileWriter = new FileWriter(("Rally.XML"));
+                XMLStreamWriter xmlStreamWriter = xmlOutputFactory.createXMLStreamWriter(fileWriter);
+
+                xmlStreamWriter.writeStartDocument();
+                xmlStreamWriter.writeStartElement("Players Scores");
+
+                xmlStreamWriter.writeStartElement("Player 1");
+                xmlStreamWriter.writeAttribute("P1 Score", String.valueOf(p1Score));
+                xmlStreamWriter.writeEndElement();
+
+                xmlStreamWriter.writeStartElement("Player 2");
+                xmlStreamWriter.writeAttribute("Score", String.valueOf(p2Score));
+                xmlStreamWriter.writeEndElement();
+
+                xmlStreamWriter.writeEndElement();
+                xmlStreamWriter.writeEndDocument();
+
+                xmlStreamWriter.flush();
+                xmlStreamWriter.close();
+                fileWriter.close();
+            } catch (IOException | XMLStreamException e) {
+                e.printStackTrace();
+            }
+        }
 
     /**
      * Gets ball.
