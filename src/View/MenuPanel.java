@@ -13,7 +13,7 @@ import java.awt.event.*;
  */
 
 public class MenuPanel extends JPanel implements ActionListener {
-    JButton startButton, quitButton;
+    JButton startButton, quitButton, resetButton;
     JLabel title;
     public MenuPanel() {
         setLayout(new BorderLayout());
@@ -24,6 +24,11 @@ public class MenuPanel extends JPanel implements ActionListener {
         startButton.setForeground(Color.darkGray);
         startButton.setBackground(Color.lightGray);
         buttonPanel.add(startButton);
+        resetButton = new JButton("Reset Scores");
+        resetButton.setPreferredSize(new Dimension(300, 100));
+        resetButton.setForeground(Color.darkGray);
+        resetButton.setBackground(Color.lightGray);
+        buttonPanel.add(resetButton);
         quitButton = new JButton("Exit");
         quitButton.setPreferredSize(new Dimension(300, 100));
         quitButton.setForeground(Color.darkGray);
@@ -49,6 +54,33 @@ public class MenuPanel extends JPanel implements ActionListener {
      */
     public JButton getStartButton() {
         return startButton;
+    }
+
+    /**
+     * Gets quitButton.
+     *
+     * @return javax.swing.JButton, value of quitButton
+     */
+    public JButton getQuitButton() {
+        return quitButton;
+    }
+
+    /**
+     * Gets resetButton.
+     *
+     * @return javax.swing.JButton, value of resetButton
+     */
+    public JButton getResetButton() {
+        return resetButton;
+    }
+
+    /**
+     * Gets title.
+     *
+     * @return javax.swing.JLabel, value of title
+     */
+    public JLabel getTitle() {
+        return title;
     }
 }
 
