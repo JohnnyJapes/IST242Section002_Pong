@@ -102,7 +102,7 @@ public class Ball extends Entity {
         System.out.println("New VelocityX: " + getVelocityX());
         System.out.println("New VelocityY: " + getVelocityY());
         //move ball outside of paddle before continuing
-        if (directionX > 0) setXCoordinate(50+paddle.getBounds().width);
+        if (directionX > 0) setXCoordinate(paddle.getXCoordinate()+paddle.getBounds().width);
         else setXCoordinate(paddle.getXCoordinate() -1 - getBounds().width);
     }
 
