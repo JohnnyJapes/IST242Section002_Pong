@@ -20,28 +20,13 @@ public class PaddleComponent extends JComponent {
     }
 
     public PaddleComponent(int x, int y, int width, int height) {
-        this.x = x;
-        this.y = y;
-        this.width = width;
-        this.height = height;
+        setBounds(x, y, width, height);
     }
 
-    // Set methods - one set method for each instance variable defined above
-    //             - purpose is to pass in a value stored in the private variable
-    public void setAll(int x, int y, int width, int height) {
-        this.x = x;
-        this.y = y;
-        this.width = width;
-        this.height = height;
-    }
-
-    public boolean collidesWith(BallComponent ball) {
-        Rectangle paddleBounds = getBounds();
-        Rectangle ballBounds = ball.getBounds();
-
-        return paddleBounds.intersects(ballBounds);
-    }
-
+    /**
+     * Method that paints the paddle
+     * @param g the <code>Graphics</code> object to protect
+     */
     public void paintComponent(Graphics g) {
         g.setColor(Color.white);
         g.fillRect(0, 0, getBounds().width, getBounds().height);

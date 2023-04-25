@@ -20,6 +20,10 @@ public class NetComponent extends JComponent {
         setBounds(595, 0, 10, 800);
     }
 
+    /**
+     * Paints the net
+     * @param g the <code>Graphics</code> object to protect
+     */
     public void paintComponent(Graphics g) {
         g.setColor(Color.white);
         for (int i = 0; i < 800; i+=60) {

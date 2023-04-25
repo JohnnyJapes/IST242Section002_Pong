@@ -18,7 +18,7 @@ public class GameFrame extends JFrame {
         playPanel = new GamePanel();
         mP = new MenuPanel();
         add(mP);
-        setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+        setDefaultCloseOperation(DO_NOTHING_ON_CLOSE); //close operation defined in controller
         setSize(1200, 800);
         playPanel.setPreferredSize(new Dimension(1200, 800));
         mP.setPreferredSize(new Dimension(1200, 800));
@@ -45,6 +45,9 @@ public class GameFrame extends JFrame {
         return mP;
     }
 
+    /**
+     * Method to swap to play panel
+     */
     public void activatePlayPanel(){
         getContentPane().removeAll();
         invalidate();
