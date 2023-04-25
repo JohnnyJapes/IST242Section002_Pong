@@ -14,7 +14,7 @@ import java.util.HashSet;
  * Short description: Class to pass data throughout the game/app
  * IST 242 Assignment: GUI Project
  * @author Luke Hanrahan & Brandon Orlando
- * @version 1.0 4/25/2023
+ * @version 1.3 4/25/2023
  */
 
 public class Controller {
@@ -48,10 +48,6 @@ public class Controller {
         addMenuListeners();
         addKeyBindings();
         while(!start) handleStart();
-
-
-
-
         // Thread handles movement so main thread doesn't get locked up, enables both paddles to move at the same time
         Thread pThread = new Thread(new Runnable() {
             @Override
@@ -70,25 +66,6 @@ public class Controller {
                             throw new RuntimeException(e);
                             }
                         }
-
-
-
-                    try {
-                        Thread.sleep(16);
-                    } catch (InterruptedException e) {
-                        throw new RuntimeException(e);
-                    }
-                }
-            }
-        });
-
-        // Thread handles ball so main thread doesn't get locked up
-        Thread bThread = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                System.out.println("Start moveBall thread");
-                while (true) {
-
                     try {
                         Thread.sleep(16);
                     } catch (InterruptedException e) {
@@ -98,12 +75,9 @@ public class Controller {
             }
         });
         pThread.start();
-        //bThread.start();
         model.getGame().resetPositions();
         model.getGame().serveBall();
     }
-
-
     /**
      * Method that moves paddles based on the currentKeys HashSet
      */
@@ -149,6 +123,10 @@ public class Controller {
         }
         view.getGf().getPlayPanel().loadBall(ball.getBounds());
     }
+
+    /**
+     * Method that listens for the space bar to start the game
+     */
     private void handleStart() {
         if (currentKeys.contains(KeyEvent.VK_SPACE)) {
             start = true;
@@ -157,6 +135,9 @@ public class Controller {
 
     }
 
+    /**
+     * Adds all listeners for menu buttons
+     */
     private void addMenuListeners() {
         view.getGf().getmP().getStartButton().addActionListener(new ActionListener() {
             @Override
@@ -181,6 +162,9 @@ public class Controller {
 
     }
 
+    /**
+     * Method Add key bindings using addMotionBind
+     */
     private void addKeyBindings(){
         addMotionBind("UP", KeyEvent.VK_UP);
         addMotionBind("DOWN", KeyEvent.VK_DOWN);
@@ -213,6 +197,9 @@ public class Controller {
         });
     }
 
+    /**
+     * Method to add listener for closing the window. Saves scores on exit
+     */
     private void closeWindow (){
 
         view.getGf().setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
