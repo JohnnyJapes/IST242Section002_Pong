@@ -23,6 +23,7 @@ public class MenuPanel extends JPanel implements ActionListener {
         buttonPanel.setLayout(new FlowLayout(FlowLayout.RIGHT));
         JPanel scorePanel = new JPanel();
         scorePanel.setLayout(new FlowLayout(FlowLayout.LEFT));
+        //adding buttons to south panel
         startButton = new JButton("Play Pong");
         startButton.setPreferredSize(new Dimension(300, 100));
         startButton.setForeground(Color.darkGray);

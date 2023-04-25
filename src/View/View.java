@@ -22,15 +22,15 @@ public class View {
     }
 
 
-
+    /**
+     * Get GameFrame
+     * @return GameFrame
+     */
     public GameFrame getGf() {
         return gf;
     }
 
 
-    // pass in data to initialize variables
-    public View(int data) {
-    }
 }
 
 

@@ -152,6 +152,7 @@ public class Controller {
     private void handleStart() {
         if (currentKeys.contains(KeyEvent.VK_SPACE)) {
             start = true;
+            view.getGf().getPlayPanel().getSpace().setText("");
         }
 
     }
@@ -171,6 +172,7 @@ public class Controller {
                 model.getGame().setP2Score(0);
                 try {
                     model.getGame().writeTextToFile("Player 1: " + model.getGame().getP1Score(), "\n", "Player 2: " + model.getGame().getP2Score());
+                    loadScores();
                 } catch (Error ex) {
                     throw new RuntimeException(ex);
                 }
@@ -229,6 +231,10 @@ public class Controller {
             }
         });
     }
+
+    /**
+     * Method to load scores from txt file
+     */
     private void loadScores(){
         try{
             String input = model.getGame().readTextFromFile();
@@ -246,6 +252,8 @@ public class Controller {
 
             view.getGf().getPlayPanel().setScore('l', model.getGame().getP1Score());
             view.getGf().getPlayPanel().setScore('r', model.getGame().getP2Score());
+            i = input.indexOf('\n');
+            view.getGf().getmP().getScores().setText(input.substring(0, i )+ ", " + input.substring(i+1));
         }
         catch (IOException ex){
             System.out.println(ex);

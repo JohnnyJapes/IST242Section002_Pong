@@ -17,40 +17,44 @@ public class GamePanel extends JPanel {
     private PaddleComponent leftPaddle;
     private PaddleComponent rightPaddle;
     private JLabel scoreBoardP1, scoreBoardP2;
+    private JLabel space;
     private NetComponent net;
 
     public GamePanel() {
-        //startGame = new JButton("Start");
-        //startGame.addActionListener(this);
-        //add(startGame);
+        //adding JLabels for scores
         scoreBoardP1 = new JLabel("0");
         scoreBoardP1.setBounds(505, 5, 90, 40);
         scoreBoardP1.setForeground(Color.white);
         scoreBoardP1.setFont(new Font(Font.SERIF, Font.BOLD, 50));
         scoreBoardP1.setHorizontalAlignment(SwingConstants.CENTER);
-
+        //second score
         scoreBoardP2 = new JLabel("0");
         scoreBoardP2.setBounds(605, 5, 90, 40);
         scoreBoardP2.setForeground(Color.white);
         scoreBoardP2.setFont(new Font(Font.SERIF, Font.BOLD, 50));
         scoreBoardP2.setHorizontalAlignment(SwingConstants.CENTER);
-
+        //adding spacebar start text
+        space = new JLabel("Press Spacebar to Start!");
+        space.setBounds(200, 300, 800, 100);
+        space.setForeground(Color.red);
+        space.setFont(new Font(Font.SERIF, Font.BOLD, 50));
+        space.setHorizontalAlignment(SwingConstants.CENTER);
+        //net component
         net = new NetComponent();
         setLayout(null);
         setSize(1200, 800);
         setBackground(Color.darkGray);
-        ball = new BallComponent(600,400,20,20);
-        leftPaddle = new PaddleComponent(0,0,20,100);
-        rightPaddle = new PaddleComponent(0,0,20,100);
+        //setting initial bounds of paddles and ball
+        ball = new BallComponent(590,400,20,20);
+        leftPaddle = new PaddleComponent(50,350,20,100);
+        rightPaddle = new PaddleComponent(1130,350,20,100);
         add(ball);
         add(leftPaddle);
         add(rightPaddle);
         add(scoreBoardP1);
         add(scoreBoardP2);
+        add(space);
         add(net);
-        leftPaddle.setBounds(50, 350, 20, 100);
-        rightPaddle.setBounds(1130, 350, 20, 100);
-        ball.setBounds(600,400,20,20);
         validate();
         repaint();
     }
@@ -169,6 +173,14 @@ public class GamePanel extends JPanel {
         return net;
     }
 
+    /**
+     * Gets space.
+     *
+     * @return javax.swing.JLabel, value of space
+     */
+    public JLabel getSpace() {
+        return space;
+    }
     //set score
 
     /**
