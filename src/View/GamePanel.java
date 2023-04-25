@@ -17,6 +17,7 @@ public class GamePanel extends JPanel {
     private PaddleComponent leftPaddle;
     private PaddleComponent rightPaddle;
     private JLabel scoreBoardP1, scoreBoardP2;
+    private JLabel space;
     private NetComponent net;
 
     public GamePanel() {
@@ -35,6 +36,12 @@ public class GamePanel extends JPanel {
         scoreBoardP2.setFont(new Font(Font.SERIF, Font.BOLD, 50));
         scoreBoardP2.setHorizontalAlignment(SwingConstants.CENTER);
 
+        space = new JLabel("Press Spacebar to Start!");
+        space.setBounds(200, 300, 800, 100);
+        space.setForeground(Color.red);
+        space.setFont(new Font(Font.SERIF, Font.BOLD, 50));
+        space.setHorizontalAlignment(SwingConstants.CENTER);
+
         net = new NetComponent();
         setLayout(null);
         setSize(1200, 800);
@@ -47,6 +54,7 @@ public class GamePanel extends JPanel {
         add(rightPaddle);
         add(scoreBoardP1);
         add(scoreBoardP2);
+        add(space);
         add(net);
         leftPaddle.setBounds(50, 350, 20, 100);
         rightPaddle.setBounds(1130, 350, 20, 100);
@@ -169,6 +177,14 @@ public class GamePanel extends JPanel {
         return net;
     }
 
+    /**
+     * Gets space.
+     *
+     * @return javax.swing.JLabel, value of space
+     */
+    public JLabel getSpace() {
+        return space;
+    }
     //set score
 
     /**

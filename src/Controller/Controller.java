@@ -152,6 +152,7 @@ public class Controller {
     private void handleStart() {
         if (currentKeys.contains(KeyEvent.VK_SPACE)) {
             start = true;
+            view.getGf().getPlayPanel().getSpace().setText("");
         }
 
     }
