@@ -228,14 +228,26 @@ public class Controller {
             System.out.println(input);
             int i = input.indexOf(':');
             int j = input.indexOf('\n');
-            model.getGame().setP1Score(
-                    Integer.parseInt(input.substring(i+2, j))
-            );
-            i = input.lastIndexOf(':');
-            j = input.lastIndexOf('\n');
-            model.getGame().setP2Score(
-                    Integer.parseInt(input.substring(i+2, j))
-            );
+            try {
+                model.getGame().setP1Score(
+                        Integer.parseInt(input.substring(i + 2, j))
+                );
+                i = input.lastIndexOf(':');
+                j = input.lastIndexOf('\n');
+                model.getGame().setP2Score(
+                        Integer.parseInt(input.substring(i + 2, j))
+                );
+            }
+            catch (NumberFormatException exx){
+                System.out.println("parse error");
+                model.getGame().setP1Score(0);
+                model.getGame().setP2Score(0);
+                model.getGame().writeTextToFile("Player 1: " + model.getGame().getP1Score(), "\n", "Player 2: " + model.getGame().getP2Score());
+                //updates view with scores
+                view.getGf().getPlayPanel().setScore('l', model.getGame().getP1Score());
+                view.getGf().getPlayPanel().setScore('r', model.getGame().getP2Score());
+                view.getGf().getmP().getScores().setText("Player 1: " + model.getGame().getP1Score()+ ", " + "Player 2: " + model.getGame().getP2Score());
+            }
             //updates view with scores
             view.getGf().getPlayPanel().setScore('l', model.getGame().getP1Score());
             view.getGf().getPlayPanel().setScore('r', model.getGame().getP2Score());
@@ -243,6 +255,7 @@ public class Controller {
             view.getGf().getmP().getScores().setText(input.substring(0, i )+ ", " + input.substring(i+1));
         }
         catch (IOException ex){
+            System.out.println("error");
             System.out.println(ex);
             model.getGame().setP1Score(0);
             model.getGame().setP2Score(0);
