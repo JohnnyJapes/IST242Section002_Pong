@@ -231,6 +231,10 @@ public class Controller {
             }
         });
     }
+
+    /**
+     * Method to load scores from txt file
+     */
     private void loadScores(){
         try{
             String input = model.getGame().readTextFromFile();
