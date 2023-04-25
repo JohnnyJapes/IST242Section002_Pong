@@ -236,7 +236,7 @@ public class Controller {
             model.getGame().setP2Score(
                     Integer.parseInt(input.substring(i+2, j))
             );
-
+            //updates view with scores
             view.getGf().getPlayPanel().setScore('l', model.getGame().getP1Score());
             view.getGf().getPlayPanel().setScore('r', model.getGame().getP2Score());
             i = input.indexOf('\n');
