@@ -1,5 +1,9 @@
 package Model;
 
+import View.BallComponent;
+
+import java.awt.*;
+
 /**
  * File name: Paddle.java
  * Short description: Class to create paddle object
@@ -15,7 +19,8 @@ public class Paddle extends Entity{
 
     // Constructors
     public Paddle() {
-        super(new int[]{0, 350}, 1, 5, new int[]{5, 100});
+        super(new int[]{0, 350}, 0, 10, new int[]{20, 100});
+        scoringNetPosition = 0;
 
     }
 
@@ -63,9 +68,16 @@ public class Paddle extends Entity{
         if (direction == 'D'){
             setYCoordinate(getYCoordinate() + getVelocityY());
             //2nd index of size is y coordinate
-            if (getYCoordinate() >= (770 - getSize()[1])) setYCoordinate(770 - getSize()[1]);
+            if (getYCoordinate() >= (800 - getBounds().height)) setYCoordinate(800 - getBounds().height);
         }
         //System.out.println("New Y (Down): " + getYCoordinate());
+    }
+
+    public boolean collidesWith(Ball ball) {
+        Rectangle paddleBounds = getBounds();
+        Rectangle ballBounds = ball.getBounds();
+
+        return paddleBounds.intersects(ballBounds);
     }
 }
 

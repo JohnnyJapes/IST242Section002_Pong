@@ -49,8 +49,9 @@ public class Controller {
         game = true;
         ballComponent = view.getGf().getPlayPanel().getBallComponent();
         addMenuListeners();
-        while(!start) System.out.println("wait");
         addKeyBindings();
+        while(!start) handleStart();
+
 
 
 
@@ -58,10 +59,23 @@ public class Controller {
         Thread pThread = new Thread(new Runnable() {
             @Override
             public void run() {
-                System.out.println("Start paddle movement Thread");
+                System.out.println("start pThread");
                 while (true) {
                     handleMovement();
-                    //model.getGame().checkBallOffScreen();
+                    moveBall();
+                    if(model.getGame().checkBallOffScreen()){
+                        view.getGf().getPlayPanel().setScore('l', model.getGame().getP1Score());
+                        view.getGf().getPlayPanel().setScore('r', model.getGame().getP2Score());
+                        model.getGame().serveBall();
+                        try {
+                            Thread.sleep(150);
+                        } catch (InterruptedException e) {
+                            throw new RuntimeException(e);
+                            }
+                        }
+
+
+
                     try {
                         Thread.sleep(16);
                     } catch (InterruptedException e) {
@@ -77,7 +91,7 @@ public class Controller {
             public void run() {
                 System.out.println("Start moveBall thread");
                 while (true) {
-                    moveBall();
+
                     try {
                         Thread.sleep(16);
                     } catch (InterruptedException e) {
@@ -87,44 +101,61 @@ public class Controller {
             }
         });
         pThread.start();
-        bThread.start();
+        //bThread.start();
+        model.getGame().resetPositions();
+        model.getGame().serveBall();
     }
 
-    private void primaryLoop(){
-        handleMovement();
-        moveBall();
-        checkScores();
-    }
+
+    /**
+     * Method that moves paddles based on the currentKeys HashSet
+     */
     private void handleMovement(){
-        if (currentKeys.contains(KeyEvent.VK_SPACE)) {
-
-        }
-
         if (currentKeys.contains(38)) {
             rightPaddle.movePaddle('U');
-            view.getGf().getPlayPanel().loadRightPaddle(rightPaddle.getXCoordinate(),rightPaddle.getYCoordinate(), rightPaddle.getSize()[0], rightPaddle.getSize()[1]);
+            view.getGf().getPlayPanel().loadRightPaddle(rightPaddle.getBounds().x,rightPaddle.getBounds().y, rightPaddle.getBounds().width, rightPaddle.getBounds().height);
         }
         //add if statements for other keys
         if (currentKeys.contains(40)){
             rightPaddle.movePaddle('D');
-            view.getGf().getPlayPanel().loadRightPaddle(rightPaddle.getXCoordinate(),rightPaddle.getYCoordinate(), rightPaddle.getSize()[0], rightPaddle.getSize()[1]);
+            view.getGf().getPlayPanel().loadRightPaddle(rightPaddle.getBounds().x,rightPaddle.getBounds().y, rightPaddle.getBounds().width, rightPaddle.getBounds().height);
         }
         if (currentKeys.contains(87)){
             leftPaddle.movePaddle('U');
-            view.getGf().getPlayPanel().loadLeftPaddle(leftPaddle.getXCoordinate(),leftPaddle.getYCoordinate(), leftPaddle.getSize()[0], leftPaddle.getSize()[1]);
+            view.getGf().getPlayPanel().loadLeftPaddle(leftPaddle.getBounds().x, leftPaddle.getBounds().y, leftPaddle.getBounds().width, leftPaddle.getBounds().height);
         }
         if (currentKeys.contains(KeyEvent.VK_S)){
             leftPaddle.movePaddle('D');
-            view.getGf().getPlayPanel().loadLeftPaddle(leftPaddle.getXCoordinate(),leftPaddle.getYCoordinate(), leftPaddle.getSize()[0], leftPaddle.getSize()[1]);
+            view.getGf().getPlayPanel().loadLeftPaddle(leftPaddle.getBounds().x,leftPaddle.getBounds().y, leftPaddle.getBounds().width, leftPaddle.getBounds().height);
         }
     }
 
 
-
+    /**
+     * Method that handles all ball related movement
+     */
     private void moveBall() {
-        view.getGf().getPlayPanel().loadBall(ball.getXCoordinate(), ball.getYCoordinate(), ballComponent.getWidth(), ballComponent.getHeight());
+        ball.move();
+
+        // Check for collisions with left paddle
+        if (leftPaddle.collidesWith(ball)) {
+            System.out.println("Left Paddle Collision");
+            ball.bounceOffPaddle(leftPaddle);
+            System.out.println(" ");
+        }
+
+        // Check for collisions with right paddle
+        if (rightPaddle.collidesWith(ball)) {
+            System.out.println("Right Paddle Collision");
+            ball.bounceOffPaddle(rightPaddle);
+            System.out.println(" ");
+        }
+        view.getGf().getPlayPanel().loadBall(ball.getBounds());
     }
-    private void checkScores() {
+    private void handleStart() {
+        if (currentKeys.contains(KeyEvent.VK_SPACE)) {
+            start = true;
+        }
 
     }
 
@@ -133,18 +164,18 @@ public class Controller {
             @Override
             public void actionPerformed(ActionEvent e) {
                 view.getGf().activatePlayPanel();
-                start = true;
+                //start = true;
             }
         });
 
     }
 
     private void addKeyBindings(){
-        addMotionBind("SPACE", KeyEvent.VK_SPACE);
         addMotionBind("UP", KeyEvent.VK_UP);
         addMotionBind("DOWN", KeyEvent.VK_DOWN);
         addMotionBind("W", KeyEvent.VK_W);
         addMotionBind("S", KeyEvent.VK_S);
+        addMotionBind("SPACE", KeyEvent.VK_SPACE);
     }
 
     /**

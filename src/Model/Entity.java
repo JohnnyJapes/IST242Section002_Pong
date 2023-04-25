@@ -1,33 +1,48 @@
 package Model;
 
+import java.awt.*;
+
 /**
  * File name: Entity.java
  * Short description: Abstract class to manage entities (position, speed, etc.)
  * IST 242 Assignment: GUI Project
  * @author Luke Hanrahan & Brandon Orlando
- * @version 1.0 3/27/23
+ * @version 1.3 4/23/23
  */
 
 public abstract class Entity {
     // Instance Variables -- define your private data
-    private int[] coordinates;
     private int velocityX;
     private int velocityY;
-    private int[] size;
+
+    private Rectangle bounds;
 
     public Entity(){
-        coordinates = new int[]{50, 50};
-        size = new int[]{2,2};
         velocityX = 5;
         velocityY = 5;
+        bounds = new Rectangle(50,50, 20, 20);
 
     }
 
     public Entity(int[] coordinates, int velocityX, int velocityY, int[] size){
-        this.coordinates = coordinates;
         this.velocityX = velocityX;
         this.velocityY = velocityY;
-        this.size = size;
+        bounds = new Rectangle(coordinates[0], coordinates[1], size[0], size[1]);
+    }
+
+    /**
+     * Alternate constructor
+     * @param x int - x position
+     * @param y int - y position
+     * @param w int - width of entity
+     * @param h int - height of entity
+     * @param vX int - velocity on x-axis
+     * @param vY int - velocity on y-axis
+     */
+    public Entity(int x, int y, int w, int h, int vX, int vY){
+        this.velocityX = vX;
+        this.velocityY = vY;
+        bounds = new Rectangle(x, y, w, h);
     }
 
     // Set methods - one set method for each instance variable defined above
@@ -36,12 +51,13 @@ public abstract class Entity {
 
 
     /**
-     * Method to set coordinates.
+     * Method to set coordinates of entity.
      *
      * @param coordinates int[] - coordinates
      */
     public void setCoordinates(int[] coordinates) {
-        this.coordinates = coordinates;
+        bounds.x = coordinates[0];
+        bounds.y = coordinates[1];
     }
 
     /**
@@ -49,7 +65,7 @@ public abstract class Entity {
      * @param x - int, set x coordinate
      */
     public void setXCoordinate(int x){
-        coordinates[0] = x;
+        bounds.x = x;
     }
 
     /**
@@ -57,10 +73,10 @@ public abstract class Entity {
      * @param y - int, set y coordinate
      */
     public void setYCoordinate(int y){
-        coordinates[1] = y;
+        bounds.y = y;
     }
     /**
-     * Method to set velocity.
+     * Method to set velocity of the x axis.
      *
      * @param velocity float - velocity
      */
@@ -69,7 +85,7 @@ public abstract class Entity {
     }
 
     /**
-     * Method to set velocityY.
+     * Method to set velocity of the y axis.
      *
      * @param velocityY float - velocityY
      */
@@ -83,33 +99,46 @@ public abstract class Entity {
      * @param size int[] - size
      */
     public void setSize(int[] size) {
-        this.size = size;
+        bounds.width = size[0];
+        bounds.height = size[1];
+    }
+
+    /**
+     * Method to set bounds, a Rectangle object
+     *
+     * @param bounds java.awt.Rectangle - bounds
+     */
+    public void setBounds(Rectangle bounds) {
+        this.bounds = bounds;
+    }
+
+    /**
+     * Alternate method to set bounds of the entity
+     * @param x int - x coordinate
+     * @param y int - y coordinate
+     * @param w int - width of entity
+     * @param h int - height of entity
+     */
+    public void setBounds(int x, int y, int w, int h) {
+        Rectangle rect = new Rectangle(x, y, w, h);
+        this.bounds = rect;
     }
     // Get methods - one get method for each instance variable defined above
     //             - purpose is to return the value stored in the private variable
-
-    /**
-     * Gets coordinates.
-     *
-     * @return int[], value of coordinates
-     */
-    public int[] getCoordinates() {
-        return coordinates;
-    }
 
     /**
      * Method to return x coordinate
      * @return int - x coordinate
      */
     public int getXCoordinate() {
-        return coordinates[0];
+        return bounds.x;
     }
     /**
      * Method to return Y coordinate
      * @return int - Y coordinate
      */
     public int getYCoordinate() {
-        return coordinates[1];
+        return bounds.y;
     }
 
     /**
@@ -131,14 +160,29 @@ public abstract class Entity {
     }
 
     /**
-     * Gets size.
+     * Gets bounds.
      *
-     * @return int[], value of size
+     * @return java.awt.Rectangle, value of bounds
      */
-    public int[] getSize() {
-        return size;
+    public Rectangle getBounds() {
+        return bounds;
     }
 
+    /**
+     * Method to return width of the entity
+     * @return int - width
+     */
+    public int getWidth(){
+        return bounds.width;
+    }
+
+    /**
+     * Method to return height of the entity
+     * @return int - height
+     */
+    public int getHeight(){
+        return bounds.height;
+    }
     // Additional methods -- such as for calculation, display
 
     public String toString() {
