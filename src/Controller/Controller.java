@@ -5,9 +5,7 @@ import Model.Paddle;
 import Model.Ball;
 import View.BallComponent;
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
+import java.awt.event.*;
 import java.util.HashSet;
 
 /**
@@ -44,6 +42,7 @@ public class Controller {
         currentKeys = new HashSet<>();
         game = true;
         ballComponent = view.getGf().getPlayPanel().getBallComponent();
+        closeWindow();
         addMenuListeners();
         addKeyBindings();
         while(!start) handleStart();
@@ -197,6 +196,26 @@ public class Controller {
             }
         });
     }
+
+    private void closeWindow (){
+
+        view.getGf().setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
+        view.getGf().addWindowListener(new WindowAdapter() {
+            /**
+             * Invoked when a window is in the process of being closed.
+             * The close operation can be overridden at this point.
+             *
+             * @param e
+             */
+            @Override
+            public void windowClosing(WindowEvent e) {
+                super.windowClosing(e);
+                //model.getGame().writeScoresToXML()
+                System.exit(0);
+            }
+        });
+    }
+
 }
 
 

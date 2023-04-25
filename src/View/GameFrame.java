@@ -18,7 +18,7 @@ public class GameFrame extends JFrame {
         playPanel = new GamePanel();
         mP = new MenuPanel();
         add(mP);
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         setSize(1200, 800);
         playPanel.setPreferredSize(new Dimension(1200, 800));
         mP.setPreferredSize(new Dimension(1200, 800));
