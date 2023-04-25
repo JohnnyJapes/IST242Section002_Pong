@@ -210,7 +210,7 @@ public class Controller {
             @Override
             public void windowClosing(WindowEvent e) {
                 super.windowClosing(e);
-                model.getGame().writeScoresToXml();
+                model.getGame().writeTextToFile("Player 1: " + model.getGame().getP1Score(), "\n", "Player 2: " + model.getGame().getP2Score());;
                 System.exit(0);
             }
         });

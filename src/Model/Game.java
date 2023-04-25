@@ -1,11 +1,5 @@
 package Model;
-import java.beans.XMLDecoder;
 import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
-import javax.xml.stream.XMLOutputFactory;
-import javax.xml.stream.XMLStreamException;
-import javax.xml.stream.XMLStreamWriter;
 
 /**
  * File name: Game.java
@@ -89,33 +83,30 @@ public class Game {
         ball.setVelocityY(Math.random() < 0.5 ? -5 : 5);
     }
 
-        public void writeScoresToXml() {
-            try {
-                XMLOutputFactory xmlOutputFactory = XMLOutputFactory.newInstance();
-                FileWriter fileWriter = new FileWriter(("Rally.XML"));
-                XMLStreamWriter xmlStreamWriter = xmlOutputFactory.createXMLStreamWriter(fileWriter);
-
-                xmlStreamWriter.writeStartDocument();
-                xmlStreamWriter.writeStartElement("Players_Scores");
-
-                xmlStreamWriter.writeStartElement("Player_1");
-                xmlStreamWriter.writeAttribute("Score", String.valueOf(p1Score));
-                xmlStreamWriter.writeEndElement();
-
-                xmlStreamWriter.writeStartElement("Player_2");
-                xmlStreamWriter.writeAttribute("Score", String.valueOf(p2Score));
-                xmlStreamWriter.writeEndElement();
-
-                xmlStreamWriter.writeEndElement();
-                xmlStreamWriter.writeEndDocument();
-
-                xmlStreamWriter.flush();
-                xmlStreamWriter.close();
-                fileWriter.close();
-            } catch (IOException | XMLStreamException e) {
-                e.printStackTrace();
-            }
+    public static void writeTextToFile(String p1, String space,String p2) {
+        try {
+            FileWriter writer = new FileWriter("Rally.txt");
+            writer.write(p1);
+            writer.write(space);
+            writer.write(p2);
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
+    }
+
+    public static String readTextFromFile() throws IOException {
+        File file = new File("Rally.txt");
+        BufferedReader reader = new BufferedReader(new FileReader(file));
+        StringBuilder stringBuilder = new StringBuilder();
+        String scores;
+        while ((scores = reader.readLine()) != null) {
+            stringBuilder.append(scores);
+            stringBuilder.append(System.lineSeparator());
+        }
+        reader.close();
+        return stringBuilder.toString();
+    }
 
     /**
      * Gets ball.
