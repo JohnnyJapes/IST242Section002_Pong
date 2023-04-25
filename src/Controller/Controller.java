@@ -222,53 +222,33 @@ public class Controller {
     /**
      * Method to load scores from txt file
      */
-    private void loadScores(){
-        try{
+    private void loadScores() {
+        try {
             String input = model.getGame().readTextFromFile();
             System.out.println(input);
-            int i = input.indexOf(':');
-            int j = input.indexOf('\n');
-            try {
-                model.getGame().setP1Score(
-                        Integer.parseInt(input.substring(i + 2, j))
-                );
-                i = input.lastIndexOf(':');
-                j = input.lastIndexOf('\n');
-                model.getGame().setP2Score(
-                        Integer.parseInt(input.substring(i + 2, j))
-                );
-            }
-            catch (NumberFormatException exx){
-                System.out.println("parse error");
-                model.getGame().setP1Score(0);
-                model.getGame().setP2Score(0);
-                model.getGame().writeTextToFile("Player 1: " + model.getGame().getP1Score(), "\n", "Player 2: " + model.getGame().getP2Score());
-                //updates view with scores
-                view.getGf().getPlayPanel().setScore('l', model.getGame().getP1Score());
-                view.getGf().getPlayPanel().setScore('r', model.getGame().getP2Score());
-                view.getGf().getmP().getScores().setText("Player 1: " + model.getGame().getP1Score()+ ", " + "Player 2: " + model.getGame().getP2Score());
-            }
-            //updates view with scores
-            view.getGf().getPlayPanel().setScore('l', model.getGame().getP1Score());
-            view.getGf().getPlayPanel().setScore('r', model.getGame().getP2Score());
-            i = input.indexOf('\n');
-            view.getGf().getmP().getScores().setText(input.substring(0, i )+ ", " + input.substring(i+1));
-        }
-        catch (IOException ex){
+            String[] lines = input.split("\\r?\\n");
+            String[] p1Tokens = lines[0].split(":");
+            String[] p2Tokens = lines[1].split(":");
+            int p1Score = Integer.parseInt(p1Tokens[1].trim());
+            int p2Score = Integer.parseInt(p2Tokens[1].trim());
+            model.getGame().setP1Score(p1Score);
+            model.getGame().setP2Score(p2Score);
+            // Updates view with scores
+            view.getGf().getPlayPanel().setScore('l', p1Score);
+            view.getGf().getPlayPanel().setScore('r', p2Score);
+            view.getGf().getmP().getScores().setText("Player 1: " + p1Score + ", " + "Player 2: " + p2Score);
+        } catch (IOException | NumberFormatException ex) {
             System.out.println("error");
             System.out.println(ex);
             model.getGame().setP1Score(0);
             model.getGame().setP2Score(0);
             model.getGame().writeTextToFile("Player 1: " + model.getGame().getP1Score(), "\n", "Player 2: " + model.getGame().getP2Score());
-            //updates view with scores
+            // updates view with scores
             view.getGf().getPlayPanel().setScore('l', model.getGame().getP1Score());
             view.getGf().getPlayPanel().setScore('r', model.getGame().getP2Score());
-            view.getGf().getmP().getScores().setText("Player 1: " + model.getGame().getP1Score()+ ", " + "Player 2: " + model.getGame().getP2Score());
-
+            view.getGf().getmP().getScores().setText("Player 1: " + model.getGame().getP1Score() + ", " + "Player 2: " + model.getGame().getP2Score());
         }
-
     }
-
 }
 
 
