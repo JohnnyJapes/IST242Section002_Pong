@@ -1,13 +1,11 @@
 package Model;
 
-import View.PaddleComponent;
-
 /**
  * File name: Ball.java
  * Short description: Class to create ball object
  * IST 242 Assignment: GUI Project
  * @author Luke Hanrahan & Brandon Orlando
- * @version 1.4 4/23/23
+ * @version 1.4 4/25/2023
  */
 
 public class Ball extends Entity {

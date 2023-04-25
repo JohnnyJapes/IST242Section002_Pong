@@ -5,7 +5,7 @@ package Model;
  * Short description: Class to track player scores and write to XML, etc.
  * IST 242 Assignment: GUI Project
  * @author Luke Hanrahan & Brandon Orlando
- * @version 1.0 3/27/23
+ * @version 1.0 4/25/2023
  */
 public class Model {
 

@@ -7,7 +7,7 @@ import java.awt.*;
  * Short description: Panel to display Pong game
  * IST 242 Assignment: GUI Project
  * @author Luke Hanrahan & Brandon Orlando
- * @version 1.5 4/24/23
+ * @version 1.5 4/25/2023
  */
 
 public class GamePanel extends JPanel {

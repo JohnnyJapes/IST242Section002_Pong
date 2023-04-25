@@ -7,7 +7,7 @@ import java.awt.*;
  * Short description: Frame to contain GamePanel
  * IST 242 Assignment: GUI Project
  * @author Luke Hanrahan & Brandon Orlando
- * @version 1.0 3/27/23
+ * @version 1.0 4/25/2023
  */
 
 public class GameFrame extends JFrame {

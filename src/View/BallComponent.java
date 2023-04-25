@@ -2,6 +2,14 @@ package View;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * File name: BallComponent.java
+ * Short description: Component class to draw ball
+ * IST 242 Assignment: GUI Project
+ * @author Luke Hanrahan & Brandon Orlando
+ * @version 1.0 4/25/2023
+ */
+
 public class BallComponent extends JComponent {
     private int x, y, width, height;
     private int velocityX, velocityY;

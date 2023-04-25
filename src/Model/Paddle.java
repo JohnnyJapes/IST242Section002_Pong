@@ -1,7 +1,4 @@
 package Model;
-
-import View.BallComponent;
-
 import java.awt.*;
 
 /**
@@ -9,7 +6,7 @@ import java.awt.*;
  * Short description: Class to create paddle object
  * IST 242 Assignment: GUI Project
  * @author Luke Hanrahan & Brandon Orlando
- * @version 1.0 3/27/23
+ * @version 1.0 4/25/2023
  */
 
 public class Paddle extends Entity{

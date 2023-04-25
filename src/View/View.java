@@ -1,15 +1,11 @@
 package View;
 
-import Model.Paddle;
-
-import java.awt.*;
-
 /**
  * File name: View.java
  * Short description: View to contain frames & panels
  * IST 242 Assignment: GUI Project
  * @author Luke Hanrahan & Brandon Orlando
- * @version 1.0 3/27/23
+ * @version 1.0 4/25/2023
  */
 
 public class View {

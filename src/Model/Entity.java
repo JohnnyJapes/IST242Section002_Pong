@@ -1,5 +1,4 @@
 package Model;
-
 import java.awt.*;
 
 /**
@@ -7,7 +6,7 @@ import java.awt.*;
  * Short description: Abstract class to manage entities (position, speed, etc.)
  * IST 242 Assignment: GUI Project
  * @author Luke Hanrahan & Brandon Orlando
- * @version 1.3 4/23/23
+ * @version 1.3 4/25/2023
  */
 
 public abstract class Entity {

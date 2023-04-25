@@ -4,14 +4,10 @@ import Model.Model;
 import Model.Paddle;
 import Model.Ball;
 import View.BallComponent;
-
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.sql.Time;
-import java.util.Collection;
 import java.util.HashSet;
 
 /**
@@ -19,7 +15,7 @@ import java.util.HashSet;
  * Short description: Class to pass data throughout the game/app
  * IST 242 Assignment: GUI Project
  * @author Luke Hanrahan & Brandon Orlando
- * @version 1.0 3/27/23
+ * @version 1.0 4/25/2023
  */
 
 public class Controller {

@@ -1,5 +1,4 @@
 package View;
-
 import javax.swing.*;
 import java.awt.*;
 
@@ -8,7 +7,7 @@ import java.awt.*;
  * Short description: Component to draw simple net graphic
  * IST 242 Assignment: GUI Project
  * @author Luke Hanrahan & Brandon Orlando
- * @version 1.0 4/24/23
+ * @version 1.0 4/25/2023
  */
 
 public class NetComponent extends JComponent {

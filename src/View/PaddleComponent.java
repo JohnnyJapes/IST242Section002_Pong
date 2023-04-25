@@ -1,10 +1,11 @@
 package View;
-/*
- * Filename: PaddleComponent.java
- * Short description:
- * IST 242 Assignment:
- * @author  Brandon Orlando & Luke Hanrahan
- * @version 3/30/23
+
+/**
+ * File name: PaddleComponent.java
+ * Short description: Component class to draw paddle
+ * IST 242 Assignment: GUI Project
+ * @author Luke Hanrahan & Brandon Orlando
+ * @version 1.0 4/25/2023
  */
 import javax.swing.*;
 import java.awt.*;
