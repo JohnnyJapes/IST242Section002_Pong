@@ -6,6 +6,7 @@ import Model.Ball;
 import View.BallComponent;
 import javax.swing.*;
 import java.awt.event.*;
+import java.io.IOException;
 import java.util.HashSet;
 
 /**
@@ -160,6 +161,18 @@ public class Controller {
             public void actionPerformed(ActionEvent e) {
                 view.getGf().activatePlayPanel();
                 //start = true;
+            }
+        });
+        view.getGf().getmP().getResetButton().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                model.getGame().setP1Score(0);
+                model.getGame().setP2Score(0);
+                try {
+                    model.getGame().writeTextToFile("Player 1: " + model.getGame().getP1Score(), "\n", "Player 2: " + model.getGame().getP2Score());
+                } catch (Error ex) {
+                    throw new RuntimeException(ex);
+                }
             }
         });
 
