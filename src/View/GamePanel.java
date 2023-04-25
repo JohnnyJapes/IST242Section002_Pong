@@ -25,13 +25,13 @@ public class GamePanel extends JPanel {
         setLayout(null);
         setBackground(Color.darkGray);
         ball = new BallComponent(600,400,20,20);
-        leftPaddle = new PaddleComponent(0,0,20,100);
-        rightPaddle = new PaddleComponent(0,0,20,100);
+        leftPaddle = new PaddleComponent(0,335,20,100);
+        rightPaddle = new PaddleComponent(0,335,20,100);
         add(ball);
         add(leftPaddle);
         add(rightPaddle);
-        leftPaddle.setBounds(90, 0, 20, 100);
-        rightPaddle.setBounds(1090, 0, 20, 100);
+        leftPaddle.setBounds(90, 335, 20, 100);
+        rightPaddle.setBounds(1090, 335, 20, 100);
         ball.setBounds(600,400,20,20);
         validate();
         repaint();

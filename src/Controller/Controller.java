@@ -58,10 +58,10 @@ public class Controller {
         Thread pThread = new Thread(new Runnable() {
             @Override
             public void run() {
-                System.out.println("start pThread");
+                System.out.println("Start paddle movement Thread");
                 while (true) {
                     handleMovement();
-                    model.getGame().checkBallOffScreen();
+                    //model.getGame().checkBallOffScreen();
                     try {
                         Thread.sleep(16);
                     } catch (InterruptedException e) {
@@ -96,6 +96,10 @@ public class Controller {
         checkScores();
     }
     private void handleMovement(){
+        if (currentKeys.contains(KeyEvent.VK_SPACE)) {
+
+        }
+
         if (currentKeys.contains(38)) {
             rightPaddle.movePaddle('U');
             view.getGf().getPlayPanel().loadRightPaddle(rightPaddle.getXCoordinate(),rightPaddle.getYCoordinate(), rightPaddle.getSize()[0], rightPaddle.getSize()[1]);
@@ -136,6 +140,7 @@ public class Controller {
     }
 
     private void addKeyBindings(){
+        addMotionBind("SPACE", KeyEvent.VK_SPACE);
         addMotionBind("UP", KeyEvent.VK_UP);
         addMotionBind("DOWN", KeyEvent.VK_DOWN);
         addMotionBind("W", KeyEvent.VK_W);
