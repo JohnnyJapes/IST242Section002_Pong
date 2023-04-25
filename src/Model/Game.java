@@ -24,28 +24,35 @@ public class Game {
         p2Score = 0;
         winScore = 0;
         highestScore = 0;
+        resetPositions();
     }
 
     // Checks if the ball goes off the screen and updates the score accordingly.
-    public void checkBallOffScreen() {
-        System.out.println("Checking ball");
-        if (ball.getXCoordinate() < 0) {
+
+    /**
+     * Method to check if the ball goes off screen and update scores accordingly
+     * @return boolean - true if score happened, otherwise false
+     */
+    public boolean checkBallOffScreen() {
+        //System.out.println("Checking ball");
+        if (ball.getXCoordinate() < -20) {
             // Ball went off the left side, player two scores
             p2Score++;
             System.out.println("Player Two Score: " + p2Score);
-            //resetPositions();
+            return true;
         } else if (ball.getXCoordinate() > 1200) {
             // Ball went off the right side, player one scores
             p1Score++;
             System.out.println("Player One Score: " + p1Score);
-            //resetPositions();
+            return true;
         }
+        return false;
     }
 
     public void resetPositions() {
         // Reset the ball to the center of the screen
-        ball.setXCoordinate(600 - ball.getSize()[0]/2);
-        ball.setYCoordinate(400 - ball.getSize()[1]/2);
+        ball.setXCoordinate(600 - ball.getBounds().width/2);
+        ball.setYCoordinate(400 - ball.getBounds().height/2);
         ball.setVelocityX(0);
         ball.setVelocityY(0);
 
@@ -54,13 +61,25 @@ public class Game {
         leftPaddle.setYCoordinate(350);
 
         // Reset rightPaddle to its starting position
-        rightPaddle.setXCoordinate(1200 - rightPaddle.getSize()[0] - 50);
+        rightPaddle.setXCoordinate(1200 - rightPaddle.getBounds().width - 50);
         rightPaddle.setYCoordinate(350);
     }
 
     //clear the point totals of both players
     public void resetPoints() {
 
+    }
+
+    public void serveBall (){
+        //resetPositions();
+        // Reset the ball to the center of the screen
+        ball.setXCoordinate(600 - ball.getBounds().width/2);
+        ball.setYCoordinate(400 - ball.getBounds().height/2);
+        ball.setVelocityX(0);
+        ball.setVelocityY(0);
+        int randomDirection = Math.random() < 0.5 ? -1 : 1; // Randomly choose left or right direction
+        ball.setVelocityX(randomDirection * 5);
+        ball.setVelocityY(Math.random() < 0.5 ? -5 : 5);
     }
 
     //get methods
