@@ -10,9 +10,7 @@ package View;
 
 public class View {
     // Instance Variables -- define your private data
-    private MainFrame mf;
     private GameFrame gf;
-    private GamePanel gp;
 
     // Constructors
     public View() {
@@ -23,9 +21,7 @@ public class View {
         gf = new GameFrame();
     }
 
-    public MainFrame getMf() {
-        return mf;
-    }
+
 
     public GameFrame getGf() {
         return gf;

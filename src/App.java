@@ -1,7 +1,6 @@
 import Controller.Controller;
 import Model.Model;
 import View.View;
-import View.MainFrame;
 
 /**
  * File name: App.java
