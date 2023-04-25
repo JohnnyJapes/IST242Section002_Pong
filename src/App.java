@@ -24,69 +24,60 @@ public static void main(String[] args) {
 }
 
 /* Output
+/usr/lib/jvm/jdk-17/bin/java -javaagent:/home/luke/ideajava/idea-IC-223.8214.52/lib/idea_rt.jar=46841:/home/luke/ideajava/idea-IC-223.8214.52/bin -Dfile.encoding=UTF-8 -classpath /home/luke/Documents/IST242/Assignments/IST242Section002_Pong/test/production/IST242Section002_Pong App
+Player 1: 0
+Player 2: 0
+
 start pThread
-Left Paddle Collision
-Ball Center: 140
-Paddle center: 140
-old Velocity: 7.071068
-New Velocity 7.821068
-Percent X: 1.0
-New VelocityX: 11
-New VelocityY: 0
-
-Right Paddle Collision
-Ball Center: 140
-Paddle center: 170
-old Velocity: 11.0
-New Velocity 11.75
-Percent X: 0.4
-New VelocityX: -7
-New VelocityY: -10
-
-bottom collision
+Top Collision
 Player Two Score: 1
-bottom collision
+Bottom Collision
+Player Two Score: 2
+Bottom Collision
 Left Paddle Collision
 Ball Center: 660
-Paddle center: 670
+Paddle center: 650
 old Velocity: 7.071068
 New Velocity 7.821068
 Percent X: 0.8
 New VelocityX: 9
-New VelocityY: -2
+New VelocityY: 2
 
+Bottom Collision
 Right Paddle Collision
-Ball Center: 428
-Paddle center: 440
+Ball Center: 690
+Paddle center: 700
 old Velocity: 9.219544
 New Velocity 9.969544
-Percent X: 0.76
+Percent X: 0.8
 New VelocityX: -11
 New VelocityY: -3
 
+Player Two Score: 3
+Bottom Collision
 Left Paddle Collision
-Ball Center: 143
-Paddle center: 190
-old Velocity: 11.401754
-New Velocity 12.151754
-Percent X: 0.4
-New VelocityX: 7
-New VelocityY: -10
-
-bottom collision
-Player One Score: 1
-bottom collision
-Left Paddle Collision
-Ball Center: 660
-Paddle center: 640
+Ball Center: 645
+Paddle center: 700
 old Velocity: 7.071068
 New Velocity 7.821068
-Percent X: 0.6
-New VelocityX: 7
-New VelocityY: 4
+Percent X: 0.4
+New VelocityX: 4
+New VelocityY: -7
 
-bottom collision
-Player One Score: 2
+Top Collision
+Bottom Collision
+Right Paddle Collision
+Ball Center: 328
+Paddle center: 270
+old Velocity: 8.062258
+New Velocity 8.812258
+Percent X: 0.4
+New VelocityX: 5
+New VelocityY: 7
+
+Player One Score: 1
+Bottom Collision
+Player Two Score: 4
 
 Process finished with exit code 0
  */
