@@ -83,7 +83,7 @@ public class Game {
         ball.setVelocityY(Math.random() < 0.5 ? -5 : 5);
     }
 
-    public static void writeTextToFile(String p1, String space,String p2) {
+    public void writeTextToFile(String p1, String space,String p2) {
         try {
             FileWriter writer = new FileWriter("Rally.txt");
             writer.write(p1);
@@ -95,7 +95,7 @@ public class Game {
         }
     }
 
-    public static String readTextFromFile() throws IOException {
+    public String readTextFromFile() throws IOException {
         File file = new File("Rally.txt");
         BufferedReader reader = new BufferedReader(new FileReader(file));
         StringBuilder stringBuilder = new StringBuilder();
