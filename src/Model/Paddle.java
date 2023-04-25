@@ -11,65 +11,51 @@ import java.awt.*;
 
 public class Paddle extends Entity{
     // Instance Variables -- define your private data
-
     private int scoringNetPosition;
 
     // Constructors
     public Paddle() {
         super(new int[]{0, 350}, 0, 10, new int[]{20, 100});
         scoringNetPosition = 0;
-
     }
 
 
-    // pass in data to initialize variables
-    public Paddle (int data) {
-    }
-
-    // Set methods - one set method for each instance variable defined above
-    //             - purpose is to pass in a value stored in the private variable
+   // Set Methods
 
     /**
      * Method to set scoringNetPosition.
-     *
      * @param scoringNetPosition int - scoringNetPosition
      */
     public void setScoringNetPosition(int scoringNetPosition) {
         this.scoringNetPosition = scoringNetPosition;
     }
 
-    // Get methods - one get method for each instance variable defined above
-    //             - purpose is to return the value stored in the private variable
+    // Get Methods
 
     /**
      * Gets scoringNetPosition.
-     *
      * @return int, value of scoringNetPosition
      */
     public int getScoringNetPosition() {
         return scoringNetPosition;
     }
 
-    // Additional methods -- such as for calculation, display
 
-    /**
-     * @param direction
-     */
+    // Move paddle based off of velocity then receives direction
     public void movePaddle(char direction){
         if (direction == 'U'){
             setYCoordinate(getYCoordinate() - getVelocityY());
             if (getYCoordinate() <= 0) setYCoordinate(0);
-           // System.out.println("New Y (Up): " + getYCoordinate());
         }
 
         if (direction == 'D'){
             setYCoordinate(getYCoordinate() + getVelocityY());
-            //2nd index of size is y coordinate
+            // 2nd index of size is y coordinate
             if (getYCoordinate() >= (800 - getBounds().height)) setYCoordinate(800 - getBounds().height);
         }
-        //System.out.println("New Y (Down): " + getYCoordinate());
     }
 
+    // Handles collision with ball between paddles
     public boolean collidesWith(Ball ball) {
         Rectangle paddleBounds = getBounds();
         Rectangle ballBounds = ball.getBounds();
@@ -77,5 +63,3 @@ public class Paddle extends Entity{
         return paddleBounds.intersects(ballBounds);
     }
 }
-
-

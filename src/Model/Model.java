@@ -9,9 +9,10 @@ package Model;
  */
 public class Model {
 
+    // Instance Variables
     private Game Game;
 
-    // pass in data to initialize variables
+    // Pass in data to initialize variables
     public Model() {
         Game = new Game();
     }
@@ -20,5 +21,3 @@ public class Model {
         return Game;
     }
 }
-
-

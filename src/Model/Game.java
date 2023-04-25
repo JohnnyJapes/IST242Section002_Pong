@@ -15,9 +15,8 @@ public class Game {
     private Paddle leftPaddle, rightPaddle;
     private int p1Score, p2Score, highestScore, winScore;
 
-    //no-arg constructor
     public Game() {
-        // initialize default values
+        // Initialize default values
         ball = new Ball();
         leftPaddle = new Paddle();
         rightPaddle = new Paddle();
@@ -28,14 +27,11 @@ public class Game {
         resetPositions();
     }
 
-    // Checks if the ball goes off the screen and updates the score accordingly.
-
     /**
-     * Method to check if the ball goes off screen and update scores accordingly
+     * Method to check if the ball goes off-screen and update scores accordingly
      * @return boolean - true if score happened, otherwise false
      */
     public boolean checkBallOffScreen() {
-        //System.out.println("Checking ball");
         if (ball.getXCoordinate() < -20) {
             // Ball went off the left side, player two scores
             p2Score++;
@@ -50,6 +46,7 @@ public class Game {
         return false;
     }
 
+    // Reset the positions of the paddles and ball
     public void resetPositions() {
         // Reset the ball to the center of the screen
         ball.setXCoordinate(600 - ball.getBounds().width/2);
@@ -66,14 +63,8 @@ public class Game {
         rightPaddle.setYCoordinate(350);
     }
 
-    //clear the point totals of both players
-    public void resetPoints() {
-
-    }
-
+    // Serve the ball in a random direction
     public void serveBall (){
-        //resetPositions();
-        // Reset the ball to the center of the screen
         ball.setXCoordinate(600 - ball.getBounds().width/2);
         ball.setYCoordinate(400 - ball.getBounds().height/2);
         ball.setVelocityX(0);
@@ -83,6 +74,7 @@ public class Game {
         ball.setVelocityY(Math.random() < 0.5 ? -5 : 5);
     }
 
+    // Write player scores to txt file
     public void writeTextToFile(String p1, String space,String p2) {
         try {
             FileWriter writer = new FileWriter("Rally.txt");
@@ -95,6 +87,7 @@ public class Game {
         }
     }
 
+    // Read player scores from txt file
     public String readTextFromFile() throws IOException {
         File file = new File("Rally.txt");
         BufferedReader reader = new BufferedReader(new FileReader(file));
@@ -108,9 +101,10 @@ public class Game {
         return stringBuilder.toString();
     }
 
+    // Get Methods
+
     /**
      * Gets ball.
-     *
      * @return Model.Ball, value of ball
      */
     public Ball getBall() {
@@ -119,7 +113,6 @@ public class Game {
 
     /**
      * Gets leftPaddle.
-     *
      * @return Model.Paddle, value of leftPaddle
      */
     public Paddle getLeftPaddle() {
@@ -128,7 +121,6 @@ public class Game {
 
     /**
      * Gets rightPaddle.
-     *
      * @return Model.Paddle, value of rightPaddle
      */
     public Paddle getRightPaddle() {
@@ -137,7 +129,6 @@ public class Game {
 
     /**
      * Gets p1Score.
-     *
      * @return int, value of p1Score
      */
     public int getP1Score() {
@@ -146,7 +137,6 @@ public class Game {
 
     /**
      * Gets p2Score.
-     *
      * @return int, value of p2Score
      */
     public int getP2Score() {
@@ -155,7 +145,6 @@ public class Game {
 
     /**
      * Gets highestScore.
-     *
      * @return int, value of highestScore
      */
     public int getHighestScore() {
@@ -164,7 +153,6 @@ public class Game {
 
     /**
      * Gets winScore.
-     *
      * @return int, value of winScore
      */
     public int getWinScore() {
@@ -172,9 +160,9 @@ public class Game {
     }
 
     //Set Methods
+
     /**
      * Method to set ball.
-     *
      * @param ball Model.Ball - ball
      */
     public void setBall(Ball ball) {
@@ -183,7 +171,6 @@ public class Game {
 
     /**
      * Method to set leftPaddle.
-     *
      * @param leftPaddle Model.Paddle - leftPaddle
      */
     public void setLeftPaddle(Paddle leftPaddle) {
@@ -192,7 +179,6 @@ public class Game {
 
     /**
      * Method to set rightPaddle.
-     *
      * @param rightPaddle Model.Paddle - rightPaddle
      */
     public void setRightPaddle(Paddle rightPaddle) {
@@ -201,7 +187,6 @@ public class Game {
 
     /**
      * Method to set p1Score.
-     *
      * @param p1Score int - p1Score
      */
     public void setP1Score(int p1Score) {
@@ -210,7 +195,6 @@ public class Game {
 
     /**
      * Method to set p2Score.
-     *
      * @param p2Score int - p2Score
      */
     public void setP2Score(int p2Score) {
@@ -219,7 +203,6 @@ public class Game {
 
     /**
      * Method to set highestScore.
-     *
      * @param highestScore int - highestScore
      */
     public void setHighestScore(int highestScore) {
@@ -228,7 +211,6 @@ public class Game {
 
     /**
      * Method to set winScore.
-     *
      * @param winScore int - winScore
      */
     public void setWinScore(int winScore) {
