@@ -20,14 +20,20 @@ public class MenuPanel extends JPanel implements ActionListener {
         JPanel buttonPanel = new JPanel();
         buttonPanel.setLayout(new FlowLayout(FlowLayout.RIGHT));
         startButton = new JButton("Play Pong");
-        startButton.setPreferredSize(new Dimension(150, 50));
+        startButton.setPreferredSize(new Dimension(300, 100));
+        startButton.setForeground(Color.darkGray);
+        startButton.setBackground(Color.lightGray);
         buttonPanel.add(startButton);
         quitButton = new JButton("Exit");
-        quitButton.setPreferredSize(new Dimension(150, 50));
+        quitButton.setPreferredSize(new Dimension(300, 100));
+        quitButton.setForeground(Color.darkGray);
+        quitButton.setBackground(Color.lightGray);
         buttonPanel.add(quitButton);
+        quitButton.addActionListener(e -> System.exit(0));
         add(buttonPanel, BorderLayout.SOUTH);
+        buttonPanel.setBackground(Color.DARK_GRAY);
         title = new JLabel("Welcome To Pong!");
-        title.setFont(new Font("Arial", Font.BOLD, 50));
+        title.setFont(new Font("Arial", Font.BOLD, 100));
         title.setForeground(Color.white);
         add(title, BorderLayout.NORTH);
         setBackground(Color.DARK_GRAY);
@@ -45,6 +51,5 @@ public class MenuPanel extends JPanel implements ActionListener {
         return startButton;
     }
 }
-
 
 
