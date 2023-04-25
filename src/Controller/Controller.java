@@ -43,6 +43,7 @@ public class Controller {
         currentKeys = new HashSet<>();
         game = true;
         ballComponent = view.getGf().getPlayPanel().getBallComponent();
+        loadScores();
         closeWindow();
         addMenuListeners();
         addKeyBindings();
@@ -227,6 +228,30 @@ public class Controller {
                 System.exit(0);
             }
         });
+    }
+    private void loadScores(){
+        try{
+            String input = model.getGame().readTextFromFile();
+            System.out.println(input);
+            int i = input.indexOf(':');
+            int j = input.indexOf('\n');
+            model.getGame().setP1Score(
+                    Integer.parseInt(input.substring(i+2, j))
+            );
+            i = input.lastIndexOf(':');
+            j = input.lastIndexOf('\n');
+            model.getGame().setP2Score(
+                    Integer.parseInt(input.substring(i+2, j))
+            );
+
+            view.getGf().getPlayPanel().setScore('l', model.getGame().getP1Score());
+            view.getGf().getPlayPanel().setScore('r', model.getGame().getP2Score());
+        }
+        catch (IOException ex){
+            System.out.println(ex);
+
+        }
+
     }
 
 }
