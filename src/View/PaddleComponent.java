@@ -22,7 +22,7 @@ public class PaddleComponent extends JComponent {
      * @param g the <code>Graphics</code> object to protect
      */
     public void paintComponent(Graphics g) {
-        g.setColor(Color.white);
+        g.setColor(Color.lightGray);
         g.fillRect(0, 0, getBounds().width, getBounds().height);
     }
 }

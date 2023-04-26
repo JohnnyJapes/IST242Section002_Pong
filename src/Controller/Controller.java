@@ -236,14 +236,14 @@ public class Controller {
             // Updates view with scores
             view.getGf().getPlayPanel().setScore('l', p1Score);
             view.getGf().getPlayPanel().setScore('r', p2Score);
-            view.getGf().getmP().getScores().setText("Player 1: " + p1Score + ", " + "Player 2: " + p2Score);
+            view.getGf().getmP().getScores().setText("[P1] Left Paddle: " + p1Score + "                       " + "[P2] Right Paddle: " + p2Score);
         } catch (IOException | NumberFormatException ex) {
             System.out.println("error");
             System.out.println(ex);
             model.getGame().setP1Score(0);
             model.getGame().setP2Score(0);
             model.getGame().writeTextToFile("Player 1: " + model.getGame().getP1Score(), "\n", "Player 2: " + model.getGame().getP2Score());
-            // updates view with scores
+            // Updates view with scores
             view.getGf().getPlayPanel().setScore('l', model.getGame().getP1Score());
             view.getGf().getPlayPanel().setScore('r', model.getGame().getP2Score());
             view.getGf().getmP().getScores().setText("Player 1: " + model.getGame().getP1Score() + ", " + "Player 2: " + model.getGame().getP2Score());

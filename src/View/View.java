@@ -1,5 +1,7 @@
 package View;
 
+import java.awt.*;
+
 /**
  * File name: View.java
  * Short description: View to contain frames & panels
@@ -18,6 +20,7 @@ public class View {
         System.setProperty("sun.java2d.opengl", "true");
         // Initialize default values
         gf = new GameFrame();
+        gf.setIconImage(Toolkit.getDefaultToolkit().getImage("pong.png"));
     }
 
     /**

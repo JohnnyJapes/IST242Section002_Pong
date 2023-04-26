@@ -23,21 +23,21 @@ public class GamePanel extends JPanel {
     public GamePanel() {
         // Adding JLabels for scores
         scoreBoardP1 = new JLabel("0");
-        scoreBoardP1.setBounds(505, 5, 90, 40);
-        scoreBoardP1.setForeground(Color.white);
-        scoreBoardP1.setFont(new Font(Font.SERIF, Font.BOLD, 50));
+        scoreBoardP1.setBounds(465, 5, 125, 75);
+        scoreBoardP1.setForeground(Color.orange);
+        scoreBoardP1.setFont(new Font(Font.DIALOG, Font.ITALIC, 75));
         scoreBoardP1.setHorizontalAlignment(SwingConstants.CENTER);
         // Second score
         scoreBoardP2 = new JLabel("0");
-        scoreBoardP2.setBounds(605, 5, 90, 40);
-        scoreBoardP2.setForeground(Color.white);
-        scoreBoardP2.setFont(new Font(Font.SERIF, Font.BOLD, 50));
+        scoreBoardP2.setBounds(610, 5, 125, 75);
+        scoreBoardP2.setForeground(Color.orange);
+        scoreBoardP2.setFont(new Font(Font.DIALOG, Font.ITALIC, 75));
         scoreBoardP2.setHorizontalAlignment(SwingConstants.CENTER);
         // Adding SpaceBar start text
-        space = new JLabel("Press Spacebar to Start!");
+        space = new JLabel("PRESS [SPACE] TO START");
         space.setBounds(200, 300, 800, 100);
-        space.setForeground(Color.red);
-        space.setFont(new Font(Font.SERIF, Font.BOLD, 50));
+        space.setForeground(Color.orange);
+        space.setFont(new Font(Font.DIALOG, Font.ITALIC, 50));
         space.setHorizontalAlignment(SwingConstants.CENTER);
         // Net component
         net = new NetComponent();
@@ -48,13 +48,13 @@ public class GamePanel extends JPanel {
         ball = new BallComponent(590,400,20,20);
         leftPaddle = new PaddleComponent(50,350,20,100);
         rightPaddle = new PaddleComponent(1130,350,20,100);
+        add(space);
         add(ball);
+        add(net);
         add(leftPaddle);
         add(rightPaddle);
         add(scoreBoardP1);
         add(scoreBoardP2);
-        add(space);
-        add(net);
         validate();
         repaint();
     }

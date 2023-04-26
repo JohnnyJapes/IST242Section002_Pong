@@ -38,7 +38,7 @@ public class BallComponent extends JComponent {
      * @param g the <code>Graphics</code> object to protect
      */
     public void paintComponent(Graphics g) {
-        g.setColor(Color.white);
+        g.setColor(Color.orange);
         g.fillRect(0, 0, getWidth(), getHeight());
     }
 }
