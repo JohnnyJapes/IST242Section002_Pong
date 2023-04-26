@@ -3,7 +3,6 @@ import View.View;
 import Model.Model;
 import Model.Paddle;
 import Model.Ball;
-import View.BallComponent;
 import javax.swing.*;
 import java.awt.event.*;
 import java.io.IOException;
@@ -24,25 +23,18 @@ public class Controller {
     private boolean start;
     private Paddle leftPaddle;
     private Paddle rightPaddle;
-
     private Ball ball;
     private HashSet<Integer> currentKeys;
 
-    private BallComponent ballComponent;
-
-    private boolean game;
-
     // Constructors
     public Controller(Model m, View v) {
-        // initialize default values
+        // Initialize default values
         model = m;
         view = v;
         leftPaddle = model.getGame().getLeftPaddle();
         rightPaddle = model.getGame().getRightPaddle();
         ball = model.getGame().getBall();
         currentKeys = new HashSet<>();
-        game = true;
-        ballComponent = view.getGf().getPlayPanel().getBallComponent();
         loadScores();
         closeWindow();
         addMenuListeners();
@@ -74,6 +66,8 @@ public class Controller {
                 }
             }
         });
+
+        // Call Methods/Threads
         pThread.start();
         model.getGame().resetPositions();
         model.getGame().serveBall();
@@ -82,25 +76,30 @@ public class Controller {
      * Method that moves paddles based on the currentKeys HashSet
      */
     private void handleMovement(){
+        // if [UP-ARROW]
         if (currentKeys.contains(38)) {
             rightPaddle.movePaddle('U');
             view.getGf().getPlayPanel().loadRightPaddle(rightPaddle.getBounds().x,rightPaddle.getBounds().y, rightPaddle.getBounds().width, rightPaddle.getBounds().height);
         }
-        //add if statements for other keys
+
+        // if [DOWN-ARROW]
         if (currentKeys.contains(40)){
             rightPaddle.movePaddle('D');
             view.getGf().getPlayPanel().loadRightPaddle(rightPaddle.getBounds().x,rightPaddle.getBounds().y, rightPaddle.getBounds().width, rightPaddle.getBounds().height);
         }
+
+        // if [W]
         if (currentKeys.contains(87)){
             leftPaddle.movePaddle('U');
             view.getGf().getPlayPanel().loadLeftPaddle(leftPaddle.getBounds().x, leftPaddle.getBounds().y, leftPaddle.getBounds().width, leftPaddle.getBounds().height);
         }
+
+        // if [S]
         if (currentKeys.contains(KeyEvent.VK_S)){
             leftPaddle.movePaddle('D');
             view.getGf().getPlayPanel().loadLeftPaddle(leftPaddle.getBounds().x,leftPaddle.getBounds().y, leftPaddle.getBounds().width, leftPaddle.getBounds().height);
         }
     }
-
 
     /**
      * Method that handles all ball related movement
@@ -250,5 +249,3 @@ public class Controller {
         }
     }
 }
-
-
