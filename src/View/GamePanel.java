@@ -110,7 +110,7 @@ public class GamePanel extends JPanel {
     }
 
     /**
-     *  Gets BallComponent
+     *  Gets BallComponent.
      * @return this.ball
      */
     public BallComponent getBallComponent() {
@@ -173,6 +173,10 @@ public class GamePanel extends JPanel {
         return space;
     }
 
+    /**
+     * Gets exit.
+     * @return javax.swing.JLabel, value of exit
+     */
     public JLabel getExit() {
         return exit;
     }
