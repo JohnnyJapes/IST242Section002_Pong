@@ -85,6 +85,9 @@ public class Ball extends Entity {
 
         newVelocityX = possibleX;
         newVelocityY = (int)Math.round(v - newVelocityX);
+        //prevent ball from going too fast for collision logic
+        if (newVelocityX > 35) newVelocityX = 35;
+        if (newVelocityY > 35) newVelocityY = 35;
 
         // Flip directions based on center values
         newVelocityX *= directionX;
