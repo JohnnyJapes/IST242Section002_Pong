@@ -48,10 +48,20 @@ public class GameFrame extends JFrame {
     /**
      * Method to swap to play panel
      */
+
+
     public void activatePlayPanel(){
         getContentPane().removeAll();
         invalidate();
         add(playPanel);
+        revalidate();
+        repaint();
+    }
+
+    public void activateMenuPanel(){
+        getContentPane().removeAll();
+        invalidate();
+        add(mP);
         revalidate();
         repaint();
     }

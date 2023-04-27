@@ -20,6 +20,7 @@ public class View {
         System.setProperty("sun.java2d.opengl", "true");
         // Initialize default values
         gf = new GameFrame();
+        // Set Icon
         gf.setIconImage(Toolkit.getDefaultToolkit().getImage("pong.png"));
     }
 

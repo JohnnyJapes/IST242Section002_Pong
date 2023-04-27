@@ -17,7 +17,7 @@ public class GamePanel extends JPanel {
     private PaddleComponent leftPaddle;
     private PaddleComponent rightPaddle;
     private JLabel scoreBoardP1, scoreBoardP2;
-    private JLabel space;
+    private JLabel space, exit;
     private NetComponent net;
 
     public GamePanel() {
@@ -39,6 +39,12 @@ public class GamePanel extends JPanel {
         space.setForeground(Color.orange);
         space.setFont(new Font(Font.DIALOG, Font.ITALIC, 50));
         space.setHorizontalAlignment(SwingConstants.CENTER);
+        // Adding Exit text
+        exit = new JLabel("PRESS [E] TO END (ANY TIME)");
+        exit.setBounds(200, 400, 800, 100);
+        exit.setForeground(Color.pink);
+        exit.setFont(new Font(Font.DIALOG, Font.ITALIC, 50));
+        exit.setHorizontalAlignment(SwingConstants.CENTER);
         // Net component
         net = new NetComponent();
         setLayout(null);
@@ -49,6 +55,7 @@ public class GamePanel extends JPanel {
         leftPaddle = new PaddleComponent(50,350,20,100);
         rightPaddle = new PaddleComponent(1130,350,20,100);
         add(space);
+        add(exit);
         add(ball);
         add(net);
         add(leftPaddle);
@@ -58,6 +65,7 @@ public class GamePanel extends JPanel {
         validate();
         repaint();
     }
+
 
     /**
      * Method to repaint the left paddle
@@ -151,6 +159,10 @@ public class GamePanel extends JPanel {
      */
     public JLabel getSpace() {
         return space;
+    }
+
+    public JLabel getExit() {
+        return exit;
     }
 
     /**

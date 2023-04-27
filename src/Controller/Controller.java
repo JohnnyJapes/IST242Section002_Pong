@@ -39,29 +39,33 @@ public class Controller {
         closeWindow();
         addMenuListeners();
         addKeyBindings();
-        while(!start) handleStart();
+        //while(!start) handleStart();
         // Thread handles movement so main thread doesn't get locked up, enables both paddles to move at the same time
         Thread pThread = new Thread(new Runnable() {
             @Override
             public void run() {
                 System.out.println("start pThread");
                 while (true) {
-                    handleMovement();
-                    moveBall();
-                    if(model.getGame().checkBallOffScreen()){
-                        view.getGf().getPlayPanel().setScore('l', model.getGame().getP1Score());
-                        view.getGf().getPlayPanel().setScore('r', model.getGame().getP2Score());
-                        model.getGame().serveBall();
-                        try {
-                            Thread.sleep(150);
-                        } catch (InterruptedException e) {
-                            throw new RuntimeException(e);
+                    if (!start) {
+                        handleStart();
+                    } else {
+                        handleMovement();
+                        moveBall();
+                        if (model.getGame().checkBallOffScreen()) {
+                            view.getGf().getPlayPanel().setScore('l', model.getGame().getP1Score());
+                            view.getGf().getPlayPanel().setScore('r', model.getGame().getP2Score());
+                            model.getGame().serveBall();
+                            try {
+                                Thread.sleep(150);
+                            } catch (InterruptedException e) {
+                                throw new RuntimeException(e);
                             }
                         }
-                    try {
-                        Thread.sleep(16);
-                    } catch (InterruptedException e) {
-                        throw new RuntimeException(e);
+                        try {
+                            Thread.sleep(16);
+                        } catch (InterruptedException e) {
+                            throw new RuntimeException(e);
+                        }
                     }
                 }
             }
@@ -69,8 +73,6 @@ public class Controller {
 
         // Call Methods/Threads
         pThread.start();
-        model.getGame().resetPositions();
-        model.getGame().serveBall();
     }
     /**
      * Method that moves paddles based on the currentKeys HashSet
@@ -98,6 +100,10 @@ public class Controller {
         if (currentKeys.contains(KeyEvent.VK_S)){
             leftPaddle.movePaddle('D');
             view.getGf().getPlayPanel().loadLeftPaddle(leftPaddle.getBounds().x,leftPaddle.getBounds().y, leftPaddle.getBounds().width, leftPaddle.getBounds().height);
+        }
+
+        if (currentKeys.contains(KeyEvent.VK_E)) {
+            handleEnd();
         }
     }
 
@@ -128,12 +134,25 @@ public class Controller {
      */
     private void handleStart() {
         if (currentKeys.contains(KeyEvent.VK_SPACE)) {
+            System.out.println("START GAME");
+            model.getGame().resetPositions();
+            model.getGame().serveBall();
             start = true;
             view.getGf().getPlayPanel().getSpace().setText("");
+            view.getGf().getPlayPanel().getExit().setText("");
         }
-
     }
 
+    private void handleEnd() {
+        if (currentKeys.contains(KeyEvent.VK_E)) {
+            currentKeys.remove(KeyEvent.VK_E);
+            System.out.println("END GAME");
+            model.getGame().writeTextToFile("Player 1: " + model.getGame().getP1Score(), "\n", "Player 2: " + model.getGame().getP2Score());
+            start = false;
+            model.getGame().resetPositions();
+            view.getGf().activateMenuPanel();
+        }
+    }
     /**
      * Adds all listeners for menu buttons
      */
@@ -142,6 +161,9 @@ public class Controller {
             @Override
             public void actionPerformed(ActionEvent e) {
                 view.getGf().activatePlayPanel();
+                view.getGf().getPlayPanel().getSpace().setText("PRESS [SPACE] TO START");
+                view.getGf().getPlayPanel().getExit().setText("PRESS [E] TO END (ANY TIME)");
+                //while(!start) handleStart();
                 //start = true;
             }
         });
@@ -170,6 +192,7 @@ public class Controller {
         addMotionBind("W", KeyEvent.VK_W);
         addMotionBind("S", KeyEvent.VK_S);
         addMotionBind("SPACE", KeyEvent.VK_SPACE);
+        addMotionBind("E", KeyEvent.VK_E);
     }
 
     /**
@@ -197,10 +220,9 @@ public class Controller {
     }
 
     /**
-     * Method to add listener for closing the window. Saves scores on exit
+     * Method to add listener for closing the window. Save scores on exit
      */
     private void closeWindow (){
-
         view.getGf().setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
         view.getGf().addWindowListener(new WindowAdapter() {
             /**
