@@ -10,19 +10,24 @@ import java.awt.*;
  */
 
 public abstract class Entity {
-    // Instance Variables -- define your private data
+    /** Instance Variables */
     private int velocityX;
     private int velocityY;
     private Rectangle bounds;
 
-    // Constructor
+    /** Constructor */
     public Entity(){
         velocityX = 5;
         velocityY = 5;
         bounds = new Rectangle(50,50, 20, 20);
     }
 
-    // No-arg Constructor
+    /** No-arg Constructor
+     * @param coordinates
+     * @param velocityX
+     * @param velocityY
+     * @param size
+     */
     public Entity(int[] coordinates, int velocityX, int velocityY, int[] size){
         this.velocityX = velocityX;
         this.velocityY = velocityY;
@@ -45,7 +50,7 @@ public abstract class Entity {
     }
 
 
-    // Set Methods
+    /** Set Methods */
 
     /**
      * Method to set coordinates of entity.
@@ -119,7 +124,7 @@ public abstract class Entity {
         this.bounds = rect;
     }
 
-    // Get methods
+    /** Get methods */
 
     /**
      * Method to return x coordinate

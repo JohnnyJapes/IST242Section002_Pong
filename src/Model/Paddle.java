@@ -10,17 +10,17 @@ import java.awt.*;
  */
 
 public class Paddle extends Entity{
-    // Instance Variables -- define your private data
+    /** Instance Variables */
     private int scoringNetPosition;
 
-    // Constructors
+    /** Constructor */
     public Paddle() {
         super(new int[]{0, 350}, 0, 10, new int[]{20, 100});
         scoringNetPosition = 0;
     }
 
 
-   // Set Methods
+    /** Set Methods */
 
     /**
      * Method to set scoringNetPosition.
@@ -30,7 +30,7 @@ public class Paddle extends Entity{
         this.scoringNetPosition = scoringNetPosition;
     }
 
-    // Get Methods
+    /** Get Methods */
 
     /**
      * Gets scoringNetPosition.
@@ -41,7 +41,9 @@ public class Paddle extends Entity{
     }
 
 
-    // Move paddle based off of velocity then receives direction
+    /** Move paddle based off of velocity then receives direction
+     * @param direction
+     */
     public void movePaddle(char direction){
         if (direction == 'U'){
             setYCoordinate(getYCoordinate() - getVelocityY());
@@ -55,7 +57,10 @@ public class Paddle extends Entity{
         }
     }
 
-    // Handles collision with ball between paddles
+    /** Handle collision with ball between paddles
+     * @param ball
+     * @return
+     */
     public boolean collidesWith(Ball ball) {
         Rectangle paddleBounds = getBounds();
         Rectangle ballBounds = ball.getBounds();

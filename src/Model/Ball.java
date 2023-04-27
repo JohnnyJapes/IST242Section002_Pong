@@ -10,12 +10,12 @@ package Model;
 
 public class Ball extends Entity {
 
-    // Define ball
+    /** Define ball */
     public Ball() {
         super(new int[]{600, 400}, 5, 5, new int[]{20, 20});
     }
 
-    // Move the ball and simultaneously check for collisions with the top and bottom walls
+    /** Move the ball and simultaneously check for collisions with the top and bottom walls */
     public void move() {
         // Update x and y coordinates based on current velocity
         int newX = getBounds().x + getVelocityX();
@@ -79,12 +79,12 @@ public class Ball extends Entity {
         System.out.println("Percent X: "+ percentX);
 
         // Math to determine the exact values for x and y velocity
-        double v = (velocity/Math.sqrt(2)) *2.0;
-
-        int possibleX = (int)Math.round(v*percentX);
+        double v = (velocity/Math.sqrt(2)) * 2.0;
+        int possibleX = (int)Math.round(v * percentX);
 
         newVelocityX = possibleX;
         newVelocityY = (int)Math.round(v - newVelocityX);
+
         //prevent ball from going too fast for collision logic
         if (newVelocityX > 35) newVelocityX = 35;
         if (newVelocityY > 35) newVelocityY = 35;
@@ -98,7 +98,8 @@ public class Ball extends Entity {
         setVelocityY(newVelocityY);
         System.out.println("New VelocityX: " + getVelocityX());
         System.out.println("New VelocityY: " + getVelocityY());
-        //move ball outside of paddle before continuing
+
+        // Move ball outside of paddle before continuing
         if (directionX > 0) setXCoordinate(paddle.getXCoordinate()+paddle.getBounds().width);
         else setXCoordinate(paddle.getXCoordinate() -1 - getBounds().width);
     }

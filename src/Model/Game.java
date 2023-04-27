@@ -46,7 +46,7 @@ public class Game {
         return false;
     }
 
-    // Reset the positions of the paddles and ball
+    /** Reset the positions of the paddles and ball */
     public void resetPositions() {
         // Reset the ball to the center of the screen
         ball.setXCoordinate(600 - ball.getBounds().width/2);
@@ -63,7 +63,7 @@ public class Game {
         rightPaddle.setYCoordinate(350);
     }
 
-    // Serve the ball in a random direction
+    /** Serve the ball in a random direction */
     public void serveBall (){
         ball.setXCoordinate(600 - ball.getBounds().width/2);
         ball.setYCoordinate(400 - ball.getBounds().height/2);
@@ -74,7 +74,11 @@ public class Game {
         ball.setVelocityY(Math.random() < 0.5 ? -5 : 5);
     }
 
-    // Write player scores to txt file
+    /** Write player scores to txt file
+     * @param p1
+     * @param space
+     * @param p2
+     */
     public void writeTextToFile(String p1, String space,String p2) {
         try {
             FileWriter writer = new FileWriter("Rally.txt");
@@ -87,7 +91,10 @@ public class Game {
         }
     }
 
-    // Read player scores from txt file
+    /** Read player scores from txt file
+     * @return Write to file
+     * @throws IOException
+     */
     public String readTextFromFile() throws IOException {
         File file = new File("Rally.txt");
         BufferedReader reader = new BufferedReader(new FileReader(file));
@@ -101,7 +108,7 @@ public class Game {
         return stringBuilder.toString();
     }
 
-    // Get Methods
+    /** Get Methods */
 
     /**
      * Gets ball.
@@ -159,7 +166,7 @@ public class Game {
         return winScore;
     }
 
-    //Set Methods
+    /** Set Methods */
 
     /**
      * Method to set ball.
