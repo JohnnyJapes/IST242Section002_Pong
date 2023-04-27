@@ -309,9 +309,7 @@ public class Controller {
         }
     }
 
-    /**
-     * Method to play simple beep sound
-     */
+    /** Method to play simple beep sound */
     public void playBeep(){
         try {
             URL url = getClass().getResource("../beep.wav");
@@ -319,7 +317,7 @@ public class Controller {
             Clip clip = AudioSystem.getClip();
             clip.open(audioStream);
             if (clip.isRunning())
-                clip.stop();   // Stop the player if it is still running
+            clip.stop();   // Stop the player if it is still running
             clip.setFramePosition(0); // Rewind to the beginning
             clip.start();     // Start playing
         }
