@@ -29,6 +29,7 @@ public class Controller {
     private Paddle rightPaddle;
     private Ball ball;
     private HashSet<Integer> currentKeys;
+    private Clip clip;
 
     /**
      * Constructor for controller
@@ -47,6 +48,16 @@ public class Controller {
         closeWindow();
         addMenuListeners();
         addKeyBindings();
+        //create sound clip to call for later use
+        try {
+            URL url = getClass().getResource("../beep.wav");
+            AudioInputStream audioStream = AudioSystem.getAudioInputStream(url);
+            clip = AudioSystem.getClip();
+            clip.open(audioStream);
+        }
+        catch(Error| javax.sound.sampled.UnsupportedAudioFileException | java.io.IOException | javax.sound.sampled.LineUnavailableException err){
+            System.out.println(err);
+        }
 
         /**
          * Thread handles movement so main thread doesn't get locked up, enables both paddles to move at the same time
@@ -190,7 +201,6 @@ public class Controller {
         view.getGf().getmP().getStartButton().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                playBeep();
                 view.getGf().activatePlayPanel();
                 view.getGf().getPlayPanel().getSpace().setText("PRESS [SPACE] TO START");
                 view.getGf().getPlayPanel().getExit().setText("PRESS [E] TO RETURN TO MENU");
@@ -314,16 +324,12 @@ public class Controller {
      */
     public void playBeep(){
         try {
-            URL url = getClass().getResource("../beep.wav");
-            AudioInputStream audioStream = AudioSystem.getAudioInputStream(url);
-            Clip clip = AudioSystem.getClip();
-            clip.open(audioStream);
             if (clip.isRunning())
                 clip.stop();   // Stop the player if it is still running
             clip.setFramePosition(0); // Rewind to the beginning
             clip.start();     // Start playing
         }
-            catch(Error| javax.sound.sampled.UnsupportedAudioFileException | java.io.IOException | javax.sound.sampled.LineUnavailableException err){
+            catch(Error err){
             System.out.println(err);
         }
     }
