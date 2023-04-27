@@ -66,7 +66,7 @@ public class Controller {
                             view.getGf().getPlayPanel().setScore('r', model.getGame().getP2Score());
                             model.getGame().serveBall();
                             try {
-                                Thread.sleep(150);
+                                Thread.sleep(0);
                             } catch (InterruptedException e) {
                                 throw new RuntimeException(e);
                             }
@@ -90,28 +90,55 @@ public class Controller {
      */
     private void handleMovement(){
         // if [UP-ARROW]
-        if (currentKeys.contains(38)) {
+        if (currentKeys.contains(38) && !currentKeys.contains(KeyEvent.VK_CONTROL)) {
+            rightPaddle.setVelocityY(15);
+            rightPaddle.movePaddle('U');
+            view.getGf().getPlayPanel().loadRightPaddle(rightPaddle.getBounds().x,rightPaddle.getBounds().y, rightPaddle.getBounds().width, rightPaddle.getBounds().height);
+        }
+        if (currentKeys.contains(38) && currentKeys.contains(KeyEvent.VK_CONTROL)){
+            rightPaddle.setVelocityY(7);
             rightPaddle.movePaddle('U');
             view.getGf().getPlayPanel().loadRightPaddle(rightPaddle.getBounds().x,rightPaddle.getBounds().y, rightPaddle.getBounds().width, rightPaddle.getBounds().height);
         }
 
+
         // if [DOWN-ARROW]
-        if (currentKeys.contains(40)){
+        if (currentKeys.contains(KeyEvent.VK_DOWN) && !currentKeys.contains(KeyEvent.VK_CONTROL)){
+            rightPaddle.setVelocityY(15);
+            rightPaddle.movePaddle('D');
+            view.getGf().getPlayPanel().loadRightPaddle(rightPaddle.getBounds().x,rightPaddle.getBounds().y, rightPaddle.getBounds().width, rightPaddle.getBounds().height);
+        }
+        if (currentKeys.contains(KeyEvent.VK_DOWN) && currentKeys.contains(KeyEvent.VK_CONTROL)){
+            rightPaddle.setVelocityY(7);
             rightPaddle.movePaddle('D');
             view.getGf().getPlayPanel().loadRightPaddle(rightPaddle.getBounds().x,rightPaddle.getBounds().y, rightPaddle.getBounds().width, rightPaddle.getBounds().height);
         }
 
+
+
         // if [W]
-        if (currentKeys.contains(87)){
+        if (currentKeys.contains(87) && !currentKeys.contains(KeyEvent.VK_SHIFT)){
+            leftPaddle.setVelocityY(15);
+            leftPaddle.movePaddle('U');
+            view.getGf().getPlayPanel().loadLeftPaddle(leftPaddle.getBounds().x, leftPaddle.getBounds().y, leftPaddle.getBounds().width, leftPaddle.getBounds().height);
+        }
+        if (currentKeys.contains(87) && currentKeys.contains(KeyEvent.VK_SHIFT)){
+            leftPaddle.setVelocityY(7);
             leftPaddle.movePaddle('U');
             view.getGf().getPlayPanel().loadLeftPaddle(leftPaddle.getBounds().x, leftPaddle.getBounds().y, leftPaddle.getBounds().width, leftPaddle.getBounds().height);
         }
 
         // if [S]
-        if (currentKeys.contains(KeyEvent.VK_S)){
+        if (currentKeys.contains(KeyEvent.VK_S) && !currentKeys.contains(KeyEvent.VK_SHIFT)){
             leftPaddle.movePaddle('D');
             view.getGf().getPlayPanel().loadLeftPaddle(leftPaddle.getBounds().x,leftPaddle.getBounds().y, leftPaddle.getBounds().width, leftPaddle.getBounds().height);
         }
+        if (currentKeys.contains(KeyEvent.VK_S) && currentKeys.contains(KeyEvent.VK_SHIFT)){
+            leftPaddle.setVelocityY(7);
+            leftPaddle.movePaddle('D');
+            view.getGf().getPlayPanel().loadLeftPaddle(leftPaddle.getBounds().x, leftPaddle.getBounds().y, leftPaddle.getBounds().width, leftPaddle.getBounds().height);
+        }
+
 
         // [E]
         if (currentKeys.contains(KeyEvent.VK_E)) {
@@ -208,6 +235,8 @@ public class Controller {
         addMotionBind("S", KeyEvent.VK_S);
         addMotionBind("SPACE", KeyEvent.VK_SPACE);
         addMotionBind("E", KeyEvent.VK_E);
+        addMotionBind("SHIFT", KeyEvent.VK_SHIFT);
+        addMotionBind("CONTROL", KeyEvent.VK_CONTROL);
     }
 
     /**
@@ -220,6 +249,10 @@ public class Controller {
         String released = "released " + keyName;
         view.getGf().getPlayPanel().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(pressed), pressed);
         view.getGf().getPlayPanel().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(released), released);
+        view.getGf().getPlayPanel().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(keycode, KeyEvent.SHIFT_DOWN_MASK, false), pressed);
+        view.getGf().getPlayPanel().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(keycode, KeyEvent.SHIFT_DOWN_MASK, true), released);
+        view.getGf().getPlayPanel().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(keycode, KeyEvent.CTRL_DOWN_MASK, false), pressed);
+        view.getGf().getPlayPanel().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(keycode, KeyEvent.CTRL_DOWN_MASK, true), released);
         view.getGf().getPlayPanel().getActionMap().put(pressed, new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
