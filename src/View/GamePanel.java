@@ -12,7 +12,7 @@ import java.awt.*;
 
 public class GamePanel extends JPanel {
 
-    // Instance Variables
+    /** Instance Variables */
     private BallComponent ball;
     private PaddleComponent leftPaddle;
     private PaddleComponent rightPaddle;
@@ -21,39 +21,47 @@ public class GamePanel extends JPanel {
     private NetComponent net;
 
     public GamePanel() {
-        // Adding JLabels for scores
+
+        /** Add JLabels for left player score [P1] */
         scoreBoardP1 = new JLabel("0");
         scoreBoardP1.setBounds(465, 5, 125, 75);
         scoreBoardP1.setForeground(Color.orange);
         scoreBoardP1.setFont(new Font(Font.DIALOG, Font.ITALIC, 75));
         scoreBoardP1.setHorizontalAlignment(SwingConstants.CENTER);
-        // Second score
+
+        /** Add JLabels for right player score [P2] */
         scoreBoardP2 = new JLabel("0");
         scoreBoardP2.setBounds(610, 5, 125, 75);
         scoreBoardP2.setForeground(Color.orange);
         scoreBoardP2.setFont(new Font(Font.DIALOG, Font.ITALIC, 75));
         scoreBoardP2.setHorizontalAlignment(SwingConstants.CENTER);
-        // Adding SpaceBar start text
+
+        /** Add SpaceBar [SPACE] start text */
         space = new JLabel("PRESS [SPACE] TO START");
         space.setBounds(200, 300, 800, 100);
         space.setForeground(Color.orange);
         space.setFont(new Font(Font.DIALOG, Font.ITALIC, 50));
         space.setHorizontalAlignment(SwingConstants.CENTER);
-        // Adding Exit text
-        exit = new JLabel("PRESS [E] TO END (ANY TIME)");
+
+        /** Adding Exit [E] text */
+        exit = new JLabel("PRESS [E] TO RETURN TO MENU");
         exit.setBounds(200, 400, 800, 100);
         exit.setForeground(Color.pink);
         exit.setFont(new Font(Font.DIALOG, Font.ITALIC, 50));
         exit.setHorizontalAlignment(SwingConstants.CENTER);
-        // Net component
+
+        /**Net Component */
         net = new NetComponent();
         setLayout(null);
         setSize(1200, 800);
         setBackground(Color.darkGray);
-        // Setting initial bounds of paddles and ball
+
+        /** Setting initial bounds of paddles and ball*/
         ball = new BallComponent(590,400,20,20);
         leftPaddle = new PaddleComponent(50,350,20,100);
         rightPaddle = new PaddleComponent(1130,350,20,100);
+
+        /** Add to panel (In correct order) */
         add(space);
         add(exit);
         add(ball);
@@ -62,10 +70,11 @@ public class GamePanel extends JPanel {
         add(rightPaddle);
         add(scoreBoardP1);
         add(scoreBoardP2);
+
+        /** Ensure panel is up-to-date */
         validate();
         repaint();
     }
-
 
     /**
      * Method to repaint the left paddle
@@ -100,7 +109,10 @@ public class GamePanel extends JPanel {
         repaint();
     }
 
-    // Get BallComponent
+    /**
+     *  Gets BallComponent
+     * @return this.ball
+     */
     public BallComponent getBallComponent() {
         return this.ball;
     }
@@ -171,7 +183,9 @@ public class GamePanel extends JPanel {
      * @param i int - new score
      */
     public void setScore(char p, int i){
+        // Left Paddle Player
         if (p == 'l') scoreBoardP1.setText(String.valueOf(i));
+        // Right Paddle Player
         else scoreBoardP2.setText(String.valueOf(i));
     }
 }

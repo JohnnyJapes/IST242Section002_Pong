@@ -3,7 +3,6 @@ import View.View;
 import Model.Model;
 import Model.Paddle;
 import Model.Ball;
-
 import javax.sound.sampled.*;
 import javax.swing.*;
 import java.awt.event.*;
@@ -16,11 +15,13 @@ import java.util.HashSet;
  * Short description: Class to pass data throughout the game/app
  * IST 242 Assignment: GUI Project
  * @author Luke Hanrahan & Brandon Orlando
- * @version 1.3 4/25/2023
+ * @version 1.4 4/27/2023
  */
 
 public class Controller {
-    // Instance Variables -- define your private data
+    /**
+     * Instance Variables
+     */
     private Model model;
     private View view;
     private boolean start;
@@ -29,7 +30,11 @@ public class Controller {
     private Ball ball;
     private HashSet<Integer> currentKeys;
 
-    // Constructors
+    /**
+     * Constructor for controller
+     * @param m
+     * @param v
+     */
     public Controller(Model m, View v) {
         // Initialize default values
         model = m;
@@ -38,13 +43,14 @@ public class Controller {
         rightPaddle = model.getGame().getRightPaddle();
         ball = model.getGame().getBall();
         currentKeys = new HashSet<>();
-        currentKeys = new HashSet<>();
         loadScores();
         closeWindow();
         addMenuListeners();
         addKeyBindings();
-        //while(!start) handleStart();
-        // Thread handles movement so main thread doesn't get locked up, enables both paddles to move at the same time
+
+        /**
+         * Thread handles movement so main thread doesn't get locked up, enables both paddles to move at the same time
+         */
         Thread pThread = new Thread(new Runnable() {
             @Override
             public void run() {
@@ -75,9 +81,10 @@ public class Controller {
             }
         });
 
-        // Call Methods/Threads
+        // Call Thread
         pThread.start();
     }
+
     /**
      * Method that moves paddles based on the currentKeys HashSet
      */
@@ -106,6 +113,7 @@ public class Controller {
             view.getGf().getPlayPanel().loadLeftPaddle(leftPaddle.getBounds().x,leftPaddle.getBounds().y, leftPaddle.getBounds().width, leftPaddle.getBounds().height);
         }
 
+        // [E]
         if (currentKeys.contains(KeyEvent.VK_E)) {
             handleEnd();
         }
@@ -122,7 +130,6 @@ public class Controller {
             playBeep();
             System.out.println("Left Paddle Collision");
             ball.bounceOffPaddle(leftPaddle);
-            System.out.println(" ");
         }
 
         // Check for collisions with right paddle
@@ -130,7 +137,6 @@ public class Controller {
             playBeep();
             System.out.println("Right Paddle Collision");
             ball.bounceOffPaddle(rightPaddle);
-            System.out.println(" ");
         }
         view.getGf().getPlayPanel().loadBall(ball.getBounds());
     }
@@ -149,6 +155,9 @@ public class Controller {
         }
     }
 
+    /**
+     * Method that listens for the E to end the game and return to menu
+     */
     private void handleEnd() {
         if (currentKeys.contains(KeyEvent.VK_E)) {
             currentKeys.remove(KeyEvent.VK_E);
@@ -159,6 +168,7 @@ public class Controller {
             view.getGf().activateMenuPanel();
         }
     }
+
     /**
      * Adds all listeners for menu buttons
      */
@@ -169,9 +179,7 @@ public class Controller {
                 playBeep();
                 view.getGf().activatePlayPanel();
                 view.getGf().getPlayPanel().getSpace().setText("PRESS [SPACE] TO START");
-                view.getGf().getPlayPanel().getExit().setText("PRESS [E] TO END (ANY TIME)");
-                //while(!start) handleStart();
-                //start = true;
+                view.getGf().getPlayPanel().getExit().setText("PRESS [E] TO RETURN TO MENU");
             }
         });
         view.getGf().getmP().getResetButton().addActionListener(new ActionListener() {
@@ -235,7 +243,6 @@ public class Controller {
             /**
              * Invoked when a window is in the process of being closed.
              * The close operation can be overridden at this point.
-             *
              * @param e
              */
             @Override
@@ -279,7 +286,7 @@ public class Controller {
     }
 
     /**
-     *Method to play simple beep sound
+     * Method to play simple beep sound
      */
     public void playBeep(){
         try{
@@ -289,11 +296,10 @@ public class Controller {
             clip.open(audioStream);
             if (clip.isRunning())
                 clip.stop();   // Stop the player if it is still running
-            clip.setFramePosition(0); // rewind to the beginning
+            clip.setFramePosition(0); // Rewind to the beginning
             clip.start();     // Start playing
         }
-
-        catch(Error| javax.sound.sampled.UnsupportedAudioFileException | java.io.IOException | javax.sound.sampled.LineUnavailableException err){
+            catch(Error| javax.sound.sampled.UnsupportedAudioFileException | java.io.IOException | javax.sound.sampled.LineUnavailableException err){
             System.out.println(err);
         }
     }
