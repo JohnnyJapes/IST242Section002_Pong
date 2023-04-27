@@ -1,2 +1,2 @@
-Player 1: 57
-Player 2: 58
+Player 1: 3
+Player 2: 4

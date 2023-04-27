@@ -85,9 +85,7 @@ public class Controller {
         pThread.start();
     }
 
-    /**
-     * Method that moves paddles based on the currentKeys HashSet
-     */
+    /** Method that moves paddles based on the currentKeys HashSet */
     private void handleMovement(){
         // if [UP-ARROW]
         if (currentKeys.contains(38) && !currentKeys.contains(KeyEvent.VK_CONTROL)) {
@@ -136,15 +134,13 @@ public class Controller {
             view.getGf().getPlayPanel().loadLeftPaddle(leftPaddle.getBounds().x, leftPaddle.getBounds().y, leftPaddle.getBounds().width, leftPaddle.getBounds().height);
         }
 
-        // [E]
+        // if [E]
         if (currentKeys.contains(KeyEvent.VK_E)) {
             handleEnd();
         }
     }
 
-    /**
-     * Method that handles all ball related movement
-     */
+    /** Method that handles all ball related movement */
     private void moveBall() {
         ball.move();
 
@@ -164,9 +160,7 @@ public class Controller {
         view.getGf().getPlayPanel().loadBall(ball.getBounds());
     }
 
-    /**
-     * Method that listens for the space bar to start the game
-     */
+    /** Method that listens for the space bar to start the game */
     private void handleStart() {
         if (currentKeys.contains(KeyEvent.VK_SPACE)) {
             System.out.println("START GAME");
@@ -178,9 +172,7 @@ public class Controller {
         }
     }
 
-    /**
-     * Method that listens for the E to end the game and return to menu
-     */
+    /** Method that listens for the E to end the game and return to menu */
     private void handleEnd() {
         if (currentKeys.contains(KeyEvent.VK_E)) {
             currentKeys.remove(KeyEvent.VK_E);
@@ -193,9 +185,7 @@ public class Controller {
         }
     }
 
-    /**
-     * Adds all listeners for menu buttons
-     */
+    /** Adds all listeners for menu buttons */
     private void addMenuListeners() {
         view.getGf().getmP().getStartButton().addActionListener(new ActionListener() {
             @Override
@@ -222,12 +212,9 @@ public class Controller {
                 }
             }
         });
-
     }
 
-    /**
-     * Method Add key bindings using addMotionBind
-     */
+    /** Method Add key bindings using addMotionBind */
     private void addKeyBindings(){
         addMotionBind("UP", KeyEvent.VK_UP);
         addMotionBind("DOWN", KeyEvent.VK_DOWN);
@@ -249,13 +236,16 @@ public class Controller {
         String released = "released " + keyName;
         view.getGf().getPlayPanel().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(pressed), pressed);
         view.getGf().getPlayPanel().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(released), released);
-        //catch key + shift
+
+        // Catch key + shift
         view.getGf().getPlayPanel().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(keycode, KeyEvent.SHIFT_DOWN_MASK, false), pressed);
         view.getGf().getPlayPanel().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(keycode, KeyEvent.SHIFT_DOWN_MASK, true), released);
-        //catch key + control
+
+        // Catch key + control
         view.getGf().getPlayPanel().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(keycode, KeyEvent.CTRL_DOWN_MASK, false), pressed);
         view.getGf().getPlayPanel().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(keycode, KeyEvent.CTRL_DOWN_MASK, true), released);
-        //catch key + control + shift
+
+        // Catch key + control + shift
         view.getGf().getPlayPanel().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(keycode, KeyEvent.CTRL_DOWN_MASK + KeyEvent.SHIFT_DOWN_MASK, false), pressed);
         view.getGf().getPlayPanel().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(keycode, KeyEvent.CTRL_DOWN_MASK + KeyEvent.SHIFT_DOWN_MASK, true), released);
         view.getGf().getPlayPanel().getActionMap().put(pressed, new AbstractAction() {
@@ -272,9 +262,7 @@ public class Controller {
         });
     }
 
-    /**
-     * Method to add listener for closing the window. Save scores on exit
-     */
+    /** Method to add listener for closing the window. Save scores on exit */
     private void closeWindow (){
         view.getGf().setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
         view.getGf().addWindowListener(new WindowAdapter() {
@@ -292,9 +280,7 @@ public class Controller {
         });
     }
 
-    /**
-     * Method to load scores from txt file
-     */
+    /** Method to load scores from txt file */
     private void loadScores() {
         try {
             String input = model.getGame().readTextFromFile();
@@ -327,7 +313,7 @@ public class Controller {
      * Method to play simple beep sound
      */
     public void playBeep(){
-        try{
+        try {
             URL url = getClass().getResource("../beep.wav");
             AudioInputStream audioStream = AudioSystem.getAudioInputStream(url);
             Clip clip = AudioSystem.getClip();
