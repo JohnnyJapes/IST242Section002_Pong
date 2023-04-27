@@ -277,6 +277,10 @@ public class Controller {
             view.getGf().getmP().getScores().setText("Player 1: " + model.getGame().getP1Score() + ", " + "Player 2: " + model.getGame().getP2Score());
         }
     }
+
+    /**
+     *Method to play simple beep sound
+     */
     public void playBeep(){
         try{
             URL url = getClass().getResource("../beep.wav");
