@@ -189,6 +189,7 @@ public class Controller {
             start = false;
             model.getGame().resetPositions();
             view.getGf().activateMenuPanel();
+            loadScores();
         }
     }
 
