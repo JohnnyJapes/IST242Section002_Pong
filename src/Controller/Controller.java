@@ -3,9 +3,12 @@ import View.View;
 import Model.Model;
 import Model.Paddle;
 import Model.Ball;
+
+import javax.sound.sampled.*;
 import javax.swing.*;
 import java.awt.event.*;
 import java.io.IOException;
+import java.net.URL;
 import java.util.HashSet;
 
 /**
@@ -34,6 +37,7 @@ public class Controller {
         leftPaddle = model.getGame().getLeftPaddle();
         rightPaddle = model.getGame().getRightPaddle();
         ball = model.getGame().getBall();
+        currentKeys = new HashSet<>();
         currentKeys = new HashSet<>();
         loadScores();
         closeWindow();
@@ -115,6 +119,7 @@ public class Controller {
 
         // Check for collisions with left paddle
         if (leftPaddle.collidesWith(ball)) {
+            playBeep();
             System.out.println("Left Paddle Collision");
             ball.bounceOffPaddle(leftPaddle);
             System.out.println(" ");
@@ -122,6 +127,7 @@ public class Controller {
 
         // Check for collisions with right paddle
         if (rightPaddle.collidesWith(ball)) {
+            playBeep();
             System.out.println("Right Paddle Collision");
             ball.bounceOffPaddle(rightPaddle);
             System.out.println(" ");
@@ -160,6 +166,7 @@ public class Controller {
         view.getGf().getmP().getStartButton().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                playBeep();
                 view.getGf().activatePlayPanel();
                 view.getGf().getPlayPanel().getSpace().setText("PRESS [SPACE] TO START");
                 view.getGf().getPlayPanel().getExit().setText("PRESS [E] TO END (ANY TIME)");
@@ -268,6 +275,22 @@ public class Controller {
             view.getGf().getPlayPanel().setScore('l', model.getGame().getP1Score());
             view.getGf().getPlayPanel().setScore('r', model.getGame().getP2Score());
             view.getGf().getmP().getScores().setText("Player 1: " + model.getGame().getP1Score() + ", " + "Player 2: " + model.getGame().getP2Score());
+        }
+    }
+    public void playBeep(){
+        try{
+            URL url = getClass().getResource("../beep.wav");
+            AudioInputStream audioStream = AudioSystem.getAudioInputStream(url);
+            Clip clip = AudioSystem.getClip();
+            clip.open(audioStream);
+            if (clip.isRunning())
+                clip.stop();   // Stop the player if it is still running
+            clip.setFramePosition(0); // rewind to the beginning
+            clip.start();     // Start playing
+        }
+
+        catch(Error| javax.sound.sampled.UnsupportedAudioFileException | java.io.IOException | javax.sound.sampled.LineUnavailableException err){
+            System.out.println(err);
         }
     }
 }
