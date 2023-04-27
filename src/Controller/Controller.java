@@ -249,10 +249,15 @@ public class Controller {
         String released = "released " + keyName;
         view.getGf().getPlayPanel().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(pressed), pressed);
         view.getGf().getPlayPanel().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(released), released);
+        //catch key + shift
         view.getGf().getPlayPanel().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(keycode, KeyEvent.SHIFT_DOWN_MASK, false), pressed);
         view.getGf().getPlayPanel().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(keycode, KeyEvent.SHIFT_DOWN_MASK, true), released);
+        //catch key + control
         view.getGf().getPlayPanel().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(keycode, KeyEvent.CTRL_DOWN_MASK, false), pressed);
         view.getGf().getPlayPanel().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(keycode, KeyEvent.CTRL_DOWN_MASK, true), released);
+        //catch key + control + shift
+        view.getGf().getPlayPanel().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(keycode, KeyEvent.CTRL_DOWN_MASK + KeyEvent.SHIFT_DOWN_MASK, false), pressed);
+        view.getGf().getPlayPanel().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(keycode, KeyEvent.CTRL_DOWN_MASK + KeyEvent.SHIFT_DOWN_MASK, true), released);
         view.getGf().getPlayPanel().getActionMap().put(pressed, new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
