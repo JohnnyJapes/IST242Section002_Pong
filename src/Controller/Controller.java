@@ -207,6 +207,9 @@ public class Controller {
                 view.getGf().activatePlayPanel();
                 view.getGf().getPlayPanel().getSpace().setText("PRESS [SPACE] TO START");
                 view.getGf().getPlayPanel().getExit().setText("PRESS [E] TO RETURN TO MENU");
+                model.getGame().resetPositions();
+                view.getGf().getPlayPanel().loadRightPaddle(rightPaddle.getBounds().x,rightPaddle.getBounds().y, rightPaddle.getBounds().width, rightPaddle.getBounds().height);
+                view.getGf().getPlayPanel().loadLeftPaddle(leftPaddle.getBounds().x, leftPaddle.getBounds().y, leftPaddle.getBounds().width, leftPaddle.getBounds().height);
             }
         });
         view.getGf().getmP().getResetButton().addActionListener(new ActionListener() {
