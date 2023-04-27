@@ -101,7 +101,6 @@ public class Controller {
             view.getGf().getPlayPanel().loadRightPaddle(rightPaddle.getBounds().x,rightPaddle.getBounds().y, rightPaddle.getBounds().width, rightPaddle.getBounds().height);
         }
 
-
         // if [DOWN-ARROW]
         if (currentKeys.contains(KeyEvent.VK_DOWN) && !currentKeys.contains(KeyEvent.VK_CONTROL)){
             rightPaddle.setVelocityY(15);
@@ -113,8 +112,6 @@ public class Controller {
             rightPaddle.movePaddle('D');
             view.getGf().getPlayPanel().loadRightPaddle(rightPaddle.getBounds().x,rightPaddle.getBounds().y, rightPaddle.getBounds().width, rightPaddle.getBounds().height);
         }
-
-
 
         // if [W]
         if (currentKeys.contains(87) && !currentKeys.contains(KeyEvent.VK_SHIFT)){
@@ -138,7 +135,6 @@ public class Controller {
             leftPaddle.movePaddle('D');
             view.getGf().getPlayPanel().loadLeftPaddle(leftPaddle.getBounds().x, leftPaddle.getBounds().y, leftPaddle.getBounds().width, leftPaddle.getBounds().height);
         }
-
 
         // [E]
         if (currentKeys.contains(KeyEvent.VK_E)) {
