@@ -180,7 +180,10 @@ public class Controller {
             start = true;
             view.getGf().getPlayPanel().getSpace().setText("");
             view.getGf().getPlayPanel().getExit().setText("");
+
         }
+        if (currentKeys.contains(KeyEvent.VK_E))
+            handleEnd();
     }
 
     /** Method that listens for the E to end the game and return to menu */
