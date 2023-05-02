@@ -1,2 +1,2 @@
-Player 1: 13
-Player 2: 11
+Player 1: 2
+Player 2: 1

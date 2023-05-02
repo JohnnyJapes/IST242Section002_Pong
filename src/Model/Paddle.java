@@ -59,7 +59,7 @@ public class Paddle extends Entity{
 
     /** Handle collision with ball between paddles
      * @param ball
-     * @return
+     * @return true or false
      */
     public boolean collidesWith(Ball ball) {
         Rectangle paddleBounds = getBounds();
