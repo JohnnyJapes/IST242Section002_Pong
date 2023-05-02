@@ -73,7 +73,7 @@ public class MenuPanel extends JPanel implements ActionListener {
         p2Controls.setForeground(Color.pink);
         p2Controls.setBackground(Color.darkGray);
         p2Controls.setFont(new Font("Arial", Font.BOLD, 20));
-        p2Controls.setBorder(new EmptyBorder(0,275,50,0));
+        p2Controls.setBorder(new EmptyBorder(0,252,50,0));
 
         /** Title label setup */
         title = new JLabel("Welcome To Pong!");
