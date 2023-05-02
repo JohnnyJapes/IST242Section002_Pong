@@ -10,13 +10,14 @@ import java.awt.event.*;
  * Short description: Panel for the initial menu of the GUI
  * IST 242 Assignment: GUI Project
  * @author Luke Hanrahan & Brandon Orlando
- * @version 1.0 4/25/2023
+ * @version 1.1 5/2/2023
  */
 
 public class MenuPanel extends JPanel implements ActionListener {
     // Instance Variables
     JButton startButton, quitButton, resetButton;
-    JLabel title, scores, p1Controls, p2Controls;
+    JLabel title, scores;
+    JList p1Controls,p2Controls;
 
     public MenuPanel() {
         setLayout(new BorderLayout());
@@ -30,43 +31,58 @@ public class MenuPanel extends JPanel implements ActionListener {
         quitButton.setForeground(Color.red);
         quitButton.setBackground(Color.darkGray);
         quitButton.setFont(new Font("Arial", Font.BOLD, 40));
-        buttonPanel.add(quitButton);
+        quitButton.addActionListener(e -> System.exit(0));
+        //reset
         resetButton = new JButton("Reset Scores");
         resetButton.setPreferredSize(new Dimension(300, 100));
         resetButton.setForeground(Color.white);
         resetButton.setBackground(Color.darkGray);
         resetButton.setFont(new Font("Arial", Font.BOLD, 40));
-        buttonPanel.add(resetButton);
+        //start
         startButton = new JButton("Play");
         startButton.setPreferredSize(new Dimension(300, 100));
         startButton.setForeground(Color.green);
         startButton.setBackground(Color.darkGray);
         startButton.setFont(new Font("Arial", Font.BOLD, 40));
-        buttonPanel.add(startButton);
-        quitButton.addActionListener(e -> System.exit(0));
+        //score label
         scores = new JLabel("");
         scores.setForeground(Color.orange);
         scores.setFont(new Font("Arial", Font.BOLD, 35));
-        scores.setBorder(new EmptyBorder(0,125,100,0));
-        p1Controls = new JLabel("Left Paddle: [W] - UP, [S] - Down, [LSHIFT] - Slow down paddle");
+        scores.setBorder(new EmptyBorder(0,125,10,0));
+        //Setup p1Controls Display
+        String p1ControlsArr[] = {"Left Paddle Controls:","[W] - UP","[S] - Down","[LSHIFT] - Slow down paddle"};
+        p1Controls = new JList(p1ControlsArr);
+        p1Controls.setSelectionBackground(Color.darkGray);
+        p1Controls.setSelectionForeground(Color.pink);
         p1Controls.setForeground(Color.pink);
+        p1Controls.setBackground(Color.darkGray);
         p1Controls.setFont(new Font("Arial", Font.BOLD, 20));
         p1Controls.setBorder(new EmptyBorder(0,125,50,0));
-        p2Controls = new JLabel("Right Paddle: [UPARROW] - UP, [DOWNARROW] - Down, [RCTRL] - Slow down paddle");
+        //Setup p2Controls display
+        String p2ControlsArr[] = {"Right Paddle Controls:","[UPARROW] - UP", "[DOWNARROW] - Down", "[RCTRL] - Slow down paddle"};
+        p2Controls = new JList(p2ControlsArr);
+        p2Controls.setSelectionBackground(Color.darkGray);
+        p2Controls.setSelectionForeground(Color.pink);
         p2Controls.setForeground(Color.pink);
+        p2Controls.setBackground(Color.darkGray);
         p2Controls.setFont(new Font("Arial", Font.BOLD, 20));
-        p2Controls.setBorder(new EmptyBorder(10,125,0,0));
+        p2Controls.setBorder(new EmptyBorder(0,275,50,0));
+        //title setup
+        title = new JLabel("Welcome To Pong!");
+        title.setFont(new Font("Arial", Font.BOLD, 100));
+        title.setForeground(Color.white);
+        title.setBorder(new EmptyBorder(10,130,10,0));
+        //Adding all the components
         scorePanel.setBackground(Color.darkGray);
+        buttonPanel.add(quitButton);
+        buttonPanel.add(resetButton);
+        buttonPanel.add(startButton);
         scorePanel.add(scores);
         scorePanel.add(p1Controls);
         scorePanel.add(p2Controls);
         add(scorePanel, BorderLayout.CENTER);
         add(buttonPanel, BorderLayout.SOUTH);
         buttonPanel.setBackground(Color.DARK_GRAY);
-        title = new JLabel("Welcome To Pong!");
-        title.setFont(new Font("Arial", Font.BOLD, 100));
-        title.setForeground(Color.white);
-        title.setBorder(new EmptyBorder(10,130,10,0));
         add(title, BorderLayout.NORTH);
         setBackground(Color.DARK_GRAY);
     }
