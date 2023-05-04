@@ -47,7 +47,7 @@ public class GamePanel extends JPanel {
         exit = new JLabel("PRESS [E] TO RETURN TO MENU");
         exit.setBounds(200, 400, 800, 100);
         exit.setForeground(Color.pink);
-        exit.setFont(new Font(Font.DIALOG, Font.ITALIC, 50));
+        exit.setFont(new Font(Font.DIALOG, Font.ITALIC, 40));
         exit.setHorizontalAlignment(SwingConstants.CENTER);
 
         /**Net Component */
