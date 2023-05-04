@@ -298,7 +298,7 @@ public class Controller {
         try {
             String input = model.getGame().readTextFromFile();
             System.out.println(input);
-            String[] lines = input.split("\\r?\\n");
+            String[] lines = input.split("\n");
             String[] p1Tokens = lines[0].split(":");
             String[] p2Tokens = lines[1].split(":");
             int p1Score = Integer.parseInt(p1Tokens[1].trim());
